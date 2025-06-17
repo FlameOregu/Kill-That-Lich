@@ -1,11 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=37 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://bn680pcwta032" path="res://Assets/fightbackground.png" id="1_b2eky"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
+[ext_resource type="Script" uid="uid://dqhtsaap314o3" path="res://enemy.gd" id="2_iin7j"]
+[ext_resource type="Script" uid="uid://clxp76xrgi64x" path="res://progress_bar.gd" id="2_ksqd2"]
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="3_ahap6"]
-[ext_resource type="Texture2D" uid="uid://c1n4tita6s46u" path="res://Assets/Magic Hover.png" id="4_cja1x"]
-[ext_resource type="Texture2D" uid="uid://dvxjbqeeku3yc" path="res://Assets/Magic Press.png" id="5_aip7a"]
-[ext_resource type="Texture2D" uid="uid://cavt8eecsgddv" path="res://Assets/Magic.png" id="6_i7srl"]
+[ext_resource type="Texture2D" uid="uid://b576kj73shctr" path="res://Assets/Fight Hover.png" id="5_43vwj"]
+[ext_resource type="Texture2D" uid="uid://8201e5g77oyc" path="res://Assets/Fight Press.png" id="6_ksqd2"]
+[ext_resource type="Texture2D" uid="uid://bdooi6aolollc" path="res://Assets/Fight.png" id="7_hueq0"]
 [ext_resource type="Texture2D" uid="uid://dd4gdnkudnoac" path="res://Assets/Wait Hover.png" id="7_iin7j"]
 [ext_resource type="Texture2D" uid="uid://d0ilpqx8wm5fb" path="res://Assets/Wait Press.png" id="8_43vwj"]
 [ext_resource type="Texture2D" uid="uid://ihgciglf70et" path="res://Assets/Wait.png" id="9_ksqd2"]
@@ -15,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://ct6e5svifi4r0" path="res://Assets/Run Hover.png" id="13_71qfg"]
 [ext_resource type="Texture2D" uid="uid://bs41fibbosm0r" path="res://Assets/Run Press.png" id="14_os4x4"]
 [ext_resource type="Texture2D" uid="uid://d0h2siok3e66" path="res://Assets/Run.png" id="15_qvetm"]
+[ext_resource type="Script" uid="uid://b1amr3h1wm0d3" path="res://Scenes/bullet.gd" id="17_pwb48"]
+[ext_resource type="Texture2D" uid="uid://cdp73wf8y3a4o" path="res://icon.svg" id="18_fm0w4"]
+[ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://battlecharacter.gd" id="20_ksqd2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb1yk"]
 bg_color = Color(0, 0, 0, 1)
@@ -24,13 +29,13 @@ border_width_right = 4
 border_width_bottom = 4
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2trbe"]
-texture = ExtResource("4_cja1x")
+texture = ExtResource("5_43vwj")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkk8v"]
-texture = ExtResource("5_aip7a")
+texture = ExtResource("6_ksqd2")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f2rmj"]
-texture = ExtResource("6_i7srl")
+texture = ExtResource("7_hueq0")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqbi2"]
 texture = ExtResource("7_iin7j")
@@ -59,6 +64,15 @@ texture = ExtResource("14_os4x4")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkpxd"]
 texture = ExtResource("15_qvetm")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksqd2"]
+size = Vector2(62.181, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hueq0"]
+size = Vector2(26, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwb48"]
+size = Vector2(36, 61)
+
 [node name="Battle" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -67,18 +81,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health Bar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 46.0
+offset_bottom = 47.0
+script = ExtResource("2_ksqd2")
+
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_b2eky")
 
-[node name="Enemy" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 465.0
-offset_top = 30.0
-offset_right = 668.0
-offset_bottom = 309.0
+[node name="Enemy" type="Node2D" parent="Background"]
+position = Vector2(465, 30)
+script = ExtResource("2_iin7j")
+
+[node name="Enemy" type="TextureRect" parent="Background/Enemy"]
+offset_right = 203.0
+offset_bottom = 279.0
 texture = ExtResource("2_hip74")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -107,7 +131,7 @@ scale = Vector2(1.0252, 0.905175)
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Magic" type="Button" parent="ActionPanel/Actions"]
+[node name="Fight" type="Button" parent="ActionPanel/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -162,3 +186,75 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_segcg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0ia2v")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tkpxd")
 icon_alignment = 1
+
+[node name="Bullet" type="Area2D" parent="."]
+position = Vector2(290, 216)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("17_pwb48")
+
+[node name="boolet sprite" type="Sprite2D" parent="Bullet"]
+scale = Vector2(0.507813, 0.34375)
+texture = ExtResource("18_fm0w4")
+
+[node name="hitbox" type="Area2D" parent="Bullet"]
+
+[node name="hitbox collision" type="CollisionShape2D" parent="Bullet/hitbox"]
+scale = Vector2(0.99709, 1)
+shape = SubResource("RectangleShape2D_ksqd2")
+
+[node name="Character" type="CharacterBody2D" parent="."]
+position = Vector2(144, 209)
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("20_ksqd2")
+
+[node name="Character Sprite" type="Sprite2D" parent="Character"]
+texture = ExtResource("2_hip74")
+
+[node name="hurtbox" type="Area2D" parent="Character"]
+
+[node name="hurtbox collision" type="CollisionShape2D" parent="Character/hurtbox"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_hueq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pwb48")
+
+[node name="Bullet2" type="Area2D" parent="."]
+position = Vector2(266, 305)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("17_pwb48")
+
+[node name="boolet sprite" type="Sprite2D" parent="Bullet2"]
+scale = Vector2(0.507813, 0.34375)
+texture = ExtResource("18_fm0w4")
+
+[node name="hitbox" type="Area2D" parent="Bullet2"]
+
+[node name="hitbox collision" type="CollisionShape2D" parent="Bullet2/hitbox"]
+scale = Vector2(0.99709, 1)
+shape = SubResource("RectangleShape2D_ksqd2")
+
+[node name="Bullet3" type="Area2D" parent="."]
+position = Vector2(112, 321)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("17_pwb48")
+
+[node name="boolet sprite" type="Sprite2D" parent="Bullet3"]
+scale = Vector2(0.507813, 0.34375)
+texture = ExtResource("18_fm0w4")
+
+[node name="hitbox" type="Area2D" parent="Bullet3"]
+
+[node name="hitbox collision" type="CollisionShape2D" parent="Bullet3/hitbox"]
+scale = Vector2(0.99709, 1)
+shape = SubResource("RectangleShape2D_ksqd2")
+
+[connection signal="area_entered" from="Bullet/hitbox" to="Bullet" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Character/hurtbox" to="Character" method="bullethit"]
+[connection signal="area_entered" from="Bullet2/hitbox" to="Bullet2" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Bullet3/hitbox" to="Bullet3" method="_on_hitbox_area_entered"]
