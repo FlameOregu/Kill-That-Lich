@@ -1,9 +1,5 @@
 extends TextureProgressBar
 @export var battlecharacter: Player
 
-func _ready():
-	battlecharacter.healthChanged.connect(update)
-	update()
-
-func update():
-	value = battlecharacter.currenthealth * 100 / battlecharacter.maxhealth
+func _on_character_health_changed():
+	value = battlecharacter.currenthealth / battlecharacter.maxhealth * 100

@@ -1,6 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=40 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://bn680pcwta032" path="res://Assets/fightbackground.png" id="1_b2eky"]
+[ext_resource type="Texture2D" uid="uid://7ywypfd5dbuj" path="res://Assets/healthbarUnder.png" id="1_pwb48"]
+[ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
 [ext_resource type="Script" uid="uid://dqhtsaap314o3" path="res://enemy.gd" id="2_iin7j"]
 [ext_resource type="Script" uid="uid://clxp76xrgi64x" path="res://progress_bar.gd" id="2_ksqd2"]
@@ -12,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ilpqx8wm5fb" path="res://Assets/Wait Press.png" id="8_43vwj"]
 [ext_resource type="Texture2D" uid="uid://ihgciglf70et" path="res://Assets/Wait.png" id="9_ksqd2"]
 [ext_resource type="Texture2D" uid="uid://crgjh5q88yqtq" path="res://Assets/Item Hover.png" id="10_hueq0"]
+[ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="11_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://b73dvjocyxfcb" path="res://Assets/Item Press.png" id="11_pwb48"]
 [ext_resource type="Texture2D" uid="uid://dutubriw54bbn" path="res://Assets/Item.png" id="12_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://ct6e5svifi4r0" path="res://Assets/Run Hover.png" id="13_71qfg"]
@@ -83,12 +86,18 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Health Bar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 6.0
-offset_top = 7.0
-offset_right = 46.0
-offset_bottom = 47.0
+[node name="Health Bar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("battlecharacter")]
+offset_left = 36.0
+offset_top = 28.0
+offset_right = 136.0
+offset_bottom = 128.0
+scale = Vector2(4.46911, 3.04821)
+step = 0.0
+value = 100.0
+texture_under = ExtResource("1_pwb48")
+texture_progress = ExtResource("2_fm0w4")
 script = ExtResource("2_ksqd2")
+battlecharacter = NodePath("../../Character")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -131,58 +140,63 @@ scale = Vector2(1.0252, 0.905175)
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Fight" type="Button" parent="ActionPanel/Actions"]
+[node name="Fight_Button" type="Button" parent="ActionPanel/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 0
+focus_neighbor_left = NodePath("../Run_Button")
+focus_neighbor_right = NodePath("../Wait_Button")
 theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
 theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
 theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 128
-theme_override_styles/hover = SubResource("StyleBoxTexture_2trbe")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2trbe")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_fkk8v")
 theme_override_styles/normal = SubResource("StyleBoxTexture_f2rmj")
 icon_alignment = 1
+script = ExtResource("11_fm0w4")
 
-[node name="Wait" type="Button" parent="ActionPanel/Actions"]
+[node name="Wait_Button" type="Button" parent="ActionPanel/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 0
+focus_neighbor_left = NodePath("../Fight_Button")
+focus_neighbor_right = NodePath("../Item_Button")
 theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
 theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
 theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 128
-theme_override_styles/hover = SubResource("StyleBoxTexture_eqbi2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_eqbi2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xy0dg")
 theme_override_styles/normal = SubResource("StyleBoxTexture_oskno")
 icon_alignment = 1
 
-[node name="Item" type="Button" parent="ActionPanel/Actions"]
+[node name="Item_Button" type="Button" parent="ActionPanel/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 0
+focus_neighbor_left = NodePath("../Wait_Button")
+focus_neighbor_right = NodePath("../Run_Button")
 theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
 theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
 theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 128
-theme_override_styles/hover = SubResource("StyleBoxTexture_nd4jk")
+theme_override_styles/focus = SubResource("StyleBoxTexture_nd4jk")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ar6iy")
 theme_override_styles/normal = SubResource("StyleBoxTexture_x3tt7")
 icon_alignment = 1
 
-[node name="Run" type="Button" parent="ActionPanel/Actions"]
+[node name="Run_Button" type="Button" parent="ActionPanel/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 0
+focus_neighbor_left = NodePath("../Item_Button")
+focus_neighbor_right = NodePath("../Fight_Button")
 theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
 theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
 theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 128
-theme_override_styles/hover = SubResource("StyleBoxTexture_segcg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_segcg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0ia2v")
 theme_override_styles/normal = SubResource("StyleBoxTexture_tkpxd")
 icon_alignment = 1
@@ -204,6 +218,7 @@ scale = Vector2(0.99709, 1)
 shape = SubResource("RectangleShape2D_ksqd2")
 
 [node name="Character" type="CharacterBody2D" parent="."]
+visible = false
 position = Vector2(144, 209)
 collision_layer = 2
 collision_mask = 8
@@ -222,39 +237,7 @@ shape = SubResource("RectangleShape2D_hueq0")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
-[node name="Bullet2" type="Area2D" parent="."]
-position = Vector2(266, 305)
-collision_layer = 8
-collision_mask = 2
-script = ExtResource("17_pwb48")
-
-[node name="boolet sprite" type="Sprite2D" parent="Bullet2"]
-scale = Vector2(0.507813, 0.34375)
-texture = ExtResource("18_fm0w4")
-
-[node name="hitbox" type="Area2D" parent="Bullet2"]
-
-[node name="hitbox collision" type="CollisionShape2D" parent="Bullet2/hitbox"]
-scale = Vector2(0.99709, 1)
-shape = SubResource("RectangleShape2D_ksqd2")
-
-[node name="Bullet3" type="Area2D" parent="."]
-position = Vector2(112, 321)
-collision_layer = 8
-collision_mask = 2
-script = ExtResource("17_pwb48")
-
-[node name="boolet sprite" type="Sprite2D" parent="Bullet3"]
-scale = Vector2(0.507813, 0.34375)
-texture = ExtResource("18_fm0w4")
-
-[node name="hitbox" type="Area2D" parent="Bullet3"]
-
-[node name="hitbox collision" type="CollisionShape2D" parent="Bullet3/hitbox"]
-scale = Vector2(0.99709, 1)
-shape = SubResource("RectangleShape2D_ksqd2")
-
+[connection signal="focus_entered" from="ActionPanel/Actions/Fight_Button" to="ActionPanel/Actions/Fight_Button" method="_on_focus_entered"]
 [connection signal="area_entered" from="Bullet/hitbox" to="Bullet" method="_on_hitbox_area_entered"]
+[connection signal="healthChanged" from="Character" to="CanvasLayer/Health Bar" method="_on_character_health_changed"]
 [connection signal="area_entered" from="Character/hurtbox" to="Character" method="bullethit"]
-[connection signal="area_entered" from="Bullet2/hitbox" to="Bullet2" method="_on_hitbox_area_entered"]
-[connection signal="area_entered" from="Bullet3/hitbox" to="Bullet3" method="_on_hitbox_area_entered"]

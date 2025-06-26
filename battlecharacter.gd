@@ -20,7 +20,9 @@ func _physics_process(_delta):
 	
 func bullethit(area): #When hit by bullet
 	if area.name == "hitbox":
-		currenthealth -= 20
+		currenthealth -= 50
 		print_debug(currenthealth)
 		healthChanged.emit()
 		
+func _ready():
+	set_process(false)
