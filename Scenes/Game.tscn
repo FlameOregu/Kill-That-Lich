@@ -60,4 +60,4 @@ position_smoothing_enabled = true
 position = Vector2(6, -2)
 scale = Vector2(1, 1.31986)
 
-[connection signal="on_character_moving" from="Character" to="BattleArea" method="_on_character_on_character_moving"]
+[connection signal="on_character_moving" from="Character" to="BattleArea" method="_on_character_moving"]
