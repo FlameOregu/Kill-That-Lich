@@ -5,7 +5,7 @@ var focus = false
 func _on_select_fight():
 	self.grab_focus()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("cancel") == true and focus == true:
 		on_cancel.emit()
 		focus = false

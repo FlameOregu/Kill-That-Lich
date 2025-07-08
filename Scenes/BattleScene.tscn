@@ -1,72 +1,18 @@
-[gd_scene load_steps=45 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=21 format=3 uid="uid://dqa2y76mohsb5"]
 
-[ext_resource type="Texture2D" uid="uid://bn680pcwta032" path="res://Assets/fightbackground.png" id="1_b2eky"]
 [ext_resource type="Texture2D" uid="uid://7ywypfd5dbuj" path="res://Assets/healthbarUnder.png" id="1_pwb48"]
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
 [ext_resource type="Script" uid="uid://dqhtsaap314o3" path="res://enemy.gd" id="2_iin7j"]
 [ext_resource type="Script" uid="uid://clxp76xrgi64x" path="res://progress_bar.gd" id="2_ksqd2"]
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="3_ahap6"]
-[ext_resource type="Texture2D" uid="uid://cf7mj6y6rq0t1" path="res://Assets/Fight Hover.png" id="5_43vwj"]
-[ext_resource type="Texture2D" uid="uid://dsfcteitgaqht" path="res://Assets/Fight Press.png" id="6_ksqd2"]
-[ext_resource type="Texture2D" uid="uid://c6ksgaw5pyi75" path="res://Assets/Fight.png" id="7_hueq0"]
-[ext_resource type="Texture2D" uid="uid://dd4gdnkudnoac" path="res://Assets/Wait Hover.png" id="7_iin7j"]
-[ext_resource type="Texture2D" uid="uid://d0ilpqx8wm5fb" path="res://Assets/Wait Press.png" id="8_43vwj"]
-[ext_resource type="Texture2D" uid="uid://ihgciglf70et" path="res://Assets/Wait.png" id="9_ksqd2"]
-[ext_resource type="Texture2D" uid="uid://crgjh5q88yqtq" path="res://Assets/Item Hover.png" id="10_hueq0"]
-[ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="11_fm0w4"]
-[ext_resource type="Texture2D" uid="uid://b73dvjocyxfcb" path="res://Assets/Item Press.png" id="11_pwb48"]
-[ext_resource type="Texture2D" uid="uid://dutubriw54bbn" path="res://Assets/Item.png" id="12_fm0w4"]
-[ext_resource type="Texture2D" uid="uid://ct6e5svifi4r0" path="res://Assets/Run Hover.png" id="13_71qfg"]
-[ext_resource type="Texture2D" uid="uid://bs41fibbosm0r" path="res://Assets/Run Press.png" id="14_os4x4"]
-[ext_resource type="Texture2D" uid="uid://d0h2siok3e66" path="res://Assets/Run.png" id="15_qvetm"]
+[ext_resource type="Texture2D" uid="uid://djvicykse567l" path="res://Assets/background.png" id="4_0avxp"]
+[ext_resource type="Texture2D" uid="uid://d8do1pkju856" path="res://Assets/fight background.png" id="12_x5p3t"]
+[ext_resource type="Script" uid="uid://fdtcm1yqnv2c" path="res://Scenes/fightbackground.gd" id="13_cja1x"]
 [ext_resource type="Script" uid="uid://b1amr3h1wm0d3" path="res://Scenes/bullet.gd" id="17_pwb48"]
 [ext_resource type="Texture2D" uid="uid://cdp73wf8y3a4o" path="res://icon.svg" id="18_fm0w4"]
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://battlecharacter.gd" id="20_ksqd2"]
 [ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scenes/action_1.gd" id="21_71qfg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb1yk"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fm0w4"]
-texture = ExtResource("5_43vwj")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_71qfg"]
-texture = ExtResource("6_ksqd2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_os4x4"]
-texture = ExtResource("7_hueq0")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqbi2"]
-texture = ExtResource("7_iin7j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy0dg"]
-texture = ExtResource("8_43vwj")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oskno"]
-texture = ExtResource("9_ksqd2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nd4jk"]
-texture = ExtResource("10_hueq0")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ar6iy"]
-texture = ExtResource("11_pwb48")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x3tt7"]
-texture = ExtResource("12_fm0w4")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_segcg"]
-texture = ExtResource("13_71qfg")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ia2v"]
-texture = ExtResource("14_os4x4")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkpxd"]
-texture = ExtResource("15_qvetm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm0w4"]
 bg_color = Color(0, 0, 0, 1)
@@ -120,118 +66,27 @@ battlecharacter = NodePath("../../Character")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_b2eky")
+texture = ExtResource("4_0avxp")
 
 [node name="Enemy" type="Node2D" parent="Background"]
 position = Vector2(465, 30)
 script = ExtResource("2_iin7j")
 
 [node name="Enemy" type="TextureRect" parent="Background/Enemy"]
-offset_top = -6.0
-offset_right = 203.0
-offset_bottom = 273.0
+offset_left = 16.0
+offset_top = 112.0
+offset_right = 219.0
+offset_bottom = 391.0
 texture = ExtResource("2_hip74")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[node name="ActionPanel" type="Panel" parent="."]
-layout_mode = 0
-offset_top = 545.0
-offset_right = 1461.0
-offset_bottom = 696.0
-scale = Vector2(0.788041, 0.677079)
-theme_override_styles/panel = SubResource("StyleBoxFlat_hb1yk")
-
-[node name="Actions" type="HBoxContainer" parent="ActionPanel"]
-layout_direction = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -3.43323e-05
-offset_right = -37.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0252, 0.905175)
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Fight_Button" type="Button" parent="ActionPanel/Actions"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../Run_Button")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Wait_Button")
-focus_neighbor_bottom = NodePath(".")
-theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
-theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
-theme_override_fonts/font = ExtResource("3_ahap6")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/focus = SubResource("StyleBoxTexture_fm0w4")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_71qfg")
-theme_override_styles/normal = SubResource("StyleBoxTexture_os4x4")
-icon_alignment = 1
-script = ExtResource("11_fm0w4")
-
-[node name="Wait_Button" type="Button" parent="ActionPanel/Actions"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../Fight_Button")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Item_Button")
-focus_neighbor_bottom = NodePath(".")
-theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
-theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
-theme_override_fonts/font = ExtResource("3_ahap6")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/focus = SubResource("StyleBoxTexture_eqbi2")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xy0dg")
-theme_override_styles/normal = SubResource("StyleBoxTexture_oskno")
-icon_alignment = 1
-
-[node name="Item_Button" type="Button" parent="ActionPanel/Actions"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../Wait_Button")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Run_Button")
-focus_neighbor_bottom = NodePath(".")
-theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
-theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
-theme_override_fonts/font = ExtResource("3_ahap6")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/focus = SubResource("StyleBoxTexture_nd4jk")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_ar6iy")
-theme_override_styles/normal = SubResource("StyleBoxTexture_x3tt7")
-icon_alignment = 1
-
-[node name="Run_Button" type="Button" parent="ActionPanel/Actions"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../Item_Button")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Fight_Button")
-focus_neighbor_bottom = NodePath(".")
-theme_override_colors/font_hover_pressed_color = Color(0.786425, 0.39468, 0, 1)
-theme_override_colors/font_hover_color = Color(0.841218, 0.833973, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.788235, 0.396078, 0, 1)
-theme_override_fonts/font = ExtResource("3_ahap6")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/focus = SubResource("StyleBoxTexture_segcg")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_0ia2v")
-theme_override_styles/normal = SubResource("StyleBoxTexture_tkpxd")
-icon_alignment = 1
-
 [node name="Fight Panel" type="Panel" parent="."]
 layout_mode = 1
-offset_top = 379.0
-offset_right = 1150.0
-offset_bottom = 534.0
+offset_top = 500.0
+offset_right = 1152.0
+offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fm0w4")
 
 [node name="Action 1" type="Button" parent="Fight Panel"]
@@ -272,6 +127,7 @@ text = " •  Action 2"
 alignment = 0
 
 [node name="Bullet" type="Area2D" parent="."]
+visible = false
 position = Vector2(290, 216)
 collision_layer = 8
 collision_mask = 2
@@ -307,11 +163,16 @@ shape = SubResource("RectangleShape2D_hueq0")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
-[connection signal="_on_select_fight" from="ActionPanel/Actions/Fight_Button" to="Fight Panel/Action 1" method="_on_select_fight"]
-[connection signal="focus_entered" from="ActionPanel/Actions/Fight_Button" to="ActionPanel/Actions/Fight_Button" method="_on_focus_entered"]
-[connection signal="focus_exited" from="ActionPanel/Actions/Fight_Button" to="ActionPanel/Actions/Fight_Button" method="_on_focus_exited"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+offset_right = 1152.0
+offset_bottom = 648.0
+scale = Vector2(1.01807, 0.998027)
+texture = ExtResource("12_x5p3t")
+script = ExtResource("13_cja1x")
+
 [connection signal="focus_entered" from="Fight Panel/Action 1" to="Fight Panel/Action 1" method="_on_focus_entered"]
-[connection signal="on_cancel" from="Fight Panel/Action 1" to="ActionPanel/Actions/Fight_Button" method="_on_cancel"]
 [connection signal="area_entered" from="Bullet/hitbox" to="Bullet" method="_on_hitbox_area_entered"]
 [connection signal="healthChanged" from="Character" to="CanvasLayer/Health Bar" method="_on_character_health_changed"]
 [connection signal="area_entered" from="Character/hurtbox" to="Character" method="bullethit"]
