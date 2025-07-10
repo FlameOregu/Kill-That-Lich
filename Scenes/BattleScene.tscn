@@ -1,43 +1,33 @@
-[gd_scene load_steps=21 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=17 format=3 uid="uid://dqa2y76mohsb5"]
 
-[ext_resource type="Texture2D" uid="uid://7ywypfd5dbuj" path="res://Assets/healthbarUnder.png" id="1_pwb48"]
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
 [ext_resource type="Script" uid="uid://dqhtsaap314o3" path="res://enemy.gd" id="2_iin7j"]
 [ext_resource type="Script" uid="uid://clxp76xrgi64x" path="res://progress_bar.gd" id="2_ksqd2"]
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="3_ahap6"]
 [ext_resource type="Texture2D" uid="uid://djvicykse567l" path="res://Assets/background.png" id="4_0avxp"]
+[ext_resource type="Texture2D" uid="uid://7ywypfd5dbuj" path="res://Assets/healthbarUnder.png" id="6_1yevk"]
+[ext_resource type="Script" uid="uid://bh1x5eiekug7v" path="res://Scenes/hp_text.gd" id="7_0avxp"]
 [ext_resource type="Texture2D" uid="uid://d8do1pkju856" path="res://Assets/fight background.png" id="12_x5p3t"]
-[ext_resource type="Script" uid="uid://fdtcm1yqnv2c" path="res://Scenes/fightbackground.gd" id="13_cja1x"]
 [ext_resource type="Script" uid="uid://b1amr3h1wm0d3" path="res://Scenes/bullet.gd" id="17_pwb48"]
 [ext_resource type="Texture2D" uid="uid://cdp73wf8y3a4o" path="res://icon.svg" id="18_fm0w4"]
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://battlecharacter.gd" id="20_ksqd2"]
-[ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scenes/action_1.gd" id="21_71qfg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm0w4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yevk"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
-border_width_top = 5
+border_width_top = 4
 border_width_right = 4
-border_width_bottom = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os4x4"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71qfg"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvetm"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksqd2"]
-size = Vector2(62.181, 40)
+border_width_bottom = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hueq0"]
 size = Vector2(26, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwb48"]
-size = Vector2(36, 61)
+size = Vector2(41, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksqd2"]
+size = Vector2(62.181, 40)
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -53,128 +43,110 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_0avxp")
 
-[node name="Enemy" type="Node2D" parent="Background"]
-position = Vector2(411, 83)
-script = ExtResource("2_iin7j")
-
-[node name="Enemy" type="TextureRect" parent="Background/Enemy"]
-offset_left = 16.0
-offset_top = 112.0
-offset_right = 219.0
-offset_bottom = 391.0
-texture = ExtResource("2_hip74")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[node name="Fight Panel" type="Panel" parent="."]
-layout_mode = 1
-offset_top = 500.0
-offset_right = 1152.0
-offset_bottom = 648.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_fm0w4")
-
-[node name="Action 1" type="Button" parent="Fight Panel"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 143.0
-offset_bottom = 69.0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Action 2")
-focus_neighbor_bottom = NodePath(".")
-theme_override_colors/font_focus_color = Color(0.847328, 0.723142, 0.12493, 1)
-theme_override_fonts/font = ExtResource("3_ahap6")
-theme_override_font_sizes/font_size = 34
-theme_override_styles/focus = SubResource("StyleBoxFlat_os4x4")
-theme_override_styles/normal = SubResource("StyleBoxFlat_71qfg")
-text = " •  Action 1"
-alignment = 0
-script = ExtResource("21_71qfg")
-
-[node name="Action 2" type="Button" parent="Fight Panel"]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 5.0
-offset_right = 288.0
-offset_bottom = 69.0
-focus_neighbor_left = NodePath("../Action 1")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-theme_override_colors/font_focus_color = Color(0.847328, 0.723142, 0.12493, 1)
-theme_override_fonts/font = ExtResource("3_ahap6")
-theme_override_font_sizes/font_size = 34
-theme_override_styles/focus = SubResource("StyleBoxFlat_qvetm")
-theme_override_styles/normal = SubResource("StyleBoxFlat_71qfg")
-text = " •  Action 2"
-alignment = 0
-
-[node name="Bullet" type="Area2D" parent="."]
-visible = false
-position = Vector2(290, 216)
-collision_layer = 8
-collision_mask = 2
-script = ExtResource("17_pwb48")
-
-[node name="boolet sprite" type="Sprite2D" parent="Bullet"]
-scale = Vector2(0.507813, 0.34375)
-texture = ExtResource("18_fm0w4")
-
-[node name="hitbox" type="Area2D" parent="Bullet"]
-
-[node name="hitbox collision" type="CollisionShape2D" parent="Bullet/hitbox"]
-scale = Vector2(0.99709, 1)
-shape = SubResource("RectangleShape2D_ksqd2")
-
-[node name="Character" type="CharacterBody2D" parent="."]
-z_index = 1
-position = Vector2(144, 209)
-collision_layer = 2
-collision_mask = 8
-script = ExtResource("20_ksqd2")
-
-[node name="Character Sprite" type="Sprite2D" parent="Character"]
-texture = ExtResource("2_hip74")
-
-[node name="hurtbox" type="Area2D" parent="Character"]
-
-[node name="hurtbox collision" type="CollisionShape2D" parent="Character/hurtbox"]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_hueq0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_pwb48")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Healthbar" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="Health Bar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("battlecharacter")]
-offset_left = 36.0
-offset_top = 28.0
-offset_right = 136.0
-offset_bottom = 128.0
-scale = Vector2(4.46911, 3.04821)
+[node name="Health Bar" type="TextureProgressBar" parent="Healthbar" node_paths=PackedStringArray("battlecharacter")]
+offset_top = -59.0
+offset_right = 100.0
+offset_bottom = 41.0
+scale = Vector2(2.42163, 2.03915)
 step = 0.0
 value = 100.0
-texture_under = ExtResource("1_pwb48")
+texture_under = ExtResource("6_1yevk")
 texture_progress = ExtResource("2_fm0w4")
 script = ExtResource("2_ksqd2")
-battlecharacter = NodePath("../../Character")
+battlecharacter = NodePath("../../Fight Layer/Character")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="HP Text" type="Label" parent="Healthbar" node_paths=PackedStringArray("battlecharacter")]
+offset_left = 11.0
+offset_top = 55.0
+offset_right = 233.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("3_ahap6")
+theme_override_font_sizes/font_size = 32
+text = "Display Sanity"
+horizontal_alignment = 1
+script = ExtResource("7_0avxp")
+battlecharacter = NodePath("../../Fight Layer/Character")
+
+[node name="Fight Layer" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+[node name="TextureRect" type="TextureRect" parent="Fight Layer"]
 offset_right = 1152.0
 offset_bottom = 648.0
 scale = Vector2(1.01807, 0.998027)
 texture = ExtResource("12_x5p3t")
-script = ExtResource("13_cja1x")
 
-[connection signal="focus_entered" from="Fight Panel/Action 1" to="Fight Panel/Action 1" method="_on_focus_entered"]
-[connection signal="area_entered" from="Bullet/hitbox" to="Bullet" method="_on_hitbox_area_entered"]
-[connection signal="healthChanged" from="Character" to="CanvasLayer/Health Bar" method="_on_character_health_changed"]
-[connection signal="area_entered" from="Character/hurtbox" to="Character" method="bullethit"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Fight Layer"]
+position = Vector2(598, 366)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fight Layer/StaticBody2D"]
+position = Vector2(-71, 25)
+build_mode = 1
+polygon = PackedVector2Array(-259, -62, 328, -62, 328, 187, -260, 187)
+
+[node name="Panel" type="Panel" parent="Fight Layer/StaticBody2D"]
+offset_left = -333.0
+offset_top = -39.0
+offset_right = 259.0
+offset_bottom = 214.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1yevk")
+
+[node name="Character" type="CharacterBody2D" parent="Fight Layer"]
+z_index = 1
+position = Vector2(418, 446)
+collision_layer = 2
+collision_mask = 24
+script = ExtResource("20_ksqd2")
+
+[node name="Character Sprite" type="Sprite2D" parent="Fight Layer/Character"]
+texture = ExtResource("2_hip74")
+
+[node name="hurtbox" type="Area2D" parent="Fight Layer/Character"]
+collision_layer = 2
+collision_mask = 24
+
+[node name="hurtbox collision" type="CollisionShape2D" parent="Fight Layer/Character/hurtbox"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_hueq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fight Layer/Character"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_pwb48")
+
+[node name="Bullet" type="Area2D" parent="Fight Layer"]
+position = Vector2(632, 421)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("17_pwb48")
+
+[node name="hitbox collision" type="CollisionShape2D" parent="Fight Layer/Bullet"]
+scale = Vector2(0.99709, 1)
+shape = SubResource("RectangleShape2D_ksqd2")
+
+[node name="boolet sprite" type="Sprite2D" parent="Fight Layer/Bullet"]
+scale = Vector2(0.507813, 0.34375)
+texture = ExtResource("18_fm0w4")
+
+[node name="Enemy" type="Node2D" parent="Fight Layer"]
+position = Vector2(358, -43)
+script = ExtResource("2_iin7j")
+
+[node name="Enemy" type="TextureRect" parent="Fight Layer/Enemy"]
+offset_left = 117.0
+offset_top = 72.0
+offset_right = 317.0
+offset_bottom = 325.0
+texture = ExtResource("2_hip74")
+
+[connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/Health Bar" method="_on_character_health_changed"]
+[connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/HP Text" method="_on_character_health_changed"]
+[connection signal="area_entered" from="Fight Layer/Character/hurtbox" to="Fight Layer/Character" method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Fight Layer/Bullet" to="Fight Layer/Bullet" method="_on_area_entered"]

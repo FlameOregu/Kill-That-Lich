@@ -18,11 +18,12 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	
-func bullethit(area): #When hit by bullet
-	if area.name == "hitbox":
+#func _ready():
+#	set_process(false)
+
+
+func _on_hurtbox_area_entered(area):
+	if area.name == "Bullet":
 		currenthealth -= 50
-		print_debug(currenthealth)
 		healthChanged.emit()
 		
-func _ready():
-	set_process(false)
