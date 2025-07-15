@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=14 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://7ywypfd5dbuj" path="res://Assets/healthbarUnder.png" id="6_1yevk"]
 [ext_resource type="Script" uid="uid://bh1x5eiekug7v" path="res://Scenes/hp_text.gd" id="7_0avxp"]
 [ext_resource type="Texture2D" uid="uid://d8do1pkju856" path="res://Assets/fight background.png" id="12_x5p3t"]
-[ext_resource type="Script" uid="uid://b1amr3h1wm0d3" path="res://Scenes/bullet.gd" id="17_pwb48"]
-[ext_resource type="Texture2D" uid="uid://cdp73wf8y3a4o" path="res://icon.svg" id="18_fm0w4"]
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://battlecharacter.gd" id="20_ksqd2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yevk"]
@@ -25,9 +23,6 @@ size = Vector2(26, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwb48"]
 size = Vector2(41, 71)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksqd2"]
-size = Vector2(62.181, 40)
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -74,7 +69,6 @@ script = ExtResource("7_0avxp")
 battlecharacter = NodePath("../../Fight Layer/Character")
 
 [node name="Fight Layer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Fight Layer"]
 offset_right = 1152.0
@@ -121,32 +115,18 @@ shape = SubResource("RectangleShape2D_hueq0")
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
-[node name="Bullet" type="Area2D" parent="Fight Layer"]
-position = Vector2(632, 421)
-collision_layer = 8
-collision_mask = 2
-script = ExtResource("17_pwb48")
-
-[node name="hitbox collision" type="CollisionShape2D" parent="Fight Layer/Bullet"]
-scale = Vector2(0.99709, 1)
-shape = SubResource("RectangleShape2D_ksqd2")
-
-[node name="boolet sprite" type="Sprite2D" parent="Fight Layer/Bullet"]
-scale = Vector2(0.507813, 0.34375)
-texture = ExtResource("18_fm0w4")
-
 [node name="Enemy" type="Node2D" parent="Fight Layer"]
-position = Vector2(358, -43)
+position = Vector2(489, 57)
 script = ExtResource("2_iin7j")
 
 [node name="Enemy" type="TextureRect" parent="Fight Layer/Enemy"]
-offset_left = 117.0
-offset_top = 72.0
-offset_right = 317.0
-offset_bottom = 325.0
+offset_right = 200.0
+offset_bottom = 253.0
 texture = ExtResource("2_hip74")
+
+[node name="Bullet Spawner" type="Node2D" parent="Fight Layer/Enemy"]
+position = Vector2(87, 263)
 
 [connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/Health Bar" method="_on_character_health_changed"]
 [connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/HP Text" method="_on_character_health_changed"]
 [connection signal="area_entered" from="Fight Layer/Character/hurtbox" to="Fight Layer/Character" method="_on_hurtbox_area_entered"]
-[connection signal="area_entered" from="Fight Layer/Bullet" to="Fight Layer/Bullet" method="_on_area_entered"]
