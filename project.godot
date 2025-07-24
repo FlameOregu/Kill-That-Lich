@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 FullScreen="*res://Scenes/FullScreen.tscn"
 HideCursor="*res://hide_cursor.gd"
+GlobalSignals="*res://global_signals.gd"
 
 [display]
 

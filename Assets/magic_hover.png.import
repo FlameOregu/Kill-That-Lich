@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cavt8eecsgddv"
-path="res://.godot/imported/Magic.png-9d0b0be8610892aa3c09f1b43db45e99.ctex"
+uid="uid://s3bdkvxwasof"
+path="res://.godot/imported/magic_hover.png-87231e726fe40093a29ea7fba19a310d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Magic.png"
-dest_files=["res://.godot/imported/Magic.png-9d0b0be8610892aa3c09f1b43db45e99.ctex"]
+source_file="res://Assets/magic_hover.png"
+dest_files=["res://.godot/imported/magic_hover.png-87231e726fe40093a29ea7fba19a310d.ctex"]
 
 [params]
 

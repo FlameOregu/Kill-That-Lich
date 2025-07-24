@@ -1,6 +1,6 @@
 extends CharacterBody2D
 class_name Player
-@export var speed = 200
+@export var speed = 250
 var direction:Vector2
 var maxhealth = 100.0
 var currenthealth: float = maxhealth
@@ -17,13 +17,13 @@ func _process(_delta):
 func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
-	
+	GlobalSignals.emit_signal("player_position", position)
+
 #func _ready():
 #	set_process(false)
 
 
 func _on_hurtbox_area_entered(area):
-	if area.name == "Bullet":
-		currenthealth -= 50
+	if area.name == "hitbox":
+		currenthealth -= 20
 		healthChanged.emit()
-		

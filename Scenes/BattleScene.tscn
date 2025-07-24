@@ -115,9 +115,10 @@ shape = SubResource("RectangleShape2D_hueq0")
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
-[node name="Enemy" type="Node2D" parent="Fight Layer"]
+[node name="Enemy" type="Node2D" parent="Fight Layer" node_paths=PackedStringArray("battlecharacter")]
 position = Vector2(489, 57)
 script = ExtResource("2_iin7j")
+battlecharacter = NodePath("../Character")
 
 [node name="Enemy" type="TextureRect" parent="Fight Layer/Enemy"]
 offset_right = 200.0

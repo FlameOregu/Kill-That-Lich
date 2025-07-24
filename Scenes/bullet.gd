@@ -1,18 +1,30 @@
 extends Node2D
 
-var velocity: float = 50
+var target_pos : Vector2
+var target: Vector2
+var speed: float = 0.6
 var duration = 20
-
 var move_dir: Vector2
+var locked_on  = false
 
 func _process(delta):
-	translate(move_dir * velocity * delta)
+	self.visible = true
+	translate(target_pos * speed * delta)
+	if locked_on == false:
+		target_pos = (target - global_position)
+		self.look_at(target)
+		locked_on = true
 	duration -= delta
 	if duration < 0:
 		queue_free()
-		print("deleted")
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "hurtbox":
 		queue_free()
-		print("deleted")
+
+func _ready():
+	GlobalSignals.connect("player_position", Callable(self, "_location"))
+	self.visible = false
+	
+func _location(location: Vector2):
+	target = location

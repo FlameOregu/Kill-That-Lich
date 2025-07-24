@@ -1,7 +1,7 @@
 extends Node2D
 
 var bullet_scene : PackedScene = preload("res://Scenes/bullet.tscn")
-
+@export var battlecharacter: Player
 @export var shoot_rate : float = 0.5
 var last_shoot_time : float
 
@@ -14,5 +14,3 @@ func _shoot():
 	var bullet = bullet_scene.instantiate()
 	self.add_child(bullet)
 	bullet.global_position = $"Bullet Spawner".global_position
-	bullet.move_dir = Vector2(1,0)
-	print("bullet spawned")

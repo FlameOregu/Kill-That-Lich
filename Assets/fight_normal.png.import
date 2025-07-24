@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ilpqx8wm5fb"
-path="res://.godot/imported/Wait Press.png-14fa3b95159cb0248c95cb6d24fb6c9b.ctex"
+uid="uid://br6y8c867l3f"
+path="res://.godot/imported/fight_normal.png-becd241d8e566468ca533feec3069524.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Wait Press.png"
-dest_files=["res://.godot/imported/Wait Press.png-14fa3b95159cb0248c95cb6d24fb6c9b.ctex"]
+source_file="res://Assets/fight_normal.png"
+dest_files=["res://.godot/imported/fight_normal.png-becd241d8e566468ca533feec3069524.ctex"]
 
 [params]
 
