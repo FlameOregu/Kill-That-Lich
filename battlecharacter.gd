@@ -4,9 +4,9 @@ class_name Player
 var direction:Vector2
 var maxhealth = 100.0
 var currenthealth: float = maxhealth
-
 signal on_character_moving(is_moving:bool)
 signal healthChanged
+
 func _process(_delta):
 	direction = Input.get_vector("left","right","up","down") 
 	if !direction.is_zero_approx():
@@ -17,7 +17,7 @@ func _process(_delta):
 func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
-	GlobalSignals.emit_signal("player_position", position)
+	GlobalSignals.emit_signal("player_position", global_position)
 
 #func _ready():
 #	set_process(false)

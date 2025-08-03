@@ -76,22 +76,25 @@ offset_bottom = 648.0
 scale = Vector2(1.01807, 0.998027)
 texture = ExtResource("12_x5p3t")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Fight Layer"]
-position = Vector2(598, 366)
+[node name="Walls" type="StaticBody2D" parent="Fight Layer"]
+position = Vector2(576, 320)
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fight Layer/StaticBody2D"]
-position = Vector2(-71, 25)
-build_mode = 1
-polygon = PackedVector2Array(-259, -62, 328, -62, 328, 187, -260, 187)
-
-[node name="Panel" type="Panel" parent="Fight Layer/StaticBody2D"]
-offset_left = -333.0
-offset_top = -39.0
-offset_right = 259.0
-offset_bottom = 214.0
+[node name="Panel" type="Panel" parent="Fight Layer/Walls"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1yevk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fight Layer/Walls"]
+position = Vector2(-38, 64)
+build_mode = 1
+polygon = PackedVector2Array(-260, -62, 336, -62, 336, 184, -260, 184)
 
 [node name="Character" type="CharacterBody2D" parent="Fight Layer"]
 z_index = 1
@@ -115,19 +118,22 @@ shape = SubResource("RectangleShape2D_hueq0")
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
-[node name="Enemy" type="Node2D" parent="Fight Layer" node_paths=PackedStringArray("battlecharacter")]
+[node name="Fight Test" type="Node2D" parent="Fight Layer" node_paths=PackedStringArray("battlecharacter")]
 position = Vector2(489, 57)
 script = ExtResource("2_iin7j")
 battlecharacter = NodePath("../Character")
 
-[node name="Enemy" type="TextureRect" parent="Fight Layer/Enemy"]
-offset_right = 200.0
-offset_bottom = 253.0
+[node name="Enemy" type="TextureRect" parent="Fight Layer/Fight Test"]
+offset_left = -13.0
+offset_top = -30.0
+offset_right = 187.0
+offset_bottom = 223.0
 texture = ExtResource("2_hip74")
 
-[node name="Bullet Spawner" type="Node2D" parent="Fight Layer/Enemy"]
+[node name="Bullet Spawner" type="Node2D" parent="Fight Layer/Fight Test"]
 position = Vector2(87, 263)
 
 [connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/Health Bar" method="_on_character_health_changed"]
 [connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/HP Text" method="_on_character_health_changed"]
 [connection signal="area_entered" from="Fight Layer/Character/hurtbox" to="Fight Layer/Character" method="_on_hurtbox_area_entered"]
+[connection signal="atk1fin" from="Fight Layer/Fight Test" to="Fight Layer/Fight Test" method="_attack2"]
