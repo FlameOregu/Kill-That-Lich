@@ -25,6 +25,10 @@ GlobalSignals="*res://global_signals.gd"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+NPC=""
+
 [input]
 
 ui_accept={
@@ -290,6 +294,7 @@ cancel={
 2d_physics/layer_3="BattleArea"
 2d_physics/layer_4="Bullet"
 2d_physics/layer_5="Boxwall"
+2d_physics/layer_6="NPC"
 
 [physics]
 
