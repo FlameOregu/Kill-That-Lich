@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=15 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://djvicykse567l" path="res://Assets/background.png" id="4_0avxp"]
 [ext_resource type="Texture2D" uid="uid://7ywypfd5dbuj" path="res://Assets/healthbarUnder.png" id="6_1yevk"]
 [ext_resource type="Script" uid="uid://bh1x5eiekug7v" path="res://Scenes/hp_text.gd" id="7_0avxp"]
+[ext_resource type="Script" uid="uid://d2apbeano5lwq" path="res://Scenes/combo_text.gd" id="11_ixjr5"]
 [ext_resource type="Texture2D" uid="uid://d8do1pkju856" path="res://Assets/fight background.png" id="12_x5p3t"]
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://battlecharacter.gd" id="20_ksqd2"]
 
@@ -118,6 +119,8 @@ shape = SubResource("RectangleShape2D_hueq0")
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
+[node name="Player SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Character"]
+
 [node name="Fight Test" type="Node2D" parent="Fight Layer" node_paths=PackedStringArray("battlecharacter")]
 position = Vector2(489, 57)
 script = ExtResource("2_iin7j")
@@ -133,6 +136,28 @@ texture = ExtResource("2_hip74")
 [node name="Bullet Spawner" type="Node2D" parent="Fight Layer/Fight Test"]
 position = Vector2(87, 263)
 
+[node name="Bullet SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Fight Test"]
+
+[node name="Combo Text" type="Label" parent="Fight Layer"]
+offset_left = 833.0
+offset_top = 86.0
+offset_right = 873.0
+offset_bottom = 109.0
+theme_override_fonts/font = ExtResource("3_ahap6")
+theme_override_font_sizes/font_size = 38
+script = ExtResource("11_ixjr5")
+
+[node name="Combo Arrows" type="Label" parent="Fight Layer"]
+offset_left = 68.0
+offset_top = 360.0
+offset_right = 221.0
+offset_bottom = 510.0
+theme_override_fonts/font = ExtResource("3_ahap6")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[connection signal="combo" from="Fight Layer/Character" to="Fight Layer/Combo Text" method="_on_character_combo"]
+[connection signal="enemyhit" from="Fight Layer/Character" to="Fight Layer/Fight Test" method="_takedamage"]
 [connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/Health Bar" method="_on_character_health_changed"]
 [connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/HP Text" method="_on_character_health_changed"]
 [connection signal="area_entered" from="Fight Layer/Character/hurtbox" to="Fight Layer/Character" method="_on_hurtbox_area_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ohb6xy8oqohs"
+path="res://.godot/imported/hopefully finished shot.mp3-c80fafad12d1e98f38c26abb4ae375ba.mp3str"
+
+[deps]
+
+source_file="res://Assets/hopefully finished shot.mp3"
+dest_files=["res://.godot/imported/hopefully finished shot.mp3-c80fafad12d1e98f38c26abb4ae375ba.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
