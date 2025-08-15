@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dm0eueot6incj"]
+[gd_scene load_steps=11 format=4 uid="uid://dm0eueot6incj"]
 
 [ext_resource type="Texture2D" uid="uid://creu11v8ori7g" path="res://Assets/backgroundtiles map.png" id="1_g6bpd"]
 [ext_resource type="PackedScene" uid="uid://ch7py5sawf6io" path="res://Assets/character.tscn" id="1_rdvmp"]
 [ext_resource type="PackedScene" uid="uid://by6br1dmqetj2" path="res://Scenes/battle_area.tscn" id="3_j5yw3"]
 [ext_resource type="Script" uid="uid://oohnccy0lu08" path="res://Scenes/npc.gd" id="4_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="4_kldst"]
+[ext_resource type="VideoStream" uid="uid://dwu0v7lqksot7" path="res://Assets/Magic Animation.ogv" id="6_7lihs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]
 texture = ExtResource("1_g6bpd")
@@ -118,6 +119,14 @@ zoom = Vector2(3.5, 3.5)
 position_smoothing_enabled = true
 
 [node name="Text Layer" type="CanvasLayer" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 27.0
+offset_top = -79.0
+offset_right = 139.0
+offset_bottom = 33.0
+stream = ExtResource("6_7lihs")
+autoplay = true
 
 [connection signal="start_dialogue" from="NPC Test2" to="NPC Test2" method="_on_start_dialogue"]
 [connection signal="area_entered" from="NPC Test2/Interaction" to="Character" method="_on_interaction_area_entered"]

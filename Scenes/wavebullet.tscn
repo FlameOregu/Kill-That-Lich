@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnocxvabso1yu"]
+
+[ext_resource type="Script" uid="uid://da2oiwuqt7bvr" path="res://wavebullet.gd" id="1_fu7qr"]
+[ext_resource type="Texture2D" uid="uid://cdbpndmn48net" path="res://Assets/pixilart-drawing_2.png" id="2_rsebc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3eaj1"]
+size = Vector2(37.108, 10.5)
+
+[node name="Bullet" type="Node2D"]
+position = Vector2(532, 299)
+script = ExtResource("1_fu7qr")
+
+[node name="hitbox" type="Area2D" parent="."]
+position = Vector2(1, -6)
+collision_layer = 8
+collision_mask = 2
+
+[node name="hitbox collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(19, 6)
+scale = Vector2(0.99709, 1)
+shape = SubResource("RectangleShape2D_3eaj1")
+
+[node name="boolet sprite" type="Sprite2D" parent="hitbox"]
+position = Vector2(14, 6)
+scale = Vector2(1.1275, 0.705)
+texture = ExtResource("2_rsebc")
+flip_h = true
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_area_entered"]
