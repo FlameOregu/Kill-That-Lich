@@ -11,9 +11,10 @@ func _on_focus_exited():
 func _ready():
 	self.grab_focus()
 
-func _process(_delta):
+func _input(event: InputEvent):
 	if Input.is_action_just_pressed("interact") == true and focus == true: #checks for input and focus
 		_on_select_fight.emit()
+		print("emitted")
 
 func _on_cancel():
 	self.grab_focus()

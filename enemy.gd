@@ -5,14 +5,15 @@ var dirbullet_scene : PackedScene = preload("res://Scenes/dirbullet.tscn")
 var wavebullet_scene : PackedScene = preload("res://Scenes/wavebullet.tscn")
 var shootheight : int
 var enemyhealth = 200
-signal atk1fin
+var attacknum = 1
+signal endfight
 @export var battlecharacter: Player
 
 func _trackshoot():
 	var trackbullet = trackbullet_scene.instantiate()
 	self.add_child(trackbullet)
 	trackbullet.global_position = $"Bullet Spawner".global_position
-	$"Bullet SFX".stream = preload("res://Assets/hopefully finished shot.mp3")
+	$"Bullet SFX".stream = preload("res://Assets/SFX/hopefully finished shot.mp3")
 	$"Bullet SFX".play()
 
 func _dirshoot(shootheight) -> void:
@@ -25,6 +26,8 @@ func _dirshoot(shootheight) -> void:
 	elif shootheight == 3:
 		dirbullet.global_position = ($"Bullet Spawner".global_position) + Vector2(300, 200) #bottom
 	bultarg = dirbullet.global_position + Vector2(-600,0)
+	$"Bullet SFX".stream = preload("res://Assets/SFX/big shot.mp3")
+	$"Bullet SFX".play()
 	GlobalSignals.emit_signal("dirbullet_targ", bultarg)
 
 func _wavebullet(shootheight):
@@ -34,7 +37,7 @@ func _wavebullet(shootheight):
 		wavebullet.global_position = ($"Bullet Spawner".global_position + Vector2(300,125))
 		wavebullet.wave_radius = 400
 		wavebullet.wave_speed_mult = 1.0
-		
+
 	elif shootheight == 2:
 		wavebullet.global_position = ($"Bullet Spawner".global_position + Vector2(300,80))
 		wavebullet.wave_radius = 200
@@ -49,7 +52,7 @@ func _attack1() -> void:
 	for i in range(20):
 		_trackshoot()
 		await get_tree().create_timer(0.65).timeout
-	atk1fin.emit()
+	endfight.emit()
 
 func _attack2() -> void: #bigshot direction
 	for i in range(10):
@@ -61,6 +64,7 @@ func _attack2() -> void: #bigshot direction
 		await get_tree().create_timer(0.45).timeout
 		_dirshoot(2)
 		await get_tree().create_timer(0.45).timeout
+	endfight.emit()
 
 func _attack3():
 	for i in range(10):
@@ -89,11 +93,19 @@ func _attack3():
 		await get_tree().create_timer(0.7).timeout
 		_wavebullet(1)
 		await get_tree().create_timer(0.7).timeout
-	
-func _ready() -> void:
-	_attack3()
+	endfight.emit()
 
 func _takedamage(damage):
 	enemyhealth -= damage
 	if enemyhealth == 0:
 		print("you won!")
+
+
+func _on_fight() -> void:
+	if attacknum == 1:
+		_attack1()
+	elif attacknum == 2:
+		_attack2()
+	elif attacknum == 3:
+		_attack3()
+	attacknum += 1
