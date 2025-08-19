@@ -119,6 +119,25 @@ position_smoothing_enabled = true
 
 [node name="Text Layer" type="CanvasLayer" parent="."]
 
+[node name="Label" type="Label" parent="."]
+offset_left = -179.0
+offset_top = -103.0
+offset_right = -88.0
+offset_bottom = -64.0
+theme_override_font_sizes/font_size = 10
+text = "Press Z to interact
+Press X to cancel"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 44.0
+offset_top = -12.0
+offset_right = 122.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 8
+text = "Walk here to 
+encounter enemy"
+horizontal_alignment = 1
+
 [connection signal="start_dialogue" from="NPC Test2" to="NPC Test2" method="_on_start_dialogue"]
 [connection signal="area_entered" from="NPC Test2/Interaction" to="Character" method="_on_interaction_area_entered"]
 [connection signal="area_exited" from="NPC Test2/Interaction" to="Character" method="_on_interaction_area_exited"]

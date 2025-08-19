@@ -23,7 +23,7 @@ func _on_start_dialogue() -> void:
 	intext = true
 
 func _input(event):
-	if Input.is_action_just_pressed("interact") and intext == true:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("cancel")) and intext == true:
 		textboxgb.queue_free()
 		intext = false
 		$"../Character".inmenu = false

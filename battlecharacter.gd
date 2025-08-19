@@ -6,6 +6,8 @@ var skatecombo : Array
 var combo_active : bool
 var direction:Vector2
 var maxhealth = 100.0
+var maxmana = 100.0
+var currentmana = maxmana
 var currenthealth: float = maxhealth
 var arrow_string : String
 var current_atk : String
@@ -13,12 +15,13 @@ var last_atk : String
 var damage = 0.0
 var atk_repeat = 0
 var invincible = false
+var infight : bool
 signal combo(combo: String)
 signal button_pressed
 signal on_character_moving(is_moving:bool)
 signal healthChanged
 signal enemyhit(damage: int)
-var fighting : bool
+var fighting = false #ONLY FOR FIGHTING LIKE SKATEBOARD
 var key_to_arrow = {
 	"up": "↑",
 	"down": "↓",
@@ -44,6 +47,11 @@ func _on_hurtbox_area_entered(area):
 		healthChanged.emit()
 		$"Player SFX".stream = preload("res://Assets/SFX/hit 6.mp3")
 		$"Player SFX".play()
+		invincible = true
+		$"Character Sprite".self_modulate.a = 0.5
+		await get_tree().create_timer(0.55).timeout
+		invincible = false
+		$"Character Sprite".self_modulate.a = 255
 
 func _input(event): #SKATEBOARD!!!!
 	if fighting == true:
@@ -99,10 +107,20 @@ func _input(event): #SKATEBOARD!!!!
 				$"Player SFX".play()
 				last_atk = "kickflip"
 			speed = basespeed
-
+	else:
+		if Input.is_action_just_pressed("interact"):
+			speed = 180
+		elif Input.is_action_just_released("interact"):
+			speed = basespeed
 
 func _on_endfight() -> void:
 	invincible = true
+	fighting = false
+	infight = false
+
+func _on_engage() -> void:
+	invincible = false
+	infight = true
 
 func _on_fight() -> void:
-	invincible = false
+	fighting = true

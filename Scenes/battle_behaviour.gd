@@ -20,7 +20,7 @@ func character_is_moving(_is_moving:bool):
 
 func _battle_roller():
 	if is_moving == true:
-		if randi_range(1,6) == 6:
+		if randi_range(1,3) == 3:
 			battlestarted = true
 			print("Battle Commence")
 			get_tree().change_scene_to_file("res://Scenes/BattleScene.tscn")

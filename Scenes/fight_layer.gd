@@ -25,9 +25,9 @@ func _unhide():
 				i.set_process_unhandled_input(true)
 				i.set_process_unhandled_key_input(true)
 
-func _on_fight() -> void:
-	_unhide()
-
-
 func _on_endfight() -> void:
 	_dohide()
+
+func _on_engage() -> void:
+	_unhide()
+	print("unhidden")

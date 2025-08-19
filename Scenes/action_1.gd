@@ -1,24 +1,47 @@
 extends Button
 signal on_cancel
-signal fight()
+signal engage
+signal fight
 var focus : bool
 var nofocus : bool
+var fightselect : bool
 
 func _on_select_fight():
 	self.grab_focus()
+	await get_tree().create_timer(0.2).timeout
+	fightselect = true
 
 func _input(event: InputEvent):
+	if fightselect == true: #fightbutton yes
+		if Input.is_action_just_pressed("interact") == true and focus == true:
+			on_cancel.emit()
+			focus = false
+			fight.emit()
+			engage.emit()
+			fightselect = false
 	if Input.is_action_just_pressed("cancel") == true and focus == true:
 		on_cancel.emit()
 		focus = false
-	elif Input.is_action_just_pressed("interact") == true and focus == true:
-		$"../../Fight Layer/Character".fighting = true
-		on_cancel.emit()
-		focus = false
-		fight.emit()
+		fightselect = false
+
 	if Input.is_action_just_pressed("interact") == true and nofocus == true:
 		on_cancel.emit()
 		focus = false
+		fightselect = false
 
 func _on_focus_entered():
 	focus = true
+
+func _on_no_focus_entered() -> void:
+	nofocus = true
+
+func _on_no_focus_exited() -> void:
+	nofocus = false
+
+func _outengage():
+	$"../../Fight Layer/Character".infight = true
+	on_cancel.emit()
+	engage.emit()
+
+func _cancel():
+	on_cancel.emit()
