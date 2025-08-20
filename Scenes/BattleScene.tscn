@@ -312,6 +312,7 @@ script = ExtResource("15_ksqd2")
 
 [node name="Rest Pose" type="Button" parent="Action Panel" node_paths=PackedStringArray("battlecharacter")]
 visible = false
+layout_mode = 0
 offset_left = 8.0
 offset_top = 11.0
 offset_right = 149.0

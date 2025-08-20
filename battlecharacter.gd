@@ -88,7 +88,7 @@ func _input(event): #SKATEBOARD!!!!
 				damage = 20 * max(1.0 -(atk_repeat * 0.2), 0.1 )
 				enemyhit.emit(damage)
 				combo.emit(str("Ollie!\n" + str(damage) + " Dmg"))
-				$"Player SFX".stream = preload("res://Assets/combo 4.mp3")
+				$"Player SFX".stream = preload("res://Assets/SFX/combo 4.mp3")
 				$"Player SFX".play()
 				last_atk = "ollie"
 				
