@@ -2,14 +2,21 @@ extends Button
 signal on_cancel
 signal engage
 signal fight
+signal run
 var focus : bool
 var nofocus : bool
 var fightselect : bool
+var runselect : bool
 
 func _on_select_fight():
 	self.grab_focus()
 	await get_tree().create_timer(0.2).timeout
 	fightselect = true
+
+func _on_select_run() -> void:
+	self.grab_focus()
+	await get_tree().create_timer(0.2).timeout
+	runselect = true
 
 func _input(event: InputEvent):
 	if fightselect == true: #fightbutton yes
@@ -19,6 +26,12 @@ func _input(event: InputEvent):
 			fight.emit()
 			engage.emit()
 			fightselect = false
+	if runselect == true:
+		if Input.is_action_just_pressed("interact") == true and focus == true:
+			focus = false
+			get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+			run.emit()
+
 	if Input.is_action_just_pressed("cancel") == true and focus == true:
 		on_cancel.emit()
 		focus = false

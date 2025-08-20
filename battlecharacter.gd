@@ -16,8 +16,8 @@ var damage = 0.0
 var atk_repeat = 0
 var invincible = false
 var infight : bool
+signal manachanged(currentmana, maxmana)
 signal combo(combo: String)
-signal button_pressed
 signal on_character_moving(is_moving:bool)
 signal healthChanged
 signal enemyhit(damage: int)
@@ -43,8 +43,7 @@ func _physics_process(_delta):
 
 func _on_hurtbox_area_entered(area):
 	if area.name == "hitbox" and invincible == false:
-		currenthealth -= 10
-		healthChanged.emit()
+		_on_healthchange(10)
 		$"Player SFX".stream = preload("res://Assets/SFX/hit 6.mp3")
 		$"Player SFX".play()
 		invincible = true
@@ -121,6 +120,15 @@ func _on_endfight() -> void:
 func _on_engage() -> void:
 	invincible = false
 	infight = true
+	global_position = Vector2(560, 440)
 
 func _on_fight() -> void:
 	fighting = true
+
+func _on_manachange(cost: int) -> void:
+	currentmana -= cost
+	manachanged.emit(currentmana, maxmana)
+
+func _on_healthchange(damage : int):
+	currenthealth -= damage
+	healthChanged.emit()

@@ -1,9 +1,12 @@
 extends Button
 var focus : bool
 var magicselect : bool
+var fireballdmg = 125
 signal outengage
 signal cancel
 signal enemyhit(damage : int)
+signal manachange(cost : int)
+signal fireball
 
 func _ready():
 	hide()
@@ -17,11 +20,12 @@ func _on_select_magic() -> void:
 func _input(event):
 	if Input.is_action_just_pressed("interact") and focus == true and magicselect == true:
 		if ($"../../Fight Layer/Character".currentmana - 50) >= 0:
-			$"../../Fight Layer/Character".currentmana -= 50
-			enemyhit.emit(100)
+			manachange.emit(50)
+			enemyhit.emit(fireballdmg)
 			outengage.emit()
 			hide()
 			magicselect = false
+			fireball.emit("Fireball!\n" + str(fireballdmg) + " Dmg")
 		else:
 			hide()
 			$"..".show()

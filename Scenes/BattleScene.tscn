@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=37 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
@@ -8,18 +8,29 @@
 [ext_resource type="Texture2D" uid="uid://djvicykse567l" path="res://Assets/background.png" id="4_0avxp"]
 [ext_resource type="Texture2D" uid="uid://7ywypfd5dbuj" path="res://Assets/healthbarUnder.png" id="6_1yevk"]
 [ext_resource type="Script" uid="uid://bh1x5eiekug7v" path="res://Scenes/hp_text.gd" id="7_0avxp"]
+[ext_resource type="Script" uid="uid://sgj68vr52kyx" path="res://Scenes/mana_bar.gd" id="7_hueq0"]
 [ext_resource type="Script" uid="uid://dmwl4f8psuy35" path="res://Scenes/fight_layer.gd" id="7_iin7j"]
 [ext_resource type="Script" uid="uid://d2apbeano5lwq" path="res://Scenes/combo_text.gd" id="11_ixjr5"]
 [ext_resource type="Script" uid="uid://ctas64esiwfao" path="res://Scenes/action_panel.gd" id="12_aip7a"]
 [ext_resource type="Texture2D" uid="uid://d8do1pkju856" path="res://Assets/fight background.png" id="12_x5p3t"]
 [ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="13_0avxp"]
 [ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scenes/action_1.gd" id="13_i7srl"]
+[ext_resource type="Script" uid="uid://cgeiahtk8b72l" path="res://Scenes/enemy_hp_bar.gd" id="13_pwb48"]
 [ext_resource type="Script" uid="uid://5ej3iljixekl" path="res://Scenes/fireball.gd" id="15_ksqd2"]
 [ext_resource type="Texture2D" uid="uid://cke8yvl3xxosh" path="res://Assets/fight_frame14.png" id="16_hueq0"]
+[ext_resource type="Script" uid="uid://biuncdt3te7na" path="res://Scenes/rest_pose.gd" id="18_71qfg"]
 [ext_resource type="Texture2D" uid="uid://bo84k6kypfn18" path="res://Assets/magic_frame12.png" id="18_pwb48"]
 [ext_resource type="Script" uid="uid://bket61yxb8kml" path="res://Scenes/magic_button.gd" id="19_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://h1u3b5hproxm" path="res://Assets/pose_frame12.png" id="20_71qfg"]
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://battlecharacter.gd" id="20_ksqd2"]
+[ext_resource type="Script" uid="uid://68i5u6q3lv65" path="res://Scenes/pose_button.gd" id="24_os4x4"]
+[ext_resource type="Script" uid="uid://t6js6ipvwdte" path="res://Scenes/run_button.gd" id="25_os4x4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwb48"]
+bg_color = Color(0.556662, 0.605576, 0.641736, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm0w4"]
+bg_color = Color(0.229979, 0.687787, 0.781792, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yevk"]
 bg_color = Color(0, 0, 0, 1)
@@ -33,6 +44,21 @@ size = Vector2(26, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwb48"]
 size = Vector2(41, 71)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71qfg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os4x4"]
+bg_color = Color(0.754089, 0.157821, 0.142145, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.737375, 0.750837, 0.730748, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43vwj"]
 bg_color = Color(0, 0, 0, 1)
@@ -68,13 +94,14 @@ texture = ExtResource("4_0avxp")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[node name="Healthbar" type="CanvasLayer" parent="."]
+[node name="Bar Layer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="Health Bar" type="TextureProgressBar" parent="Healthbar" node_paths=PackedStringArray("battlecharacter")]
-offset_top = -59.0
-offset_right = 100.0
-offset_bottom = 41.0
+[node name="Health Bar" type="TextureProgressBar" parent="Bar Layer" node_paths=PackedStringArray("battlecharacter")]
+offset_left = 1.0
+offset_top = -75.0
+offset_right = 101.0
+offset_bottom = 25.0
 scale = Vector2(2.42163, 2.03915)
 step = 0.0
 value = 100.0
@@ -83,17 +110,37 @@ texture_progress = ExtResource("2_fm0w4")
 script = ExtResource("2_ksqd2")
 battlecharacter = NodePath("../../Fight Layer/Character")
 
-[node name="HP Text" type="Label" parent="Healthbar" node_paths=PackedStringArray("battlecharacter")]
-offset_left = 11.0
-offset_top = 55.0
-offset_right = 233.0
-offset_bottom = 78.0
+[node name="HP Text" type="Label" parent="Bar Layer" node_paths=PackedStringArray("battlecharacter")]
+offset_left = 50.0
+offset_top = 28.0
+offset_right = 198.0
+offset_bottom = 68.0
 theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 32
 text = "Display Sanity"
 horizontal_alignment = 1
 script = ExtResource("7_0avxp")
 battlecharacter = NodePath("../../Fight Layer/Character")
+
+[node name="Mana Bar" type="ProgressBar" parent="Bar Layer" node_paths=PackedStringArray("battlecharacter")]
+offset_left = 268.0
+offset_top = 8.0
+offset_right = 503.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/background = SubResource("StyleBoxFlat_pwb48")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fm0w4")
+script = ExtResource("7_hueq0")
+battlecharacter = NodePath("../../Fight Layer/Character")
+
+[node name="Mana Text" type="Label" parent="Bar Layer"]
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 417.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 24
+text = "Mana"
 
 [node name="Fight Layer" type="CanvasLayer" parent="."]
 visible = false
@@ -127,7 +174,7 @@ polygon = PackedVector2Array(-260, -62, 336, -62, 336, 184, -260, 184)
 
 [node name="Character" type="CharacterBody2D" parent="Fight Layer"]
 z_index = 1
-position = Vector2(418, 446)
+position = Vector2(449, 441)
 collision_layer = 2
 collision_mask = 24
 script = ExtResource("20_ksqd2")
@@ -166,6 +213,16 @@ position = Vector2(87, 263)
 
 [node name="Bullet SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Fight Test"]
 
+[node name="Enemy HP Bar" type="ProgressBar" parent="Fight Layer/Fight Test"]
+offset_left = -168.0
+offset_top = 541.0
+offset_right = 328.0
+offset_bottom = 573.0
+theme_override_styles/background = SubResource("StyleBoxFlat_71qfg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_os4x4")
+value = 100.0
+script = ExtResource("13_pwb48")
+
 [node name="Combo Text" type="Label" parent="Fight Layer"]
 offset_left = 833.0
 offset_top = 86.0
@@ -194,6 +251,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_43vwj")
 script = ExtResource("12_aip7a")
 
 [node name="Yes" type="Button" parent="Action Panel"]
+visible = false
 layout_mode = 0
 offset_left = 171.0
 offset_top = 62.0
@@ -210,6 +268,7 @@ flat = true
 script = ExtResource("13_i7srl")
 
 [node name="No" type="Button" parent="Action Panel"]
+visible = false
 layout_mode = 0
 offset_left = 652.0
 offset_top = 62.0
@@ -225,6 +284,7 @@ text = "No"
 flat = true
 
 [node name="Text" type="Label" parent="Action Panel"]
+visible = false
 layout_mode = 0
 offset_left = 18.0
 offset_top = 11.0
@@ -234,6 +294,7 @@ theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 32
 
 [node name="Fireball" type="Button" parent="Action Panel"]
+visible = false
 layout_mode = 0
 offset_left = 14.0
 offset_top = 11.0
@@ -249,12 +310,29 @@ text = "• Fireball (50 MP)"
 flat = true
 script = ExtResource("15_ksqd2")
 
+[node name="Rest Pose" type="Button" parent="Action Panel" node_paths=PackedStringArray("battlecharacter")]
+visible = false
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 149.0
+offset_bottom = 59.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme_override_fonts/font = ExtResource("3_ahap6")
+theme_override_font_sizes/font_size = 32
+text = "• Rest Pose"
+flat = true
+script = ExtResource("18_71qfg")
+battlecharacter = NodePath("../../Fight Layer/Character")
+
 [node name="Fight Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 91.0
-offset_right = 214.0
-offset_bottom = 269.0
+offset_right = 229.0
+offset_bottom = 280.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../Magic Button")
@@ -266,8 +344,8 @@ script = ExtResource("13_0avxp")
 layout_mode = 0
 offset_left = 752.0
 offset_top = 49.0
-offset_right = 1037.0
-offset_bottom = 253.0
+offset_right = 1030.0
+offset_bottom = 248.0
 focus_neighbor_left = NodePath("../Fight Button")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
@@ -279,13 +357,14 @@ script = ExtResource("19_fm0w4")
 layout_mode = 0
 offset_left = 70.0
 offset_top = 296.0
-offset_right = 350.0
-offset_bottom = 495.0
+offset_right = 353.0
+offset_bottom = 498.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Fight Button")
 focus_neighbor_right = NodePath("../Run Button")
 focus_neighbor_bottom = NodePath(".")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hueq0")
+script = ExtResource("24_os4x4")
 
 [node name="Run Button" type="Button" parent="."]
 layout_mode = 0
@@ -299,6 +378,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 text = "Run
 "
+script = ExtResource("25_os4x4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -310,11 +390,13 @@ texture = ExtResource("2_hip74")
 
 [connection signal="combo" from="Fight Layer/Character" to="Fight Layer/Combo Text" method="_on_character_combo"]
 [connection signal="enemyhit" from="Fight Layer/Character" to="Fight Layer/Fight Test" method="_takedamage"]
-[connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/Health Bar" method="_on_character_health_changed"]
-[connection signal="healthChanged" from="Fight Layer/Character" to="Healthbar/HP Text" method="_on_character_health_changed"]
+[connection signal="healthChanged" from="Fight Layer/Character" to="Bar Layer/Health Bar" method="_on_character_health_changed"]
+[connection signal="healthChanged" from="Fight Layer/Character" to="Bar Layer/HP Text" method="_on_character_health_changed"]
+[connection signal="manachanged" from="Fight Layer/Character" to="Bar Layer/Mana Bar" method="_on_character_manachanged"]
 [connection signal="area_entered" from="Fight Layer/Character/hurtbox" to="Fight Layer/Character" method="_on_hurtbox_area_entered"]
 [connection signal="endfight" from="Fight Layer/Fight Test" to="Fight Layer" method="_on_endfight"]
 [connection signal="endfight" from="Fight Layer/Fight Test" to="Fight Layer/Character" method="_on_endfight"]
+[connection signal="health_changed" from="Fight Layer/Fight Test" to="Fight Layer/Fight Test/Enemy HP Bar" method="_on_health_changed"]
 [connection signal="engage" from="Action Panel/Yes" to="Fight Layer" method="_on_engage"]
 [connection signal="engage" from="Action Panel/Yes" to="Fight Layer/Character" method="_on_engage"]
 [connection signal="engage" from="Action Panel/Yes" to="Fight Layer/Fight Test" method="_on_engage"]
@@ -322,13 +404,20 @@ texture = ExtResource("2_hip74")
 [connection signal="focus_entered" from="Action Panel/Yes" to="Action Panel/Yes" method="_on_focus_entered"]
 [connection signal="on_cancel" from="Action Panel/Yes" to="Action Panel" method="_on_cancel"]
 [connection signal="on_cancel" from="Action Panel/Yes" to="Fight Button" method="_on_cancel"]
+[connection signal="run" from="Action Panel/Yes" to="Fight Layer" method="_on_run"]
 [connection signal="focus_entered" from="Action Panel/No" to="Action Panel/Yes" method="_on_no_focus_entered"]
 [connection signal="focus_exited" from="Action Panel/No" to="Action Panel/Yes" method="_on_no_focus_exited"]
 [connection signal="cancel" from="Action Panel/Fireball" to="Action Panel/Yes" method="_cancel"]
 [connection signal="enemyhit" from="Action Panel/Fireball" to="Fight Layer/Fight Test" method="_takedamage"]
+[connection signal="fireball" from="Action Panel/Fireball" to="Fight Layer/Combo Text" method="_on_character_combo"]
 [connection signal="focus_entered" from="Action Panel/Fireball" to="Action Panel/Fireball" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Action Panel/Fireball" to="Action Panel/Fireball" method="_on_focus_exited"]
+[connection signal="manachange" from="Action Panel/Fireball" to="Fight Layer/Character" method="_on_manachange"]
 [connection signal="outengage" from="Action Panel/Fireball" to="Action Panel/Yes" method="_outengage"]
+[connection signal="cancel" from="Action Panel/Rest Pose" to="Action Panel/Yes" method="_cancel"]
+[connection signal="focus_entered" from="Action Panel/Rest Pose" to="Action Panel/Rest Pose" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Action Panel/Rest Pose" to="Action Panel/Rest Pose" method="_on_focus_exited"]
+[connection signal="outengage" from="Action Panel/Rest Pose" to="Action Panel/Yes" method="_outengage"]
 [connection signal="_on_select_fight" from="Fight Button" to="Action Panel" method="_on_select_fight"]
 [connection signal="_on_select_fight" from="Fight Button" to="Action Panel/Yes" method="_on_select_fight"]
 [connection signal="focus_entered" from="Fight Button" to="Fight Button" method="_on_focus_entered"]
@@ -337,3 +426,11 @@ texture = ExtResource("2_hip74")
 [connection signal="_on_select_magic" from="Magic Button" to="Action Panel/Fireball" method="_on_select_magic"]
 [connection signal="focus_entered" from="Magic Button" to="Magic Button" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Magic Button" to="Magic Button" method="_on_focus_exited"]
+[connection signal="_on_select_pose" from="Pose Button" to="Action Panel" method="_on_select_pose"]
+[connection signal="_on_select_pose" from="Pose Button" to="Action Panel/Rest Pose" method="_on_select_pose"]
+[connection signal="focus_entered" from="Pose Button" to="Pose Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Pose Button" to="Pose Button" method="_on_focus_exited"]
+[connection signal="_on_select_run" from="Run Button" to="Action Panel" method="_on_select_run"]
+[connection signal="_on_select_run" from="Run Button" to="Action Panel/Yes" method="_on_select_run"]
+[connection signal="focus_entered" from="Run Button" to="Run Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Run Button" to="Run Button" method="_on_focus_exited"]

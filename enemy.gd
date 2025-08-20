@@ -4,9 +4,11 @@ var trackbullet_scene : PackedScene = preload("res://Scenes/trackbullet.tscn")
 var dirbullet_scene : PackedScene = preload("res://Scenes/dirbullet.tscn")
 var wavebullet_scene : PackedScene = preload("res://Scenes/wavebullet.tscn")
 var shootheight : int
-var enemyhealth = 500
+var maxhp = 500
+var currenthp = maxhp
 var attacknum = 1
 signal endfight
+signal health_changed(currenthp, maxhp)
 @export var battlecharacter: Player
 
 func _trackshoot():
@@ -96,10 +98,8 @@ func _attack3():
 	endfight.emit()
 
 func _takedamage(damage):
-	enemyhealth -= damage
-	print("Enemy health is:", str(enemyhealth))
-	if enemyhealth == 0:
-		print("you won!")
+	currenthp -= damage
+	health_changed.emit(currenthp, maxhp)
 
 func _on_engage() -> void:
 	if attacknum == 1:

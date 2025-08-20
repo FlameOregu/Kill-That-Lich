@@ -22,3 +22,13 @@ func _on_cancel() -> void:
 
 func _on_select_magic() -> void:
 	show()
+
+func _on_select_pose() -> void:
+	show()
+
+func _on_select_run() -> void:
+	show()
+	$Text.text = "Are you sure you want to run?"
+	$Text.show()
+	$Yes.show()
+	$No.show()
