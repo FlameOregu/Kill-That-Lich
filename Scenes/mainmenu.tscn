@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://tvionu8sw16"]
+
+[ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="1_rtnl3"]
+[ext_resource type="StyleBox" uid="uid://bdf7iqmyu1dq5" path="res://Scenes/startquitbutton.tres" id="2_lah54"]
+[ext_resource type="Script" uid="uid://bt2evi0uika5b" path="res://Scenes/start_button.gd" id="2_v4pkt"]
+[ext_resource type="Script" uid="uid://ije1a2y7rf6a" path="res://Scenes/quit_button.gd" id="3_lah54"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5326e"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2o7r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Temp Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 640)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.00351917, 0.00351917, 0.00351917, 1)
+
+[node name="Text Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 37.0
+offset_right = 716.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5326e")
+
+[node name="Title Text" type="Label" parent="Text Panel"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -39.0
+offset_right = 131.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_rtnl3")
+theme_override_font_sizes/font_size = 64
+text = "Kill That Lich"
+
+[node name="Start Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 267.0
+offset_right = 656.0
+offset_bottom = 341.0
+theme_override_fonts/font = ExtResource("1_rtnl3")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = ExtResource("2_lah54")
+theme_override_styles/normal = SubResource("StyleBoxFlat_l2o7r")
+text = "Start"
+script = ExtResource("2_v4pkt")
+
+[node name="Quit Button" type="Button" parent="."]
+offset_left = 496.0
+offset_top = 382.0
+offset_right = 656.0
+offset_bottom = 456.0
+theme_override_fonts/font = ExtResource("1_rtnl3")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = ExtResource("2_lah54")
+theme_override_styles/normal = SubResource("StyleBoxFlat_l2o7r")
+text = "Quit"
+script = ExtResource("3_lah54")
+
+[connection signal="focus_entered" from="Start Button" to="Start Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Start Button" to="Start Button" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Quit Button" to="Quit Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Quit Button" to="Quit Button" method="_on_focus_exited"]
