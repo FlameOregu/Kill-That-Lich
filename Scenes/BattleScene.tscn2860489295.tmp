@@ -143,7 +143,6 @@ theme_override_font_sizes/font_size = 24
 text = "Mana"
 
 [node name="Fight Layer" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("7_iin7j")
 
 [node name="TextureRect" type="TextureRect" parent="Fight Layer"]

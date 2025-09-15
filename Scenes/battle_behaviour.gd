@@ -16,7 +16,7 @@ func _on_battle_area_area_exited(area:Area2D):
 	exited = true
 
 func character_is_moving(_is_moving:bool):
-	is_moving = _is_moving	
+	is_moving = _is_moving
 
 func _battle_roller():
 	if is_moving == true:

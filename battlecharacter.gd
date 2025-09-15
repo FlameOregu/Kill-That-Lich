@@ -16,11 +16,14 @@ var damage = 0.0
 var atk_repeat = 0
 var invincible = false
 var infight : bool
+var parrycd : bool
+var parry : bool
 signal manachanged(currentmana, maxmana)
 signal combo(combo: String)
 signal on_character_moving(is_moving:bool)
 signal healthChanged
 signal enemyhit(damage: int)
+signal parryoff
 var fighting = false #ONLY FOR FIGHTING LIKE SKATEBOARD
 var key_to_arrow = {
 	"up": "↑",
@@ -42,6 +45,8 @@ func _physics_process(_delta):
 	GlobalSignals.emit_signal("player_position", global_position)
 
 func _on_hurtbox_area_entered(area):
+	if parry == true:
+		parrycd = false
 	if area.name == "hitbox" and invincible == false:
 		_on_healthchange(10)
 		$"Player SFX".stream = preload("res://Assets/SFX/hit 6.mp3")
@@ -54,6 +59,18 @@ func _on_hurtbox_area_entered(area):
 
 func _input(event): #SKATEBOARD!!!!
 	if fighting == true:
+		if Input.is_action_just_pressed("space") and parry == false: #parry
+				if parrycd == false:
+					invincible = true
+					$parryingtxt.visible = true
+					parry = true
+					parrycd = true
+					await get_tree().create_timer(0.5).timeout
+					parryoff.emit()
+					if parrycd == true:
+						await get_tree().create_timer(2).timeout
+						parrycd = false
+				
 		if Input.is_action_just_pressed("interact") == true:
 			speed = 180
 			combo_active = true
@@ -118,6 +135,7 @@ func _on_endfight() -> void:
 	infight = false
 
 func _on_engage() -> void:
+	parrycd = false
 	invincible = false
 	infight = true
 	global_position = Vector2(560, 440)
@@ -132,3 +150,11 @@ func _on_manachange(cost: int) -> void:
 func _on_healthchange(damage : int):
 	currenthealth -= damage
 	healthChanged.emit()
+
+func _ready() -> void:
+	$parryingtxt.visible = false
+
+func _on_parryoff() -> void:
+	parry = false
+	invincible = false
+	$parryingtxt.visible = false
