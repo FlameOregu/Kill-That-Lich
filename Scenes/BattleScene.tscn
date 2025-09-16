@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=39 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://sgj68vr52kyx" path="res://Scenes/mana_bar.gd" id="7_hueq0"]
 [ext_resource type="Script" uid="uid://dmwl4f8psuy35" path="res://Scenes/fight_layer.gd" id="7_iin7j"]
 [ext_resource type="Script" uid="uid://d2apbeano5lwq" path="res://Scenes/combo_text.gd" id="11_ixjr5"]
+[ext_resource type="Script" uid="uid://b222b0xooud3o" path="res://Scenes/charattack.gd" id="11_qvetm"]
+[ext_resource type="Script" uid="uid://d3m2havwvmv4d" path="res://Scenes/parrying.gd" id="12_2trbe"]
 [ext_resource type="Script" uid="uid://ctas64esiwfao" path="res://Scenes/action_panel.gd" id="12_aip7a"]
 [ext_resource type="Texture2D" uid="uid://d8do1pkju856" path="res://Assets/fight background.png" id="12_x5p3t"]
 [ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="13_0avxp"]
@@ -178,6 +180,12 @@ position = Vector2(613, 442)
 collision_layer = 2
 collision_mask = 24
 script = ExtResource("20_ksqd2")
+
+[node name="Attacking" type="Node2D" parent="Fight Layer/Character"]
+script = ExtResource("11_qvetm")
+
+[node name="Parrying" type="Node2D" parent="Fight Layer/Character"]
+script = ExtResource("12_2trbe")
 
 [node name="Character Sprite" type="Sprite2D" parent="Fight Layer/Character"]
 texture = ExtResource("2_hip74")
@@ -401,12 +409,12 @@ offset_right = 692.0
 offset_bottom = 431.0
 texture = ExtResource("2_hip74")
 
-[connection signal="combo" from="Fight Layer/Character" to="Fight Layer/Combo Text" method="_on_character_combo"]
-[connection signal="enemyhit" from="Fight Layer/Character" to="Fight Layer/Fight Test" method="_takedamage"]
 [connection signal="healthChanged" from="Fight Layer/Character" to="Bar Layer/Health Bar" method="_on_character_health_changed"]
 [connection signal="healthChanged" from="Fight Layer/Character" to="Bar Layer/HP Text" method="_on_character_health_changed"]
 [connection signal="manachanged" from="Fight Layer/Character" to="Bar Layer/Mana Bar" method="_on_character_manachanged"]
-[connection signal="parryoff" from="Fight Layer/Character" to="Fight Layer/Character" method="_on_parryoff"]
+[connection signal="combo" from="Fight Layer/Character/Attacking" to="Fight Layer/Combo Text" method="_on_character_combo"]
+[connection signal="enemyhit" from="Fight Layer/Character/Attacking" to="Fight Layer/Fight Test" method="_takedamage"]
+[connection signal="parryoff" from="Fight Layer/Character/Parrying" to="Fight Layer/Character/Parrying" method="_on_parryoff"]
 [connection signal="area_entered" from="Fight Layer/Character/hurtbox" to="Fight Layer/Character" method="_on_hurtbox_area_entered"]
 [connection signal="endfight" from="Fight Layer/Fight Test" to="Fight Layer" method="_on_endfight"]
 [connection signal="endfight" from="Fight Layer/Fight Test" to="Fight Layer/Character" method="_on_endfight"]
