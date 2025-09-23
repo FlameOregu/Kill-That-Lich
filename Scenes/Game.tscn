@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://creu11v8ori7g" path="res://Assets/backgroundtiles map.png" id="1_g6bpd"]
 [ext_resource type="PackedScene" uid="uid://ch7py5sawf6io" path="res://Assets/character.tscn" id="1_rdvmp"]
 [ext_resource type="PackedScene" uid="uid://by6br1dmqetj2" path="res://Scenes/battle_area.tscn" id="3_j5yw3"]
-[ext_resource type="Script" uid="uid://oohnccy0lu08" path="res://Scenes/npc.gd" id="4_b2bpf"]
+[ext_resource type="Script" uid="uid://oohnccy0lu08" path="res://Scripts/npc.gd" id="4_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="4_kldst"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]

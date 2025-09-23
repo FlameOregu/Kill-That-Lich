@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://by6br1dmqetj2"]
 
-[ext_resource type="Script" uid="uid://dyg0etfyrit3s" path="res://Scenes/battle_controller.gd" id="1_nek7h"]
-[ext_resource type="Script" uid="uid://heon5et0htjo" path="res://Scenes/battle_behaviour.gd" id="2_fehfv"]
+[ext_resource type="Script" uid="uid://dyg0etfyrit3s" path="res://Scripts/battle_controller.gd" id="1_nek7h"]
+[ext_resource type="Script" uid="uid://heon5et0htjo" path="res://Scripts/battle_behaviour.gd" id="2_fehfv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kldst"]
 size = Vector2(78.5, 37.5)

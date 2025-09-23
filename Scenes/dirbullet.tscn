@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnia88sbu1sqb"]
 
-[ext_resource type="Script" uid="uid://ip7yjbpj8bid" path="res://Scenes/dirbullet.gd" id="1_ue2ct"]
+[ext_resource type="Script" uid="uid://ip7yjbpj8bid" path="res://Scripts/dirbullet.gd" id="1_ue2ct"]
 [ext_resource type="Texture2D" uid="uid://cdbpndmn48net" path="res://Assets/pixilart-drawing_2.png" id="2_e0mkq"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhxio"]
 size = Vector2(37.108, 10.5)

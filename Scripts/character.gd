@@ -35,3 +35,6 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 	interactrad = true
 func _on_interaction_area_exited(area: Area2D) -> void:
 	interactrad = false
+
+func _on_grab_location():
+	GlobalStats.emit_signal("char_location", position)

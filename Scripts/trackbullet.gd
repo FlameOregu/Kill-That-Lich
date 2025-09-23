@@ -24,6 +24,6 @@ func _on_area_entered(area: Area2D) -> void:
 func _ready():
 	GlobalSignals.connect("player_position", Callable(self, "_location"))
 	self.visible = false
-	
+
 func _location(location: Vector2):
 	target = location

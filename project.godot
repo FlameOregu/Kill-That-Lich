@@ -18,8 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 FullScreen="*res://Scenes/FullScreen.tscn"
-HideCursor="*res://hide_cursor.gd"
-GlobalSignals="*res://global_signals.gd"
+HideCursor="*res://Scripts/hide_cursor.gd"
+GlobalSignals="*res://Scripts/global_signals.gd"
+GlobalStats="*res://Scripts/global_stats.gd"
 
 [display]
 

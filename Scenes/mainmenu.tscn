@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="1_rtnl3"]
 [ext_resource type="StyleBox" uid="uid://bdf7iqmyu1dq5" path="res://Scenes/startquitbutton.tres" id="2_lah54"]
-[ext_resource type="Script" uid="uid://bt2evi0uika5b" path="res://Scenes/start_button.gd" id="2_v4pkt"]
-[ext_resource type="Script" uid="uid://ije1a2y7rf6a" path="res://Scenes/quit_button.gd" id="3_lah54"]
+[ext_resource type="Script" uid="uid://bt2evi0uika5b" path="res://Scripts/start_button.gd" id="2_v4pkt"]
+[ext_resource type="Script" uid="uid://ije1a2y7rf6a" path="res://Scripts/quit_button.gd" id="3_lah54"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5326e"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
