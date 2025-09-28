@@ -1,5 +1,4 @@
 extends Node2D
-
 var target_pos : Vector2
 var target: Vector2
 var speed: float = 0.6

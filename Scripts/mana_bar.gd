@@ -5,5 +5,5 @@ func _on_character_manachanged(currentmana: Variant, maxmana: Variant) -> void:
 	value = currentmana / maxmana * 100
 
 func _ready():
-	max_value = battlecharacter.maxmana
-	value = battlecharacter.currentmana
+	max_value = GlobalSignals.maxmana
+	value = GlobalSignals.mana

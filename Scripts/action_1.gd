@@ -26,6 +26,7 @@ func _input(event: InputEvent):
 			fight.emit()
 			engage.emit()
 			fightselect = false
+	
 	if runselect == true:
 		if Input.is_action_just_pressed("interact") == true and focus == true:
 			focus = false

@@ -7,7 +7,8 @@ var shootheight : int
 var maxhp = 500
 var currenthp = maxhp
 var attacknum = 1
-signal endfight
+signal endfight #ends the attack
+signal endbattle
 signal health_changed(currenthp, maxhp)
 @export var battlecharacter: Player
 
@@ -98,6 +99,8 @@ func _attack3():
 	endfight.emit()
 
 func _takedamage(damage):
+	if (currenthp - damage) <= 0:
+		_endbattle()
 	currenthp -= damage
 	health_changed.emit(currenthp, maxhp)
 
@@ -109,3 +112,7 @@ func _on_engage() -> void:
 	elif attacknum == 3:
 		_attack3()
 	attacknum += 1
+
+func _endbattle():
+	endbattle.emit()
+	get_tree().change_scene_to_file("res://Scenes/Game.tscn")

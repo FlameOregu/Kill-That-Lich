@@ -3,16 +3,22 @@ class_name Player
 @export var basespeed = 350
 var speed = basespeed
 var direction:Vector2
-var maxhealth = 100.0
-var maxmana = 100.0
-var currentmana = maxmana
-var currenthealth: float = maxhealth
+var maxhealth
+var maxmana
+var currentmana
+var currenthealth
 var invincible = false
 var infight : bool
 var fighting = false
-signal manachanged(currentmana, maxmana)
+signal manachanged(currentmana, battlemaxmana)
 signal on_character_moving(is_moving:bool)
 signal healthChanged
+
+func _ready():
+	maxhealth = GlobalSignals.maxsanity
+	maxmana = GlobalSignals.maxmana
+	currenthealth = GlobalSignals.sanity
+	currentmana = GlobalSignals.mana
 
 func _process(_delta):
 	direction = Input.get_vector("left","right","up","down")
@@ -64,3 +70,6 @@ func _on_manachange(cost: int) -> void:
 func _on_healthchange(damage : int):
 	currenthealth -= damage
 	healthChanged.emit()
+
+func _on_endbattle() -> void:
+	GlobalSignals.emit_signal("battlestats", currenthealth, maxhealth, currentmana, maxmana)

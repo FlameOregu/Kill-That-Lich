@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c5rvpn8ca8ehl" path="res://Scripts/textbox.gd" id="1_i40gg"]
 [ext_resource type="FontFile" uid="uid://cqt8m8iyjqsd8" path="res://Assets/videotype.otf" id="1_psw4q"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i40gg"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 6

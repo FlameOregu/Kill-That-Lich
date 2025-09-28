@@ -8,10 +8,6 @@ func _on_start_dialogue() -> void:
 	var textbox = textbox_scene.instantiate()
 	textboxgb = textbox
 	$"../Text Layer".add_child(textbox)
-	var viewport_size = get_viewport_rect().size
-	var size = textbox.get_size()
-	textbox.position.x = viewport_size.x / 2 - size.x / 2
-	textbox.position.y = viewport_size.y - size.y - 10
 	var label = textbox.get_node("Text")
 	if self == $"../NPC Test2":
 		label.text = "what do you want nerd"

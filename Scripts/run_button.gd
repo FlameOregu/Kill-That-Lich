@@ -11,5 +11,6 @@ func _on_focus_entered() -> void:
 	if $"../Fight Layer/Character".infight == false:
 		$"../Button Beep".stream = preload("res://Assets/SFX/beep.mp3")
 		$"../Button Beep".play()
+
 func _on_focus_exited() -> void:
 	focus = false
