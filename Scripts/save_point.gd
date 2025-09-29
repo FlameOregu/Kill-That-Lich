@@ -1,10 +1,4 @@
 extends Node2D
-var save_path = "user://klc_savefile.save"
-var location = Vector2()
-var currenthealth : int
-var currentmana : int
-var battlemaxmana : int
-var maxhealth : int
 var label = Node
 var saving = false
 signal start_dialogue
@@ -45,30 +39,7 @@ func _input(event):
 
 func _save():
 	saving = true
-	location = $"../Character".position
-	maxhealth = GlobalSignals.maxsanity
-	battlemaxmana = GlobalSignals.maxmana
-	currenthealth = GlobalSignals.sanity
-	currentmana = GlobalSignals.mana
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var(location)
-	file.store_var(currenthealth)
-	file.store_var(currentmana)
-	file.store_var(maxhealth)
-	file.store_var(battlemaxmana)
+	GlobalSignals.char_pos = $"../Character".position
+	GlobalSignals._save()
 	label.text = "Data Saved Successfully."
 	await get_tree().create_timer(0.4).timeout
-
-func load_data():
-	if FileAccess.file_exists(save_path):
-		var file = FileAccess.open(save_path, FileAccess.READ)
-		location = file.get_var(location)
-		currenthealth = file.get_var(currenthealth)
-		currentmana = file.get_var(currentmana)
-		battlemaxmana = file.get_var(battlemaxmana)
-		maxhealth = file.get_var(maxhealth)
-		$"../Character".position = location
-		GlobalSignals.emit_signal("battlestats", currenthealth, maxhealth, currentmana, battlemaxmana)
-
-func _location(charpos):
-	location = charpos

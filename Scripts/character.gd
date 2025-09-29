@@ -6,6 +6,11 @@ var currentnpc : Node2D
 var inmenu = false
 signal on_character_moving(is_moving:bool)
 
+func _ready():
+	if GlobalSignals.continued == true:
+		position = GlobalSignals.char_pos
+		GlobalSignals.continued = false
+
 func _process(_delta):
 	direction = Input.get_vector("left","right","up","down") 
 	if !direction.is_zero_approx():

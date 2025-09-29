@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://tvionu8sw16"]
+[gd_scene load_steps=8 format=3 uid="uid://tvionu8sw16"]
 
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="1_rtnl3"]
 [ext_resource type="StyleBox" uid="uid://bdf7iqmyu1dq5" path="res://Scenes/startquitbutton.tres" id="2_lah54"]
 [ext_resource type="Script" uid="uid://bt2evi0uika5b" path="res://Scripts/start_button.gd" id="2_v4pkt"]
+[ext_resource type="Script" uid="uid://d3ijslh0sfy3w" path="res://Scenes/continue_button.gd" id="3_5326e"]
 [ext_resource type="Script" uid="uid://ije1a2y7rf6a" path="res://Scripts/quit_button.gd" id="3_lah54"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5326e"]
@@ -60,12 +61,24 @@ theme_override_fonts/font = ExtResource("1_rtnl3")
 theme_override_font_sizes/font_size = 64
 text = "Kill That Lich"
 
+[node name="Continue Button" type="Button" parent="."]
+offset_left = 498.0
+offset_top = 224.0
+offset_right = 658.0
+offset_bottom = 298.0
+theme_override_fonts/font = ExtResource("1_rtnl3")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = ExtResource("2_lah54")
+theme_override_styles/normal = SubResource("StyleBoxFlat_l2o7r")
+text = "Continue"
+script = ExtResource("3_5326e")
+
 [node name="Start Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 267.0
-offset_right = 656.0
-offset_bottom = 341.0
+offset_left = 498.0
+offset_top = 345.0
+offset_right = 658.0
+offset_bottom = 419.0
 theme_override_fonts/font = ExtResource("1_rtnl3")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/focus = ExtResource("2_lah54")
@@ -74,10 +87,11 @@ text = "Start"
 script = ExtResource("2_v4pkt")
 
 [node name="Quit Button" type="Button" parent="."]
-offset_left = 496.0
-offset_top = 382.0
-offset_right = 656.0
-offset_bottom = 456.0
+layout_mode = 0
+offset_left = 498.0
+offset_top = 471.0
+offset_right = 658.0
+offset_bottom = 545.0
 theme_override_fonts/font = ExtResource("1_rtnl3")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/focus = ExtResource("2_lah54")
@@ -85,6 +99,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l2o7r")
 text = "Quit"
 script = ExtResource("3_lah54")
 
+[connection signal="focus_entered" from="Continue Button" to="Continue Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Continue Button" to="Continue Button" method="_on_focus_exited"]
 [connection signal="focus_entered" from="Start Button" to="Start Button" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Start Button" to="Start Button" method="_on_focus_exited"]
 [connection signal="focus_entered" from="Quit Button" to="Quit Button" method="_on_focus_entered"]
