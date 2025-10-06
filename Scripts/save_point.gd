@@ -2,6 +2,8 @@ extends Node2D
 var label = Node
 var saving = false
 signal start_dialogue
+signal show_icon
+signal hide_icon
 var intext : bool
 var textboxgb
 var textbox_scene : PackedScene = preload("res://Scenes/textbox.tscn")
@@ -9,6 +11,13 @@ var textbox_scene : PackedScene = preload("res://Scenes/textbox.tscn")
 func _ready():
 	$Area2D.connect("area_entered", Callable($"../Character","_on_interaction_area_entered"))
 	$Area2D.connect("area_exited", Callable($"../Character","_on_interaction_area_exited"))
+	_on_hide_icon()
+
+func _on_show_icon() -> void:
+	$"Interact Icon".visible = true
+
+func _on_hide_icon() -> void:
+	$"Interact Icon".visible = false
 
 func _on_start_dialogue() -> void:
 	var textbox = textbox_scene.instantiate()

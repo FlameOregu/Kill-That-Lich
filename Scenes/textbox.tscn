@@ -9,6 +9,9 @@ border_width_left = 6
 border_width_top = 6
 border_width_right = 6
 border_width_bottom = 6
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.615686)
+shadow_size = 12
 
 [node name="Textbox" type="Panel"]
 offset_left = 11.0

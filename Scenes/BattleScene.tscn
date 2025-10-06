@@ -376,7 +376,7 @@ script = ExtResource("19_fm0w4")
 layout_mode = 0
 offset_left = 70.0
 offset_top = 296.0
-offset_right = 353.0
+offset_right = 350.0
 offset_bottom = 498.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Fight Button")
@@ -430,6 +430,7 @@ texture = ExtResource("2_hip74")
 [connection signal="on_cancel" from="Action Panel/Yes" to="Action Panel" method="_on_cancel"]
 [connection signal="on_cancel" from="Action Panel/Yes" to="Fight Button" method="_on_cancel"]
 [connection signal="run" from="Action Panel/Yes" to="Fight Layer" method="_on_run"]
+[connection signal="run" from="Action Panel/Yes" to="Fight Layer/Fight Test" method="_endbattle"]
 [connection signal="focus_entered" from="Action Panel/No" to="Action Panel/Yes" method="_on_no_focus_entered"]
 [connection signal="focus_exited" from="Action Panel/No" to="Action Panel/Yes" method="_on_no_focus_exited"]
 [connection signal="cancel" from="Action Panel/Fireball" to="Action Panel/Yes" method="_cancel"]

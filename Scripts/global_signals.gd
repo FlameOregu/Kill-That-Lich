@@ -22,16 +22,16 @@ func _setstats(sanitynew, maxsanitynew, mananew, maxmananew):
 func _save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(var_to_str(char_pos))
-	file.store_var(sanity)
-	file.store_var(mana)
-	file.store_var(maxsanity)
-	file.store_var(maxmana)
+	file.store_var(var_to_str(sanity))
+	file.store_var(var_to_str(mana))
+	file.store_var(var_to_str(maxsanity))
+	file.store_var(var_to_str(maxmana))
 
 func load_data():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		char_pos = str_to_var(file.get_var(true))
-		sanity = file.get_var(true)
-		mana = file.get_var(true)
-		maxmana = file.get_var(true)
-		maxsanity = file.get_var(true)
+		sanity = str_to_var(file.get_var(true))
+		mana = str_to_var(file.get_var(true))
+		maxmana = str_to_var(file.get_var(true))
+		maxsanity = str_to_var(file.get_var(true))

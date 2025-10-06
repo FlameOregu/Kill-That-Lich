@@ -30,7 +30,6 @@ func _input(event: InputEvent):
 	if runselect == true:
 		if Input.is_action_just_pressed("interact") == true and focus == true:
 			focus = false
-			get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 			run.emit()
 
 	if Input.is_action_just_pressed("cancel") == true and focus == true:

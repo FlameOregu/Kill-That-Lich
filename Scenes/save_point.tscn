@@ -9,6 +9,11 @@ size = Vector2(97, 101)
 [node name="Save Point" type="Node2D" groups=["NPC"]]
 script = ExtResource("1_te5sv")
 
+[node name="Interact Icon" type="Sprite2D" parent="."]
+position = Vector2(35, -31)
+scale = Vector2(0.191406, 0.167969)
+texture = ExtResource("2_v4tpw")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(32, 33)
 scale = Vector2(0.5, 0.484375)
@@ -22,4 +27,6 @@ collision_mask = 2
 position = Vector2(33.5, 32.5)
 shape = SubResource("RectangleShape2D_cy2e4")
 
+[connection signal="hide_icon" from="." to="." method="_on_hide_icon"]
+[connection signal="show_icon" from="." to="." method="_on_show_icon"]
 [connection signal="start_dialogue" from="." to="." method="_on_start_dialogue"]
