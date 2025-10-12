@@ -30,7 +30,6 @@ func _on_endfight() -> void:
 
 func _on_engage() -> void:
 	_unhide()
-	print("unhidden")
 
 func _on_run() -> void:
 	queue_free()

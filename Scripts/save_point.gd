@@ -41,7 +41,6 @@ func _input(event):
 	if Input.is_action_just_pressed("cancel") and intext == true:
 		_cancel()
 	elif Input.is_action_just_pressed("interact") and intext == true and saving == false:
-		print("saving")
 		_save()
 	elif Input.is_action_just_pressed("interact") and intext == true:
 		_cancel()

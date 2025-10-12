@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbiwqalngn2n0"]
+[gd_scene load_steps=5 format=3 uid="uid://bbiwqalngn2n0"]
 
 [ext_resource type="Script" uid="uid://cygutj3n36srj" path="res://Scripts/save_point.gd" id="1_te5sv"]
+[ext_resource type="Texture2D" uid="uid://b3ayugh2bbce4" path="res://Assets/NPC Interact Icon.png" id="2_uo8vs"]
 [ext_resource type="Texture2D" uid="uid://cdp73wf8y3a4o" path="res://icon.svg" id="2_v4tpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy2e4"]
@@ -10,12 +11,12 @@ size = Vector2(97, 101)
 script = ExtResource("1_te5sv")
 
 [node name="Interact Icon" type="Sprite2D" parent="."]
-position = Vector2(35, -31)
-scale = Vector2(0.191406, 0.167969)
-texture = ExtResource("2_v4tpw")
+position = Vector2(34, -14)
+scale = Vector2(1.9541, 1.71483)
+texture = ExtResource("2_uo8vs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(32, 33)
+position = Vector2(34, 33)
 scale = Vector2(0.5, 0.484375)
 texture = ExtResource("2_v4tpw")
 
