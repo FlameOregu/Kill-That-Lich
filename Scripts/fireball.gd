@@ -2,30 +2,19 @@ extends Button
 var focus : bool
 var magicselect : bool
 var fireballdmg = 125
-signal outengage
-signal cancel
-signal enemyhit(damage : int)
-signal manachange(cost : int)
-signal fireball
 
 func _ready():
-	hide()
-
-func _on_select_magic() -> void:
-	show()
 	self.grab_focus()
 	await get_tree().create_timer(0.2).timeout
-	magicselect = true
 
 func _input(event):
-	if Input.is_action_just_pressed("interact") and focus == true and magicselect == true:
+	if Input.is_action_just_pressed("interact") and focus == true:
 		if ($"../../Fight Layer/Character".currentmana - 50) >= 0:
-			manachange.emit(50)
-			enemyhit.emit(fireballdmg)
-			outengage.emit()
+			$"../../Fight Layer/Character"._on_manachange(50)
+			$"../../Fight Layer/Enemy"._takedamage(fireballdmg)
+			$"../Yes"._outengage()
 			hide()
-			magicselect = false
-			fireball.emit("Fireball!\n" + str(fireballdmg) + " Dmg")
+			$"../../Fight Layer/Combo Text"._on_character_combo("Fireball!\n" + str(fireballdmg) + " Dmg")
 		else:
 			hide()
 			$"..".show()
@@ -35,11 +24,10 @@ func _input(event):
 			$"..".hide()
 			$"../Text".hide()
 			$"../Text".text = ""
-			cancel.emit()
-			magicselect = false
+			$".."._on_cancel()
 	elif Input.is_action_just_pressed("cancel"):
-		cancel.emit()
-		magicselect = false
+		$".."._on_cancel()
+
 func _on_focus_entered() -> void:
 	focus = true
 

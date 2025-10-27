@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://l74qss53swqm"]
+
+[ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="1_0mxqg"]
+[ext_resource type="Script" uid="uid://5ej3iljixekl" path="res://Scripts/fireball.gd" id="2_ne4qj"]
+
+[node name="Fireball" type="Button"]
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 207.0
+offset_bottom = 59.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme_override_fonts/font = ExtResource("1_0mxqg")
+theme_override_font_sizes/font_size = 32
+text = "• Fireball (50 MP)"
+flat = true
+script = ExtResource("2_ne4qj")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

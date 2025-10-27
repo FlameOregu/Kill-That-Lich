@@ -5,6 +5,9 @@ var poseselect : bool
 signal outengage
 signal cancel
 
+func _ready():
+	self.position = Vector2(14,11)
+
 func _on_select_pose() -> void:
 	show()
 	self.grab_focus()

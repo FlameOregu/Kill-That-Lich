@@ -1,5 +1,7 @@
 extends Panel
 var children : Array
+var pos = Vector2(14,11)
+var actions : Array
 
 func _ready():
 	_dohide()
@@ -18,9 +20,22 @@ func _dohide():
 		i.hide()
 
 func _on_cancel() -> void:
+	for i in actions:
+		i.queue_free()
+		actions.erase(i)
+	pos = Vector2(14,11)
 	_dohide()
 
 func _on_select_magic() -> void:
+	for i in GlobalSignals.magics:
+		var scene = load(i).instantiate()
+		add_child(scene)
+		actions.append(scene)
+		scene.position = pos
+		if pos == Vector2(656, 11):
+			pos = Vector2(14, 60)
+		else:
+			pos += Vector2(214, 0)
 	show()
 
 func _on_select_pose() -> void:
