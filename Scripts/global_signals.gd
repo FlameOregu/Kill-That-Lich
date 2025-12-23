@@ -9,6 +9,7 @@ var sanity = maxsanity
 var mana = maxmana
 var char_pos
 var magics = ["res://Scenes/fireball.tscn"]
+var poses = ["res://Scenes/rest_pose.tscn"]
 var save_path = "user://klc_savefile.save"
 
 func _ready():

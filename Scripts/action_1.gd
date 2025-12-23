@@ -36,6 +36,8 @@ func _input(event: InputEvent):
 		on_cancel.emit()
 		focus = false
 		fightselect = false
+		runselect = false
+		
 
 	if Input.is_action_just_pressed("interact") == true and nofocus == true:
 		on_cancel.emit()

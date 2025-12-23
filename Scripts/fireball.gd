@@ -1,6 +1,5 @@
 extends Button
 var focus : bool
-var magicselect : bool
 var fireballdmg = 125
 
 func _ready():
@@ -25,8 +24,6 @@ func _input(event):
 			$"../Text".hide()
 			$"../Text".text = ""
 			$".."._on_cancel()
-	elif Input.is_action_just_pressed("cancel"):
-		$".."._on_cancel()
 
 func _on_focus_entered() -> void:
 	focus = true
