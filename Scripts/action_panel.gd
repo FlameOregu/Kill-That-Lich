@@ -51,7 +51,14 @@ func _on_select_magic() -> void:
 			pos = Vector2(14, 60)
 		else:
 			pos += Vector2(214, 0)
+	for i in len(actions):
+		if i == 0:
+			pass
+		else:
+			actions[(i-1)].focus_neighbor_bottom = actions[i].get_path()
+			actions[i].focus_neighbor_top = actions[(i-1)].get_path()
 	show()
+	actions[0].grab_focus()
 
 func _on_select_pose() -> void:
 	button = "pose"

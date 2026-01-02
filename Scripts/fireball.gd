@@ -2,10 +2,6 @@ extends Button
 var focus : bool
 var fireballdmg = 125
 
-func _ready():
-	self.grab_focus()
-	await get_tree().create_timer(0.2).timeout
-
 func _input(event):
 	if Input.is_action_just_pressed("interact") and focus == true:
 		if ($"../../Fight Layer/Character".currentmana - 50) >= 0:
