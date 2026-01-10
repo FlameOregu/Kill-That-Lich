@@ -12,6 +12,9 @@ signal endbattle
 signal health_changed(currenthp, maxhp)
 @export var battlecharacter: Player
 
+func _ready():
+	GlobalSignals.enemy = self
+
 func _trackshoot():
 	var trackbullet = trackbullet_scene.instantiate()
 	self.add_child(trackbullet)

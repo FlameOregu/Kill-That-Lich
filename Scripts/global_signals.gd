@@ -11,6 +11,8 @@ var char_pos
 var magics = ["res://Scenes/fireball.tscn", "res://Scenes/fireball.tscn"]
 var poses = ["res://Scenes/rest_pose.tscn"]
 var save_path = "user://klc_savefile.save"
+var enemy : Node = null
+var character : Node = null
 
 func _ready():
 	self.connect("battlestats", Callable(self, "_setstats"))

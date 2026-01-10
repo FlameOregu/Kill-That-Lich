@@ -1,10 +1,8 @@
 extends Panel
 var children : Array
-var pos = Vector2(14,11)
+var pos = Vector2(98,525)
 var actions : Array
 var button : String
-func _ready():
-	_dohide()
 
 func _input(event: InputEvent) -> void:
 	if visible == true and Input.is_action_just_pressed("cancel"):
@@ -27,8 +25,8 @@ func _dohide():
 func _on_cancel(button) -> void:
 	for i in actions:
 		i.queue_free()
-		actions.erase(i)
-	pos = Vector2(14,11)
+	actions.clear()
+	$Text.text = ""
 	if button == "fight":
 		$"../Fight Button".grab_focus()
 	elif button == "magic":
@@ -44,20 +42,22 @@ func _on_select_magic() -> void:
 	button = "magic"
 	for i in GlobalSignals.magics:
 		var scene = load(i).instantiate()
-		add_child(scene)
+		$"Skill Panel/Skill Container".add_child(scene)
 		actions.append(scene)
-		scene.position = pos
-		if pos == Vector2(656, 11):
-			pos = Vector2(14, 60)
-		else:
-			pos += Vector2(214, 0)
-	for i in len(actions):
-		if i == 0:
-			pass
-		else:
-			actions[(i-1)].focus_neighbor_bottom = actions[i].get_path()
-			actions[i].focus_neighbor_top = actions[(i-1)].get_path()
 	show()
+	$Text.show()
+	$"Skill Panel".show()
+	$"Skill Panel/Skill Container".show()
+	for i in len(actions):
+		if i != 1 and i != len(actions):
+			actions[(i-1)].focus_neighbor_right = actions[i].get_path()
+			actions[(i-1)].focus_neighbor_left = actions[(i-2)].get_path()
+		elif i == 1 and i != len(actions):
+			actions[0].focus_neighbor_right = actions[i].get_path()
+		elif i == len(actions):
+			actions[(i-1)].focus_neighbor_left = actions[(i-2)].get_path()
+	actions[0].focus_neighbor_left = actions[0].get_path() #sets the first button in array to select itself when pressed left
+	actions[-1].focus_neighbor_right = actions[-1].get_path() #sets the last button in array to select itself when pressed right
 	actions[0].grab_focus()
 
 func _on_select_pose() -> void:

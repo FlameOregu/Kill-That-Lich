@@ -15,6 +15,7 @@ signal on_character_moving(is_moving:bool)
 signal healthChanged
 
 func _ready():
+	GlobalSignals.character = self
 	maxhealth = GlobalSignals.maxsanity
 	maxmana = GlobalSignals.maxmana
 	currenthealth = GlobalSignals.sanity

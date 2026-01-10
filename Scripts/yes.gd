@@ -3,10 +3,10 @@ signal on_cancel
 signal engage
 signal fight
 signal run
-var focus : bool
-var nofocus : bool
-var fightselect : bool
-var runselect : bool
+var focus : bool #is focus on yes button
+var nofocus : bool #is focus on the no button
+var fightselect : bool #confirms if fight
+var runselect : bool #confirms if run
 
 func _on_select_fight():
 	self.grab_focus()
@@ -33,14 +33,14 @@ func _input(event: InputEvent):
 			run.emit()
 
 	if Input.is_action_just_pressed("cancel") == true and focus == true:
-		on_cancel.emit()
+		on_cancel.emit("fight")
 		focus = false
 		fightselect = false
 		runselect = false
 		
 
 	if Input.is_action_just_pressed("interact") == true and nofocus == true:
-		on_cancel.emit()
+		on_cancel.emit("fight")
 		focus = false
 		fightselect = false
 
@@ -55,7 +55,7 @@ func _on_no_focus_exited() -> void:
 
 func _outengage():
 	$"../../Fight Layer/Character".infight = true
-	on_cancel.emit()
+	on_cancel.emit("fight")
 	engage.emit()
 
 func _cancel():
