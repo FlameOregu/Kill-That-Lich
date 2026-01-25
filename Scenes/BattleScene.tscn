@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=39 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://d2apbeano5lwq" path="res://Scripts/combo_text.gd" id="11_ixjr5"]
 [ext_resource type="Script" uid="uid://b222b0xooud3o" path="res://Scripts/charattack.gd" id="11_qvetm"]
 [ext_resource type="Script" uid="uid://d3m2havwvmv4d" path="res://Scripts/parrying.gd" id="12_2trbe"]
-[ext_resource type="Script" uid="uid://ctas64esiwfao" path="res://Scripts/action_panel.gd" id="12_aip7a"]
+[ext_resource type="Script" uid="uid://ctas64esiwfao" path="res://Scripts/action_code.gd" id="12_aip7a"]
 [ext_resource type="Texture2D" uid="uid://d8do1pkju856" path="res://Assets/fight background.png" id="12_x5p3t"]
 [ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="13_0avxp"]
 [ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scripts/yes.gd" id="13_i7srl"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://Scripts/battlecharacter.gd" id="20_ksqd2"]
 [ext_resource type="Script" uid="uid://68i5u6q3lv65" path="res://Scripts/pose_button.gd" id="24_os4x4"]
 [ext_resource type="Script" uid="uid://t6js6ipvwdte" path="res://Scripts/run_button.gd" id="25_os4x4"]
+[ext_resource type="Script" uid="uid://dbqc3nikk8v1c" path="res://Scenes/no_button.gd" id="26_qvetm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwb48"]
 bg_color = Color(0.556662, 0.605576, 0.641736, 1)
@@ -89,6 +90,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -153,7 +156,7 @@ text = "Mana"
 visible = false
 script = ExtResource("7_iin7j")
 
-[node name="TextureRect" type="TextureRect" parent="Fight Layer"]
+[node name="Fight Background" type="TextureRect" parent="Fight Layer"]
 offset_right = 1152.0
 offset_bottom = 648.0
 scale = Vector2(1.01807, 0.998027)
@@ -320,7 +323,7 @@ script = ExtResource("25_os4x4")
 position = Vector2(80, 514)
 volume_db = -17.971
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Enemy Image" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 478.0
 offset_top = 146.0
@@ -336,7 +339,19 @@ offset_top = 514.0
 offset_right = 1037.0
 offset_bottom = 645.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_43vwj")
+
+[node name="Action Node" type="Node" parent="Action Panel" node_paths=PackedStringArray("panel", "text", "no", "yes", "skillcont", "skillpanel", "fightbutton", "posebutton", "runbutton", "magicbutton")]
 script = ExtResource("12_aip7a")
+panel = NodePath("..")
+text = NodePath("../Text")
+no = NodePath("../No")
+yes = NodePath("../Yes")
+skillcont = NodePath("../Skill Panel/Skill Container")
+skillpanel = NodePath("../Skill Panel")
+fightbutton = NodePath("../../Fight Button")
+posebutton = NodePath("../../Pose Button")
+runbutton = NodePath("../../Run Button")
+magicbutton = NodePath("../../Magic Button")
 
 [node name="Yes" type="Button" parent="Action Panel"]
 visible = false
@@ -370,6 +385,7 @@ theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 32
 text = "No"
 flat = true
+script = ExtResource("26_qvetm")
 
 [node name="Text" type="Label" parent="Action Panel"]
 visible = false
@@ -390,6 +406,7 @@ offset_bottom = -14.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2trbe")
 
 [node name="Skill Container" type="HBoxContainer" parent="Action Panel/Skill Panel"]
+visible = false
 layout_mode = 0
 offset_left = 7.0
 offset_top = 10.0
@@ -406,30 +423,34 @@ offset_bottom = 60.0
 [connection signal="endbattle" from="Fight Layer/Enemy" to="Fight Layer/Character" method="_on_endbattle"]
 [connection signal="endfight" from="Fight Layer/Enemy" to="Fight Layer" method="_on_endfight"]
 [connection signal="endfight" from="Fight Layer/Enemy" to="Fight Layer/Character" method="_on_endfight"]
-[connection signal="endfight" from="Fight Layer/Enemy" to="Fight Button" method="_on_cancel"]
+[connection signal="endfight" from="Fight Layer/Enemy" to="Fight Button" method="_ready"]
 [connection signal="health_changed" from="Fight Layer/Enemy" to="Fight Layer/Enemy/Enemy HP Bar" method="_on_health_changed"]
-[connection signal="_on_select_fight" from="Fight Button" to="Action Panel" method="_on_select_fight"]
+[connection signal="_on_select_fight" from="Fight Button" to="Action Panel/Action Node" method="_on_select_fight"]
 [connection signal="_on_select_fight" from="Fight Button" to="Action Panel/Yes" method="_on_select_fight"]
+[connection signal="button_down" from="Fight Button" to="Fight Button" method="_on_button_down"]
 [connection signal="focus_entered" from="Fight Button" to="Fight Button" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Fight Button" to="Fight Button" method="_on_focus_exited"]
-[connection signal="_on_select_magic" from="Magic Button" to="Action Panel" method="_on_select_magic"]
+[connection signal="_on_select_magic" from="Magic Button" to="Action Panel/Action Node" method="_on_select_magic"]
+[connection signal="button_down" from="Magic Button" to="Magic Button" method="_on_button_down"]
 [connection signal="focus_entered" from="Magic Button" to="Magic Button" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Magic Button" to="Magic Button" method="_on_focus_exited"]
-[connection signal="_on_select_pose" from="Pose Button" to="Action Panel" method="_on_select_pose"]
+[connection signal="_on_select_pose" from="Pose Button" to="Action Panel/Action Node" method="_on_select_pose"]
+[connection signal="button_down" from="Pose Button" to="Pose Button" method="_on_button_down"]
 [connection signal="focus_entered" from="Pose Button" to="Pose Button" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Pose Button" to="Pose Button" method="_on_focus_exited"]
-[connection signal="_on_select_run" from="Run Button" to="Action Panel" method="_on_select_run"]
+[connection signal="_on_select_run" from="Run Button" to="Action Panel/Action Node" method="_on_select_run"]
 [connection signal="_on_select_run" from="Run Button" to="Action Panel/Yes" method="_on_select_run"]
+[connection signal="button_down" from="Run Button" to="Run Button" method="_on_button_down"]
 [connection signal="focus_entered" from="Run Button" to="Run Button" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Run Button" to="Run Button" method="_on_focus_exited"]
+[connection signal="engage" from="Action Panel/Action Node" to="Fight Layer" method="_on_engage"]
+[connection signal="engage" from="Action Panel/Action Node" to="Fight Layer/Character" method="_on_engage"]
+[connection signal="engage" from="Action Panel/Action Node" to="Fight Layer/Enemy" method="_on_engage"]
+[connection signal="engage" from="Action Panel/Action Node" to="Fight Button" method="_release"]
+[connection signal="button_down" from="Action Panel/Yes" to="Action Panel/Yes" method="_on_button_down"]
 [connection signal="engage" from="Action Panel/Yes" to="Fight Layer" method="_on_engage"]
 [connection signal="engage" from="Action Panel/Yes" to="Fight Layer/Character" method="_on_engage"]
 [connection signal="engage" from="Action Panel/Yes" to="Fight Layer/Enemy" method="_on_engage"]
 [connection signal="fight" from="Action Panel/Yes" to="Fight Layer/Character" method="_on_fight"]
 [connection signal="focus_entered" from="Action Panel/Yes" to="Action Panel/Yes" method="_on_focus_entered"]
-[connection signal="on_cancel" from="Action Panel/Yes" to="Action Panel" method="_on_cancel"]
-[connection signal="on_cancel" from="Action Panel/Yes" to="Fight Button" method="_on_cancel"]
+[connection signal="on_cancel" from="Action Panel/Yes" to="Action Panel/Action Node" method="_on_cancel"]
 [connection signal="run" from="Action Panel/Yes" to="Fight Layer" method="_on_run"]
 [connection signal="run" from="Action Panel/Yes" to="Fight Layer/Enemy" method="_endbattle"]
-[connection signal="focus_entered" from="Action Panel/No" to="Action Panel/Yes" method="_on_no_focus_entered"]
-[connection signal="focus_exited" from="Action Panel/No" to="Action Panel/Yes" method="_on_no_focus_exited"]
+[connection signal="button_down" from="Action Panel/No" to="Action Panel/No" method="_on_button_down"]
+[connection signal="cancel" from="Action Panel/No" to="Action Panel/Yes" method="_cancel"]

@@ -116,6 +116,6 @@ func _on_engage() -> void:
 		_attack3()
 	attacknum += 1
 
-func _endbattle():
+func _endbattle(): #full battle is over, either lost or won
 	endbattle.emit()
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
