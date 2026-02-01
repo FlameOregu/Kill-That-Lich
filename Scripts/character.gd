@@ -35,15 +35,6 @@ func _process(_delta):
 		closestnpc.emit_signal("show_icon")
 		lastnpc = closestnpc
 		distnpcs.clear()
-#		var shortest_distance : float = global_position.distance_to(npcs[0].global_position)
-#		currentnpc = npcs[0]
-#		for i in npcs:
-#			var currentdist : float = global_position.distance_to(i.global_position)
-#			if currentdist < shortest_distance:
-#				currentnpc.emit_signal("hide_icon")
-#				currentnpc = i
-#				shortest_distance = currentdist
-#		currentnpc.emit_signal("show_icon")
 
 func _physics_process(_delta):
 	velocity = direction * speed
@@ -53,6 +44,9 @@ func _input(event):
 	if Input.is_action_just_pressed("interact") and interactrad == true and inmenu == false: #checks if in menu and in interaction radius
 		speed = 0
 		closestnpc.emit_signal("start_dialogue") #tells the npc to go start the damn dialogue
+	elif Input.is_action_just_pressed("menu"):
+		speed = 0
+		
 
 func _on_interaction_area_entered(area: Area2D) -> void:
 	interactrad = true

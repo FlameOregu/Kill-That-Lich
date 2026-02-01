@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cgvoq8puc1i2b" path="res://Assets/FIRE ball.png" id="1_l2nxs"]
 [ext_resource type="Script" uid="uid://biuncdt3te7na" path="res://Scripts/rest_pose_button.gd" id="2_0pkug"]
-[ext_resource type="Script" uid="uid://b50jid7atl0d7" path="res://Scenes/rest_pose.gd" id="3_0pkug"]
+[ext_resource type="Script" uid="uid://b50jid7atl0d7" path="res://Scripts/rest_pose.gd" id="3_0pkug"]
 
 [node name="Rest Pose Button" type="Button"]
 offset_right = 8.0

@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://Scripts/battlecharacter.gd" id="20_ksqd2"]
 [ext_resource type="Script" uid="uid://68i5u6q3lv65" path="res://Scripts/pose_button.gd" id="24_os4x4"]
 [ext_resource type="Script" uid="uid://t6js6ipvwdte" path="res://Scripts/run_button.gd" id="25_os4x4"]
-[ext_resource type="Script" uid="uid://dbqc3nikk8v1c" path="res://Scenes/no_button.gd" id="26_qvetm"]
+[ext_resource type="Script" uid="uid://dbqc3nikk8v1c" path="res://Scripts/no_button.gd" id="26_qvetm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwb48"]
 bg_color = Color(0.556662, 0.605576, 0.641736, 1)
@@ -153,7 +153,6 @@ theme_override_font_sizes/font_size = 24
 text = "Mana"
 
 [node name="Fight Layer" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("7_iin7j")
 
 [node name="Fight Background" type="TextureRect" parent="Fight Layer"]
@@ -239,10 +238,10 @@ position = Vector2(87, 263)
 [node name="Bullet SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Enemy"]
 
 [node name="Enemy HP Bar" type="ProgressBar" parent="Fight Layer/Enemy"]
-offset_left = -168.0
-offset_top = 541.0
-offset_right = 328.0
-offset_bottom = 573.0
+offset_left = -149.0
+offset_top = 533.0
+offset_right = 347.0
+offset_bottom = 565.0
 theme_override_styles/background = SubResource("StyleBoxFlat_71qfg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_os4x4")
 value = 100.0
