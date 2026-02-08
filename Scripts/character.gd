@@ -8,6 +8,7 @@ var distnpcs : Array
 var closestnpc : Node2D
 var lastnpc : Node2D
 signal on_character_moving(is_moving:bool)
+signal openmenu
 
 func _ready():
 	if GlobalSignals.continued == true:
@@ -44,9 +45,8 @@ func _input(event):
 	if Input.is_action_just_pressed("interact") and interactrad == true and inmenu == false: #checks if in menu and in interaction radius
 		speed = 0
 		closestnpc.emit_signal("start_dialogue") #tells the npc to go start the damn dialogue
-	elif Input.is_action_just_pressed("menu"):
-		speed = 0
-		
+	elif Input.is_action_just_pressed("menu") and inmenu == false:
+		_openmenu()
 
 func _on_interaction_area_entered(area: Area2D) -> void:
 	interactrad = true
@@ -59,3 +59,16 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 		var npcs : Array = get_tree().get_nodes_in_group("NPC") #grabs all nodes in the NPC group and puts in array
 		for i in npcs:
 			i.emit_signal("hide_icon")
+
+func _openmenu():
+	inmenu = true
+	speed = 0
+	$"..".hide()
+	$"../Menu Layer".show()
+	openmenu.emit()
+
+func _closemenu() -> void:
+	inmenu = false
+	speed = 100
+	$"..".show()
+	$"../Menu Layer".hide()
