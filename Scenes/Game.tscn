@@ -547,6 +547,8 @@ offset_right = 1086.0
 offset_bottom = 28.0
 text = "Press X to quit menu, Tab to switch Tabs"
 
+[node name="Text Layer" type="CanvasLayer" parent="."]
+
 [connection signal="hide_icon" from="NPC Test2" to="NPC Test2" method="_on_hide_icon"]
 [connection signal="show_icon" from="NPC Test2" to="NPC Test2" method="_on_show_icon"]
 [connection signal="start_dialogue" from="NPC Test2" to="NPC Test2" method="_on_start_dialogue"]
