@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biux68i2c5gq5"
-path="res://.godot/imported/fight_frame9.png-71d0685fe1108e115ddfe59d00ea68c2.ctex"
+uid="uid://b6vtfvekjrhhr"
+path="res://.godot/imported/crap skateboard.png-f77df1adb89f91db6229c4acd5af0ffb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fight_frame9.png"
-dest_files=["res://.godot/imported/fight_frame9.png-71d0685fe1108e115ddfe59d00ea68c2.ctex"]
+source_file="res://Assets/crap skateboard.png"
+dest_files=["res://.godot/imported/crap skateboard.png-f77df1adb89f91db6229c4acd5af0ffb.ctex"]
 
 [params]
 

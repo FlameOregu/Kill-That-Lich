@@ -30,9 +30,11 @@ func _input(event):
 	if inmenu == true:
 		if Input.is_action_just_pressed("menu"):
 			if skillpanel.visible:
-				_showinv()
+				_showinv() #shows inventory tab
+				$"../Inventory Panel/Inventory Container".get_child(0).grab_focus()
 			elif invpanel.visible:
-				_showskills()
+				_showskills() #shows skill tab
+				$"../Inventory Panel/Inventory Container".get_child(0).release_focus()
 		elif Input.is_action_just_pressed("cancel"):
 			inmenu = false
 			closemenu.emit()

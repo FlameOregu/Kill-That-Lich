@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc870yeh3d281"
-path="res://.godot/imported/fight_frame8.png-6e269ea6018e5e5e05e97ab8a644cdb2.ctex"
+uid="uid://clpadws10km42"
+path="res://.godot/imported/backgroundtiles map.png.png-870596554a36dcc1f049f9bd31e7d861.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fight_frame8.png"
-dest_files=["res://.godot/imported/fight_frame8.png-6e269ea6018e5e5e05e97ab8a644cdb2.ctex"]
+source_file="res://Assets/backgroundtiles map.png.png"
+dest_files=["res://.godot/imported/backgroundtiles map.png.png-870596554a36dcc1f049f9bd31e7d861.ctex"]
 
 [params]
 

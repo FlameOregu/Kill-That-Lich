@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2x2whg3udwe5"
-path="res://.godot/imported/fight_frame7.png-d64eabb9c2ced76a3071f42ad86c78a8.ctex"
+uid="uid://verlilw4iki0"
+path="res://.godot/imported/crappy skateboard full img.png-e8507e903a53b76f92ed5c402088886f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fight_frame7.png"
-dest_files=["res://.godot/imported/fight_frame7.png-d64eabb9c2ced76a3071f42ad86c78a8.ctex"]
+source_file="res://Assets/crappy skateboard full img.png"
+dest_files=["res://.godot/imported/crappy skateboard full img.png-e8507e903a53b76f92ed5c402088886f.ctex"]
 
 [params]
 

@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="13_0avxp"]
 [ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scripts/yes.gd" id="13_i7srl"]
 [ext_resource type="Script" uid="uid://cgeiahtk8b72l" path="res://Scripts/enemy_hp_bar.gd" id="13_pwb48"]
-[ext_resource type="Texture2D" uid="uid://cke8yvl3xxosh" path="res://Assets/fight_frame14.png" id="16_hueq0"]
 [ext_resource type="Texture2D" uid="uid://bo84k6kypfn18" path="res://Assets/magic_frame12.png" id="18_pwb48"]
 [ext_resource type="Script" uid="uid://bket61yxb8kml" path="res://Scripts/magic_button.gd" id="19_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://h1u3b5hproxm" path="res://Assets/pose_frame12.png" id="20_71qfg"]
@@ -61,8 +60,11 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.737375, 0.750837, 0.730748, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_os4x4"]
+load_path = "res://.godot/imported/fight_frame14.png-a11189ad800e4d349b3c393185b6bba7.ctex"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0avxp"]
-texture = ExtResource("16_hueq0")
+texture = SubResource("CompressedTexture2D_os4x4")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ksqd2"]
 texture = ExtResource("18_pwb48")
@@ -153,6 +155,7 @@ theme_override_font_sizes/font_size = 24
 text = "Mana"
 
 [node name="Fight Layer" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("7_iin7j")
 
 [node name="Fight Background" type="TextureRect" parent="Fight Layer"]
