@@ -5,16 +5,21 @@ signal hide_icon
 var intext : bool
 var textboxgb
 var textbox_scene : PackedScene = preload("res://Scenes/textbox.tscn")
+var portrait_image = preload("res://Assets/Solq Portrait.png")
 
 func _on_start_dialogue() -> void:
 	var textbox = textbox_scene.instantiate()
 	textboxgb = textbox
 	$"../Text Layer".add_child(textbox)
 	var label = textbox.get_node("Text")
+	var portrait = textbox.get_node("Character Panel/Character Portrait")
 	if self == $"../NPC Test2":
 		label.text = "what do you want nerd"
+		portrait.texture = portrait_image
+		
 	else:
 		label.text = "sup"
+		portrait.texture = portrait_image
 	textbox.visible = true
 	$"../Character".inmenu = true
 	await get_tree().create_timer(0.2).timeout

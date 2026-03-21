@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s3bdkvxwasof"
-path="res://.godot/imported/magic_hover.png-87231e726fe40093a29ea7fba19a310d.ctex"
+uid="uid://bnbr8lwe0pjkw"
+path="res://.godot/imported/backgroundtiles map.png.png.png-242fcb2ae5d9204c4e28842f3751a676.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/magic_hover.png"
-dest_files=["res://.godot/imported/magic_hover.png-87231e726fe40093a29ea7fba19a310d.ctex"]
+source_file="res://Assets/backgroundtiles map.png.png.png"
+dest_files=["res://.godot/imported/backgroundtiles map.png.png.png-242fcb2ae5d9204c4e28842f3751a676.ctex"]
 
 [params]
 

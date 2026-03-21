@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene load_steps=33 format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
@@ -18,9 +18,7 @@
 [ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="13_0avxp"]
 [ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scripts/yes.gd" id="13_i7srl"]
 [ext_resource type="Script" uid="uid://cgeiahtk8b72l" path="res://Scripts/enemy_hp_bar.gd" id="13_pwb48"]
-[ext_resource type="Texture2D" uid="uid://bo84k6kypfn18" path="res://Assets/magic_frame12.png" id="18_pwb48"]
 [ext_resource type="Script" uid="uid://bket61yxb8kml" path="res://Scripts/magic_button.gd" id="19_fm0w4"]
-[ext_resource type="Texture2D" uid="uid://h1u3b5hproxm" path="res://Assets/pose_frame12.png" id="20_71qfg"]
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://Scripts/battlecharacter.gd" id="20_ksqd2"]
 [ext_resource type="Script" uid="uid://68i5u6q3lv65" path="res://Scripts/pose_button.gd" id="24_os4x4"]
 [ext_resource type="Script" uid="uid://t6js6ipvwdte" path="res://Scripts/run_button.gd" id="25_os4x4"]
@@ -59,18 +57,6 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.737375, 0.750837, 0.730748, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_os4x4"]
-load_path = "res://.godot/imported/fight_frame14.png-a11189ad800e4d349b3c393185b6bba7.ctex"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0avxp"]
-texture = SubResource("CompressedTexture2D_os4x4")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ksqd2"]
-texture = ExtResource("18_pwb48")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hueq0"]
-texture = ExtResource("20_71qfg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43vwj"]
 bg_color = Color(0, 0, 0, 1)
@@ -278,7 +264,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../Magic Button")
 focus_neighbor_bottom = NodePath("../Pose Button")
-theme_override_styles/normal = SubResource("StyleBoxTexture_0avxp")
+text = "Fight"
 script = ExtResource("13_0avxp")
 
 [node name="Magic Button" type="Button" parent="."]
@@ -291,20 +277,20 @@ focus_neighbor_left = NodePath("../Fight Button")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Run Button")
-theme_override_styles/normal = SubResource("StyleBoxTexture_ksqd2")
+text = "Magic"
 script = ExtResource("19_fm0w4")
 
 [node name="Pose Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 70.0
-offset_top = 296.0
+offset_top = 330.0
 offset_right = 350.0
-offset_bottom = 498.0
+offset_bottom = 532.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Fight Button")
 focus_neighbor_right = NodePath("../Run Button")
 focus_neighbor_bottom = NodePath(".")
-theme_override_styles/normal = SubResource("StyleBoxTexture_hueq0")
+text = "Pose"
 script = ExtResource("24_os4x4")
 
 [node name="Run Button" type="Button" parent="."]
