@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bbiwqalngn2n0" path="res://Scenes/save_point.tscn" id="6_7lihs"]
 [ext_resource type="FontFile" uid="uid://cqt8m8iyjqsd8" path="res://Assets/videotype.otf" id="8_2irst"]
 [ext_resource type="Script" uid="uid://mnjng4uv8n8h" path="res://Scripts/game_menu_logic.gd" id="8_bf53h"]
-[ext_resource type="PackedScene" uid="uid://bfu4cgve52yye" path="res://Scenes/crappy skateboard.tscn" id="9_3so38"]
+[ext_resource type="Script" uid="uid://cv7sp6i8fwpg1" path="res://Scripts/inventory_logic.gd" id="9_3cx6b"]
+[ext_resource type="PackedScene" uid="uid://bfu4cgve52yye" path="res://Scenes/clear_item.tscn" id="9_3so38"]
 [ext_resource type="Texture2D" uid="uid://cbwbuxb0t7bm0" path="res://Assets/item_border.png" id="9_71axn"]
-[ext_resource type="PackedScene" uid="uid://dom3mqawaqk7q" path="res://Scenes/empty item.tscn" id="10_3cx6b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3so38"]
 texture = ExtResource("1_3so38")
@@ -276,138 +276,87 @@ offset_bottom = 528.0
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 64
 columns = 5
+script = ExtResource("9_3cx6b")
 
 [node name="Item 1" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-
-[node name="Item 2" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("10_3cx6b")]
-layout_mode = 2
-
-[node name="Item 3" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 4" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 2" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 5" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 3" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 6" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 4" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 7" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 5" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 8" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 6" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 9" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 7" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 10" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 8" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 11" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 9" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 12" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 10" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 13" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 11" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 14" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 12" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 15" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 13" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 16" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 14" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 17" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 15" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 18" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 16" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 19" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 17" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
 
-[node name="Item 20" type="Button" parent="Menu Layer/Inventory Panel/Inventory Container"]
+[node name="Item 18" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 icon = ExtResource("9_71axn")
-flat = true
+
+[node name="Item 19" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
+layout_mode = 2
+icon = ExtResource("9_71axn")
+
+[node name="Item 20" parent="Menu Layer/Inventory Panel/Inventory Container" instance=ExtResource("9_3so38")]
+layout_mode = 2
+icon = ExtResource("9_71axn")
 
 [node name="Title Panel" type="Panel" parent="Menu Layer/Inventory Panel"]
 layout_mode = 0

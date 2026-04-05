@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfu4cgve52yye"]
+
+[ext_resource type="Script" uid="uid://bn03lifgvqtic" path="res://Scripts/item.gd" id="2_s6atm"]
+
+[node name="clear item" type="Button"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+flat = true
+script = ExtResource("2_s6atm")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

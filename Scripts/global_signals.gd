@@ -11,6 +11,7 @@ var char_pos
 var magics = ["res://Scenes/fireball.tscn"]
 var poses = ["res://Scenes/rest_pose.tscn"]
 var save_path = "user://klc_savefile.save"
+var inventory = []
 var enemy : Node = null
 var character : Node = null
 
@@ -30,6 +31,7 @@ func _save():
 	file.store_var(var_to_str(mana))
 	file.store_var(var_to_str(maxsanity))
 	file.store_var(var_to_str(maxmana))
+	file.store_var(var_to_str(inventory))
 
 func load_data():
 	if FileAccess.file_exists(save_path):
@@ -39,3 +41,4 @@ func load_data():
 		mana = str_to_var(file.get_var(true))
 		maxmana = str_to_var(file.get_var(true))
 		maxsanity = str_to_var(file.get_var(true))
+		inventory = str_to_var(file.get_var(true))
