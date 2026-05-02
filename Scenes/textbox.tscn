@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcu0c67vfn1ef"]
+[gd_scene format=3 uid="uid://dcu0c67vfn1ef"]
 
 [ext_resource type="Script" uid="uid://c5rvpn8ca8ehl" path="res://Scripts/textbox.gd" id="1_i40gg"]
 [ext_resource type="FontFile" uid="uid://cdn423ddcht34" path="res://Assets/LowresPixel-Regular.otf" id="2_i40gg"]
@@ -20,7 +20,7 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 
-[node name="Textbox" type="Panel"]
+[node name="Textbox" type="Panel" unique_id=763871155]
 offset_left = 11.0
 offset_top = 8.0
 offset_right = 1135.0
@@ -28,7 +28,7 @@ offset_bottom = 237.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i40gg")
 script = ExtResource("1_i40gg")
 
-[node name="Text" type="Label" parent="."]
+[node name="Text" type="Label" parent="." unique_id=1702133018]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 7.0
@@ -40,7 +40,7 @@ theme_override_font_sizes/font_size = 48
 text = "If you're reading this, that means I messed up somewhere in the code. oopsies."
 autowrap_mode = 2
 
-[node name="Character Panel" type="Panel" parent="."]
+[node name="Character Panel" type="Panel" parent="." unique_id=2037482307]
 layout_mode = 0
 offset_left = 824.0
 offset_top = -305.0
@@ -48,7 +48,7 @@ offset_right = 1110.0
 offset_bottom = -19.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yyjux")
 
-[node name="Character Portrait" type="TextureRect" parent="Character Panel"]
+[node name="Character Portrait" type="TextureRect" parent="Character Panel" unique_id=1041989502]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
