@@ -18,7 +18,7 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 @export var next_action: StringName = &"ui_accept"
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"ui_cancel"
+@export var skip_action: StringName = &"cancel"
 
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
@@ -70,7 +70,7 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
-
+@onready var portrait: TextureRect = $"Balloon/Character Panel/Character Portrait"
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
@@ -132,6 +132,12 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	var portrait_path: String = "res://assets/charportraits/%s.png" % dialogue_line.character.to_lower()
+	if FileAccess.file_exists(portrait_path):
+		portrait.texture = load(portrait_path)
+	else:
+		portrait.texture = null
+		$"Balloon/Character Panel".hide()
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

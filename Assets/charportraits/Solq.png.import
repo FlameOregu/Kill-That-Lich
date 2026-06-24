@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6fbxr1g0m337"
-path="res://.godot/imported/Solq Portrait.png-171bd53be7480f3ad5ee788ff21c7ad0.ctex"
+uid="uid://32qu0apro7qw"
+path="res://.godot/imported/Solq.png-96304ed93f15bbbfb57360a87004e67b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Solq Portrait.png"
-dest_files=["res://.godot/imported/Solq Portrait.png-171bd53be7480f3ad5ee788ff21c7ad0.ctex"]
+source_file="res://Assets/charportraits/Solq.png"
+dest_files=["res://.godot/imported/Solq.png-96304ed93f15bbbfb57360a87004e67b.ctex"]
 
 [params]
 

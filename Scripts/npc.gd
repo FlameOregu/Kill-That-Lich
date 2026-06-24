@@ -2,35 +2,11 @@ extends CharacterBody2D
 signal start_dialogue
 signal show_icon
 signal hide_icon
-var intext : bool
-var textboxgb
-var textbox_scene : PackedScene = preload("res://Scenes/textbox.tscn")
-var portrait_image = preload("res://Assets/Solq Portrait.png")
+@export var dialogue_resource: DialogueResource
+@export var dialogue_start: String = "start"
 
 func _on_start_dialogue() -> void:
-	var textbox = textbox_scene.instantiate()
-	textboxgb = textbox
-	$"../Text Layer".add_child(textbox)
-	var label = textbox.get_node("Text")
-	var portrait = textbox.get_node("Character Panel/Character Portrait")
-	if self == $"../NPC Test2":
-		label.text = "what do you want nerd"
-		portrait.texture = portrait_image
-		
-	else:
-		label.text = "sup"
-		portrait.texture = portrait_image
-	textbox.visible = true
-	$"../Character".inmenu = true
-	await get_tree().create_timer(0.2).timeout
-	intext = true
-
-func _input(event):
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("cancel")) and intext == true:
-		textboxgb.queue_free()
-		intext = false
-		$"../Character".inmenu = false
-		$"../Character".speed = 100
+	DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
 
 func _ready():
 	$Interaction.connect("area_entered", Callable($"../Character", "_on_interaction_area_entered"))

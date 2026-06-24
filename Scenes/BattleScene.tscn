@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dqa2y76mohsb5"]
+[gd_scene format=3 uid="uid://dqa2y76mohsb5"]
 
 [ext_resource type="Texture2D" uid="uid://b1mhkh3gmy4oo" path="res://Assets/healthbarProgress.png" id="2_fm0w4"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="2_hip74"]
@@ -73,7 +73,7 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 
-[node name="Battle" type="Control"]
+[node name="Battle" type="Control" unique_id=195299966]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,19 +83,19 @@ offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1012514785]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_0avxp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=720820678]
 position = Vector2(576, 324)
 
-[node name="Bar Layer" type="CanvasLayer" parent="."]
+[node name="Bar Layer" type="CanvasLayer" parent="." unique_id=522632507]
 layer = 2
 
-[node name="Health Bar" type="TextureProgressBar" parent="Bar Layer" node_paths=PackedStringArray("battlecharacter")]
+[node name="Health Bar" type="TextureProgressBar" parent="Bar Layer" unique_id=1967801600 node_paths=PackedStringArray("battlecharacter")]
 offset_left = 1.0
 offset_top = -75.0
 offset_right = 101.0
@@ -108,7 +108,7 @@ texture_progress = ExtResource("2_fm0w4")
 script = ExtResource("2_ksqd2")
 battlecharacter = NodePath("../../Fight Layer/Character")
 
-[node name="HP Text" type="Label" parent="Bar Layer" node_paths=PackedStringArray("battlecharacter")]
+[node name="HP Text" type="Label" parent="Bar Layer" unique_id=2055517841 node_paths=PackedStringArray("battlecharacter")]
 offset_left = 50.0
 offset_top = 28.0
 offset_right = 198.0
@@ -120,7 +120,7 @@ horizontal_alignment = 1
 script = ExtResource("7_0avxp")
 battlecharacter = NodePath("../../Fight Layer/Character")
 
-[node name="Mana Bar" type="ProgressBar" parent="Bar Layer" node_paths=PackedStringArray("battlecharacter")]
+[node name="Mana Bar" type="ProgressBar" parent="Bar Layer" unique_id=1118424356 node_paths=PackedStringArray("battlecharacter")]
 offset_left = 268.0
 offset_top = 8.0
 offset_right = 503.0
@@ -132,7 +132,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_fm0w4")
 script = ExtResource("7_hueq0")
 battlecharacter = NodePath("../../Fight Layer/Character")
 
-[node name="Mana Text" type="Label" parent="Bar Layer"]
+[node name="Mana Text" type="Label" parent="Bar Layer" unique_id=361459057]
 offset_left = 347.0
 offset_top = 38.0
 offset_right = 417.0
@@ -140,22 +140,22 @@ offset_bottom = 77.0
 theme_override_font_sizes/font_size = 24
 text = "Mana"
 
-[node name="Fight Layer" type="CanvasLayer" parent="."]
+[node name="Fight Layer" type="CanvasLayer" parent="." unique_id=392946071]
 visible = false
 script = ExtResource("7_iin7j")
 
-[node name="Fight Background" type="TextureRect" parent="Fight Layer"]
+[node name="Fight Background" type="TextureRect" parent="Fight Layer" unique_id=184388735]
 offset_right = 1152.0
 offset_bottom = 648.0
 scale = Vector2(1.01807, 0.998027)
 texture = ExtResource("12_x5p3t")
 
-[node name="Walls" type="StaticBody2D" parent="Fight Layer"]
+[node name="Walls" type="StaticBody2D" parent="Fight Layer" unique_id=1628638801]
 position = Vector2(576, 320)
 collision_layer = 16
 collision_mask = 2
 
-[node name="Panel" type="Panel" parent="Fight Layer/Walls"]
+[node name="Panel" type="Panel" parent="Fight Layer/Walls" unique_id=1849306050]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -165,42 +165,42 @@ offset_bottom = 250.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1yevk")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fight Layer/Walls"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fight Layer/Walls" unique_id=1755496582]
 position = Vector2(-38, 64)
 build_mode = 1
 polygon = PackedVector2Array(-260, -62, 336, -62, 336, 184, -260, 184)
 
-[node name="Character" type="CharacterBody2D" parent="Fight Layer"]
+[node name="Character" type="CharacterBody2D" parent="Fight Layer" unique_id=1479526786]
 z_index = 1
 position = Vector2(613, 442)
 collision_layer = 2
 collision_mask = 24
 script = ExtResource("20_ksqd2")
 
-[node name="Attacking" type="Node2D" parent="Fight Layer/Character"]
+[node name="Attacking" type="Node2D" parent="Fight Layer/Character" unique_id=1501986497]
 script = ExtResource("11_qvetm")
 
-[node name="Parrying" type="Node2D" parent="Fight Layer/Character"]
+[node name="Parrying" type="Node2D" parent="Fight Layer/Character" unique_id=1965275986]
 script = ExtResource("12_2trbe")
 
-[node name="Character Sprite" type="Sprite2D" parent="Fight Layer/Character"]
+[node name="Character Sprite" type="Sprite2D" parent="Fight Layer/Character" unique_id=1364627417]
 texture = ExtResource("2_hip74")
 
-[node name="hurtbox" type="Area2D" parent="Fight Layer/Character"]
+[node name="hurtbox" type="Area2D" parent="Fight Layer/Character" unique_id=1232811368]
 collision_layer = 2
 collision_mask = 24
 
-[node name="hurtbox collision" type="CollisionShape2D" parent="Fight Layer/Character/hurtbox"]
+[node name="hurtbox collision" type="CollisionShape2D" parent="Fight Layer/Character/hurtbox" unique_id=724763625]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_hueq0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fight Layer/Character"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fight Layer/Character" unique_id=2063354543]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
-[node name="Player SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Character"]
+[node name="Player SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Character" unique_id=693535044]
 
-[node name="parryingtxt" type="Label" parent="Fight Layer/Character"]
+[node name="parryingtxt" type="Label" parent="Fight Layer/Character" unique_id=499580677]
 visible = false
 offset_left = -409.0
 offset_top = -82.0
@@ -209,24 +209,24 @@ offset_bottom = -31.0
 theme_override_font_sizes/font_size = 32
 text = "parrying!"
 
-[node name="Enemy" type="Node2D" parent="Fight Layer" node_paths=PackedStringArray("battlecharacter")]
+[node name="Enemy" type="Node2D" parent="Fight Layer" unique_id=1833987159 node_paths=PackedStringArray("battlecharacter")]
 position = Vector2(489, 57)
 script = ExtResource("2_iin7j")
 battlecharacter = NodePath("../Character")
 
-[node name="Enemy" type="TextureRect" parent="Fight Layer/Enemy"]
+[node name="Enemy" type="TextureRect" parent="Fight Layer/Enemy" unique_id=938386207]
 offset_left = -13.0
 offset_top = -30.0
 offset_right = 187.0
 offset_bottom = 223.0
 texture = ExtResource("2_hip74")
 
-[node name="Bullet Spawner" type="Node2D" parent="Fight Layer/Enemy"]
+[node name="Bullet Spawner" type="Node2D" parent="Fight Layer/Enemy" unique_id=1041066628]
 position = Vector2(87, 263)
 
-[node name="Bullet SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Enemy"]
+[node name="Bullet SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Enemy" unique_id=1915319545]
 
-[node name="Enemy HP Bar" type="ProgressBar" parent="Fight Layer/Enemy"]
+[node name="Enemy HP Bar" type="ProgressBar" parent="Fight Layer/Enemy" unique_id=494061637]
 offset_left = -149.0
 offset_top = 533.0
 offset_right = 347.0
@@ -236,7 +236,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_os4x4")
 value = 100.0
 script = ExtResource("13_pwb48")
 
-[node name="Combo Text" type="Label" parent="Fight Layer"]
+[node name="Combo Text" type="Label" parent="Fight Layer" unique_id=1760432686]
 offset_left = 833.0
 offset_top = 86.0
 offset_right = 873.0
@@ -245,7 +245,7 @@ theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 38
 script = ExtResource("11_ixjr5")
 
-[node name="Combo Arrows" type="Label" parent="Fight Layer"]
+[node name="Combo Arrows" type="Label" parent="Fight Layer" unique_id=1896569093]
 offset_left = 19.0
 offset_top = 366.0
 offset_right = 275.0
@@ -254,7 +254,7 @@ theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 
-[node name="Fight Button" type="Button" parent="."]
+[node name="Fight Button" type="Button" parent="." unique_id=1507301972]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 83.0
@@ -267,7 +267,7 @@ focus_neighbor_bottom = NodePath("../Pose Button")
 text = "Fight"
 script = ExtResource("13_0avxp")
 
-[node name="Magic Button" type="Button" parent="."]
+[node name="Magic Button" type="Button" parent="." unique_id=1628183014]
 layout_mode = 0
 offset_left = 752.0
 offset_top = 49.0
@@ -280,7 +280,7 @@ focus_neighbor_bottom = NodePath("../Run Button")
 text = "Magic"
 script = ExtResource("19_fm0w4")
 
-[node name="Pose Button" type="Button" parent="."]
+[node name="Pose Button" type="Button" parent="." unique_id=1744157348]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 330.0
@@ -293,7 +293,7 @@ focus_neighbor_bottom = NodePath(".")
 text = "Pose"
 script = ExtResource("24_os4x4")
 
-[node name="Run Button" type="Button" parent="."]
+[node name="Run Button" type="Button" parent="." unique_id=449516172]
 layout_mode = 0
 offset_left = 820.0
 offset_top = 411.0
@@ -307,11 +307,11 @@ text = "Run
 "
 script = ExtResource("25_os4x4")
 
-[node name="Button Beep" type="AudioStreamPlayer2D" parent="."]
+[node name="Button Beep" type="AudioStreamPlayer2D" parent="." unique_id=1492015297]
 position = Vector2(80, 514)
 volume_db = -17.971
 
-[node name="Enemy Image" type="TextureRect" parent="."]
+[node name="Enemy Image" type="TextureRect" parent="." unique_id=1120566900]
 layout_mode = 0
 offset_left = 478.0
 offset_top = 146.0
@@ -319,7 +319,7 @@ offset_right = 692.0
 offset_bottom = 431.0
 texture = ExtResource("2_hip74")
 
-[node name="Action Panel" type="Panel" parent="."]
+[node name="Action Panel" type="Panel" parent="." unique_id=1723607598]
 visible = false
 layout_mode = 0
 offset_left = 80.0
@@ -328,7 +328,7 @@ offset_right = 1037.0
 offset_bottom = 645.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_43vwj")
 
-[node name="Action Node" type="Node" parent="Action Panel" node_paths=PackedStringArray("panel", "text", "no", "yes", "skillcont", "skillpanel", "fightbutton", "posebutton", "runbutton", "magicbutton")]
+[node name="Action Node" type="Node" parent="Action Panel" unique_id=356791441 node_paths=PackedStringArray("panel", "text", "no", "yes", "skillcont", "skillpanel", "fightbutton", "posebutton", "runbutton", "magicbutton")]
 script = ExtResource("12_aip7a")
 panel = NodePath("..")
 text = NodePath("../Text")
@@ -341,7 +341,7 @@ posebutton = NodePath("../../Pose Button")
 runbutton = NodePath("../../Run Button")
 magicbutton = NodePath("../../Magic Button")
 
-[node name="Yes" type="Button" parent="Action Panel"]
+[node name="Yes" type="Button" parent="Action Panel" unique_id=1731584787]
 visible = false
 layout_mode = 0
 offset_left = 171.0
@@ -358,7 +358,7 @@ text = "Yes"
 flat = true
 script = ExtResource("13_i7srl")
 
-[node name="No" type="Button" parent="Action Panel"]
+[node name="No" type="Button" parent="Action Panel" unique_id=1125728103]
 visible = false
 layout_mode = 0
 offset_left = 652.0
@@ -375,7 +375,7 @@ text = "No"
 flat = true
 script = ExtResource("26_qvetm")
 
-[node name="Text" type="Label" parent="Action Panel"]
+[node name="Text" type="Label" parent="Action Panel" unique_id=523920997]
 visible = false
 layout_mode = 0
 offset_left = 18.0
@@ -385,7 +385,7 @@ offset_bottom = 116.0
 theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 32
 
-[node name="Skill Panel" type="Panel" parent="Action Panel"]
+[node name="Skill Panel" type="Panel" parent="Action Panel" unique_id=610363590]
 visible = false
 layout_mode = 0
 offset_top = -83.0
@@ -393,7 +393,7 @@ offset_right = 352.0
 offset_bottom = -14.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2trbe")
 
-[node name="Skill Container" type="HBoxContainer" parent="Action Panel/Skill Panel"]
+[node name="Skill Container" type="HBoxContainer" parent="Action Panel/Skill Panel" unique_id=672635220]
 visible = false
 layout_mode = 0
 offset_left = 7.0

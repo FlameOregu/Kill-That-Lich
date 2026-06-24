@@ -1,0 +1,6 @@
+~ start
+Save Point: Would you like to save your game?
+- Yes
+	do _save()
+	Save Point: Your game has been saved successfully.
+- No

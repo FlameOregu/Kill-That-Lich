@@ -6,12 +6,15 @@
 [ext_resource type="Script" uid="uid://oohnccy0lu08" path="res://Scripts/npc.gd" id="4_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://b3ayugh2bbce4" path="res://Assets/NPC Interact Icon.png" id="4_fgofq"]
 [ext_resource type="Texture2D" uid="uid://cjlipwdqdq2oa" path="res://Assets/Solq.png" id="4_kldst"]
+[ext_resource type="Resource" uid="uid://mx0s32vo7h6e" path="res://Dialogue/npc_test.dialogue" id="4_wxwew"]
 [ext_resource type="PackedScene" uid="uid://bbiwqalngn2n0" path="res://Scenes/save_point.tscn" id="6_7lihs"]
+[ext_resource type="Resource" uid="uid://dwxhej8jp5eic" path="res://Dialogue/npc_test1.dialogue" id="7_acvyw"]
 [ext_resource type="FontFile" uid="uid://cqt8m8iyjqsd8" path="res://Assets/videotype.otf" id="8_2irst"]
 [ext_resource type="Script" uid="uid://mnjng4uv8n8h" path="res://Scripts/game_menu_logic.gd" id="8_bf53h"]
 [ext_resource type="Script" uid="uid://cv7sp6i8fwpg1" path="res://Scripts/inventory_logic.gd" id="9_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://bfu4cgve52yye" path="res://Scenes/clear_item.tscn" id="9_3so38"]
 [ext_resource type="Texture2D" uid="uid://cbwbuxb0t7bm0" path="res://Assets/item_border.png" id="9_71axn"]
+[ext_resource type="Resource" uid="uid://cv3as0d0n3s0e" path="res://Dialogue/save.dialogue" id="9_alh3a"]
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="9_wxwew"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3so38"]
@@ -173,6 +176,7 @@ position = Vector2(-8, -75)
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("4_b2bpf")
+dialogue_resource = ExtResource("4_wxwew")
 
 [node name="Interact Icon" type="Sprite2D" parent="NPC Test2" unique_id=481235414]
 position = Vector2(3, -29)
@@ -202,6 +206,7 @@ position = Vector2(-39, -75)
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("4_b2bpf")
+dialogue_resource = ExtResource("7_acvyw")
 
 [node name="Interact Icon" type="Sprite2D" parent="NPC Test" unique_id=1490559499]
 position = Vector2(3, -29)
@@ -229,6 +234,7 @@ shape = SubResource("RectangleShape2D_7lihs")
 [node name="Save Point" parent="." unique_id=657882146 instance=ExtResource("6_7lihs")]
 position = Vector2(20, -89)
 scale = Vector2(0.352593, 0.319902)
+dialogue_resource = ExtResource("9_alh3a")
 
 [node name="Character" parent="." unique_id=1618424144 instance=ExtResource("1_rdvmp")]
 position = Vector2(-9, -20)
@@ -243,6 +249,7 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Menu Layer" type="CanvasLayer" parent="." unique_id=940008656]
+visible = false
 
 [node name="Panel Node" type="Node" parent="Menu Layer" unique_id=1231221757 node_paths=PackedStringArray("skillpanel", "invpanel", "statspanel", "skillstab", "invtab", "statstab")]
 script = ExtResource("8_bf53h")
@@ -311,7 +318,6 @@ theme_override_font_sizes/font_size = 36
 text = "Aura:"
 
 [node name="Inventory Panel" type="Panel" parent="Menu Layer" unique_id=24645759]
-visible = false
 offset_left = 21.0
 offset_top = 30.0
 offset_right = 1126.0
@@ -482,7 +488,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_alh3a")
 text = "Toss"
 
 [node name="Skill Panel" type="Panel" parent="Menu Layer" unique_id=1000212504]
-visible = false
 offset_left = 21.0
 offset_top = 30.0
 offset_right = 1126.0
