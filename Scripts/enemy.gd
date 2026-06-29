@@ -55,6 +55,7 @@ func _wavebullet(shootheight):
 		wavebullet.wave_speed_mult = 2.0
 
 func _attack1() -> void:
+	await get_tree().create_timer(0.35).timeout
 	for i in range(20):
 		_trackshoot()
 		await get_tree().create_timer(0.65).timeout

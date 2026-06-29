@@ -7,6 +7,7 @@ var maxsanity = 100
 var maxmana = 100
 var sanity = maxsanity
 var mana = maxmana
+var battle = false
 var char_pos
 var magics = ["res://Scenes/fireball.tscn"]
 var poses = ["res://Scenes/rest_pose.tscn"]

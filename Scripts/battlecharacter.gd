@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 @export var basespeed = 350
-var speed = basespeed
+var speed : int = basespeed
 var direction:Vector2
 var maxhealth
 var maxmana
@@ -36,25 +36,30 @@ func _physics_process(_delta):
 func _on_hurtbox_area_entered(area):
 	if $Parrying.parry == true:
 		$Parrying.parrycd = false
+		$"Player SFX".stream = preload("res://Assets/SFX/skateboard parry 3.mp3")
+		$"Player SFX".play()
 	if area.name == "hitbox" and invincible == false:
 		_gethurt()
 
 func _gethurt():
 	_on_healthchange(10)
-	$"Player SFX".stream = preload("res://Assets/SFX/hit 6.mp3")
-	$"Player SFX".play()
-	invincible = true
-	$"Character Sprite".self_modulate.a = 0.5
-	await get_tree().create_timer(0.55).timeout
-	invincible = false
-	$"Character Sprite".self_modulate.a = 255
+	if currenthealth <= 0:
+		_deathscreen()
+	else:
+		$"Player SFX".stream = preload("res://Assets/SFX/hit 6.mp3")
+		$"Player SFX".play()
+		invincible = true
+		$"Character Sprite".self_modulate.a = 0.5
+		await get_tree().create_timer(0.55).timeout
+		invincible = false
+		$"Character Sprite".self_modulate.a = 255
 
 func _on_endfight() -> void:
 	invincible = true
 	fighting = false
 	infight = false
 
-func _on_engage() -> void:
+func _on_engage() -> void:#start of fight but not fighting
 	$Parrying.parrycd = false
 	$Parrying.parry = false
 	invincible = false
@@ -74,3 +79,6 @@ func _on_healthchange(damage : int):
 
 func _on_endbattle() -> void:
 	GlobalSignals.emit_signal("battlestats", currenthealth, maxhealth, currentmana, maxmana)
+
+func _deathscreen():
+	get_tree().change_scene_to_file("res://Scenes/death.tscn")

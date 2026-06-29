@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://c7y2uf7ok6afi"]
+
+[ext_resource type="Script" uid="uid://btjb3y3r4tn0e" path="res://Scenes/death.gd" id="1_066rk"]
+[ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="1_dkyka"]
+[ext_resource type="StyleBox" uid="uid://bdf7iqmyu1dq5" path="res://Scenes/startquitbutton.tres" id="2_066rk"]
+[ext_resource type="Script" uid="uid://d3ijslh0sfy3w" path="res://Scripts/continue_button.gd" id="3_xejl3"]
+[ext_resource type="Script" uid="uid://ije1a2y7rf6a" path="res://Scripts/quit_button.gd" id="4_65qoq"]
+[ext_resource type="FontFile" uid="uid://cqt8m8iyjqsd8" path="res://Assets/videotype.otf" id="5_tcnkp"]
+[ext_resource type="AudioStream" uid="uid://b3s8bqdm5oqbf" path="res://Assets/SFX/beep.mp3" id="7_xejl3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw0p4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra8a5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[node name="Death Scene" type="Control" unique_id=265707014]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_066rk")
+
+[node name="Temp Background" type="ColorRect" parent="." unique_id=611436117]
+custom_minimum_size = Vector2(1152, 640)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.00351917, 0.00351917, 0.00351917, 1)
+
+[node name="Continue Button" type="Button" parent="." unique_id=527540635]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 359.0
+offset_right = 398.0
+offset_bottom = 433.0
+theme_override_fonts/font = ExtResource("1_dkyka")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_rw0p4")
+theme_override_styles/focus = ExtResource("2_066rk")
+text = "Try Again"
+script = ExtResource("3_xejl3")
+
+[node name="Quit Button" type="Button" parent="." unique_id=171901437]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 359.0
+offset_right = 940.0
+offset_bottom = 433.0
+theme_override_fonts/font = ExtResource("1_dkyka")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_ra8a5")
+theme_override_styles/focus = ExtResource("2_066rk")
+text = "Quit"
+script = ExtResource("4_65qoq")
+
+[node name="Label" type="Label" parent="." unique_id=1273113638]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 86.0
+offset_right = 935.0
+offset_bottom = 169.0
+theme_override_fonts/font = ExtResource("5_tcnkp")
+theme_override_font_sizes/font_size = 32
+text = "You lost.
+You feel your soul ready to form again."
+horizontal_alignment = 1
+
+[node name="Button Beep" type="AudioStreamPlayer2D" parent="." unique_id=365254620]
+position = Vector2(578, 738)
+stream = ExtResource("7_xejl3")
+volume_db = -17.971
+
+[connection signal="focus_entered" from="Continue Button" to="Continue Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Continue Button" to="Continue Button" method="_on_focus_exited"]
+[connection signal="focus_entered" from="Quit Button" to="Quit Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Quit Button" to="Quit Button" method="_on_focus_exited"]

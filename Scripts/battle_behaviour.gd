@@ -23,4 +23,6 @@ func _battle_roller():
 		if randi_range(1,3) == 3:
 			battlestarted = true
 			print("Battle Commence")
+			GlobalSignals.char_pos = $"../../Character".global_position
+			GlobalSignals.battle = true
 			get_tree().change_scene_to_file("res://Scenes/BattleScene.tscn")

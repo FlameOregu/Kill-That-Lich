@@ -13,9 +13,10 @@ signal openmenu
 
 func _ready():
 	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
-	if GlobalSignals.continued == true:
+	if GlobalSignals.continued == true or GlobalSignals.battle == true:
 		position = GlobalSignals.char_pos
 		GlobalSignals.continued = false
+		GlobalSignals.battle = false
 
 func _process(_delta):
 	direction = Input.get_vector("left","right","up","down") 

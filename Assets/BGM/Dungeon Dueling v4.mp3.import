@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv8p1ktygemg4"
+path="res://.godot/imported/Dungeon Dueling v4.mp3-07c1f2e02ff4f7f7646145f29752f29c.mp3str"
+
+[deps]
+
+source_file="res://Assets/BGM/Dungeon Dueling v4.mp3"
+dest_files=["res://.godot/imported/Dungeon Dueling v4.mp3-07c1f2e02ff4f7f7646145f29752f29c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

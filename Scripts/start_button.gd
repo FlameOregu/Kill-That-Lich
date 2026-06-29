@@ -6,6 +6,7 @@ func _ready():
 
 func _on_focus_entered() -> void:
 	focus = true
+	$"../Button Beep".play()
 
 func _input(event: InputEvent) -> void:
 	if focus == true and Input.is_action_just_pressed("interact"):

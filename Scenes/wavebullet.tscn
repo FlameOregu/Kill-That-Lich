@@ -1,30 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnocxvabso1yu"]
+[gd_scene format=3 uid="uid://dnocxvabso1yu"]
 
 [ext_resource type="Script" uid="uid://da2oiwuqt7bvr" path="res://Scripts/wavebullet.gd" id="1_fu7qr"]
-[ext_resource type="Texture2D" uid="uid://cdbpndmn48net" path="res://Assets/pixilart-drawing_2.png" id="2_rsebc"]
-
+[ext_resource type="Texture2D" uid="uid://bf0fl31rip0px" path="res://Assets/bullets/wavebullet.png" id="2_fu7qr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3eaj1"]
-size = Vector2(37.108, 10.5)
+size = Vector2(32.093384, 10)
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="Node2D" unique_id=384031314]
 position = Vector2(532, 299)
 script = ExtResource("1_fu7qr")
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." unique_id=212269589]
 position = Vector2(1, -6)
 collision_layer = 8
 collision_mask = 2
 
-[node name="hitbox collision" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(19, 6)
-scale = Vector2(0.99709, 1)
-shape = SubResource("RectangleShape2D_3eaj1")
-
-[node name="boolet sprite" type="Sprite2D" parent="hitbox"]
+[node name="boolet sprite" type="Sprite2D" parent="hitbox" unique_id=876416762]
 position = Vector2(14, 6)
 scale = Vector2(1.1275, 0.705)
-texture = ExtResource("2_rsebc")
+texture = ExtResource("2_fu7qr")
 flip_h = true
+
+[node name="hitbox collision" type="CollisionShape2D" parent="hitbox" unique_id=934828472]
+position = Vector2(17, 6)
+scale = Vector2(0.99709, 1)
+shape = SubResource("RectangleShape2D_3eaj1")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_area_entered"]

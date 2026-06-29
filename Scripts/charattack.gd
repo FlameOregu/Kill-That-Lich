@@ -76,8 +76,7 @@ func _input(event):
 		
 			elif skatecombo == ["up", "down", "right", "left"]: #kickflip
 				_kickflip()
-		
-		$"..".speed = $"..".basespeed
+			$"..".speed = $"..".basespeed
 	else:
 		if Input.is_action_just_pressed("interact"):
 			$"..".speed = 180

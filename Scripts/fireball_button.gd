@@ -1,5 +1,5 @@
 extends Button
-var descript_text = "Fireball (50 MP) - Shoot a ball of magical fire using your magical essence to deal damage."
+var descript_text = "Fireball (50 MP) - Shoot a ball of magical fire using your magical essence to magically deal magic damage."
 var textbutton : Node
 var actionpanel : Node
 var actionnode : Node

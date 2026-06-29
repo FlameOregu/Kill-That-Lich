@@ -4,6 +4,7 @@ var save_path = GlobalSignals.save_path
 
 func _on_focus_entered() -> void:
 	focus = true
+	$"../Button Beep".play()
 
 func _on_focus_exited() -> void:
 	focus = false
