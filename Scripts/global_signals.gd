@@ -33,6 +33,8 @@ func _save():
 	file.store_var(var_to_str(maxsanity))
 	file.store_var(var_to_str(maxmana))
 	file.store_var(var_to_str(inventory))
+	file.store_var(var_to_str(poses))
+	file.store_var(var_to_str(magics))
 
 func load_data():
 	if FileAccess.file_exists(save_path):
@@ -43,3 +45,5 @@ func load_data():
 		maxmana = str_to_var(file.get_var(true))
 		maxsanity = str_to_var(file.get_var(true))
 		inventory = str_to_var(file.get_var(true))
+		poses = str_to_var(file.get_var(true))
+		magics = str_to_var(file.get_var(true))

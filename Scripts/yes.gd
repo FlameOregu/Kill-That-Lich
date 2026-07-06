@@ -18,7 +18,7 @@ func _on_select_run() -> void:
 	button = "run"
 	runselect = true
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cancel") == true and visible == true:
 		_cancel()
 

@@ -211,6 +211,7 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
 [node name="Player SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Character" unique_id=693535044]
+volume_db = 9.233
 
 [node name="parryingtxt" type="Label" parent="Fight Layer/Character" unique_id=499580677]
 visible = false
@@ -419,7 +420,6 @@ offset_bottom = 60.0
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=707150514]
 stream = SubResource("AudioStreamOggVorbis_fm0w4")
-autoplay = true
 
 [connection signal="healthChanged" from="Fight Layer/Character" to="Bar Layer/Health Bar" method="_on_character_health_changed"]
 [connection signal="healthChanged" from="Fight Layer/Character" to="Bar Layer/HP Text" method="_on_character_health_changed"]

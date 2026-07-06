@@ -16,6 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://cbwbuxb0t7bm0" path="res://Assets/item_border.png" id="9_71axn"]
 [ext_resource type="Resource" uid="uid://cv3as0d0n3s0e" path="res://Dialogue/save.dialogue" id="9_alh3a"]
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="9_wxwew"]
+[ext_resource type="FontFile" uid="uid://cdn423ddcht34" path="res://Assets/LowresPixel-Regular.otf" id="17_4q8tf"]
+[ext_resource type="Script" uid="uid://c32ol7cw755cb" path="res://Scenes/learn_skill_button.gd" id="18_x3xnh"]
+[ext_resource type="AudioStream" uid="uid://b3s8bqdm5oqbf" path="res://Assets/SFX/beep.mp3" id="19_8r6kd"]
+[ext_resource type="Texture2D" uid="uid://w7785gg32alr" path="res://Assets/FIRE ball skill node.png" id="19_rajel"]
+[ext_resource type="Script" uid="uid://c4qhowi73r7oc" path="res://Scenes/fire_ball_skill_node.gd" id="20_vvhu1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3so38"]
 texture = ExtResource("1_3so38")
@@ -149,6 +154,34 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r6kd"]
+bg_color = Color(0.2946895, 0.20163614, 0.1007785, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfod6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rajel"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvhu1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dahhg"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
@@ -249,7 +282,6 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Menu Layer" type="CanvasLayer" parent="." unique_id=940008656]
-visible = false
 
 [node name="Panel Node" type="Node" parent="Menu Layer" unique_id=1231221757 node_paths=PackedStringArray("skillpanel", "invpanel", "statspanel", "skillstab", "invtab", "statstab")]
 script = ExtResource("8_bf53h")
@@ -318,6 +350,7 @@ theme_override_font_sizes/font_size = 36
 text = "Aura:"
 
 [node name="Inventory Panel" type="Panel" parent="Menu Layer" unique_id=24645759]
+visible = false
 offset_left = 21.0
 offset_top = 30.0
 offset_right = 1126.0
@@ -495,6 +528,121 @@ offset_bottom = 615.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bf53h")
 metadata/_edit_use_anchors_ = true
 
+[node name="Node Desc Panel" type="Panel" parent="Menu Layer/Skill Panel" unique_id=79817239]
+layout_mode = 0
+offset_left = 793.0
+offset_top = 82.0
+offset_right = 1076.0
+offset_bottom = 478.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8r6kd")
+
+[node name="Title Panel" type="Panel" parent="Menu Layer/Skill Panel/Node Desc Panel" unique_id=444357724]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 16.0
+offset_right = 262.0
+offset_bottom = 82.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tfod6")
+
+[node name="Title Text" type="Label" parent="Menu Layer/Skill Panel/Node Desc Panel/Title Panel" unique_id=2034793601]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 235.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("17_4q8tf")
+theme_override_font_sizes/font_size = 32
+text = "Title Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description Panel" type="Panel" parent="Menu Layer/Skill Panel/Node Desc Panel" unique_id=8836750]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 89.0
+offset_right = 262.0
+offset_bottom = 296.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rajel")
+
+[node name="Description Text" type="Label" parent="Menu Layer/Skill Panel/Node Desc Panel/Description Panel" unique_id=182250533]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 232.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("17_4q8tf")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
+
+[node name="Learn" type="Button" parent="Menu Layer/Skill Panel/Node Desc Panel" unique_id=900486732 node_paths=PackedStringArray("buttonbeep")]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 310.0
+offset_right = 244.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("17_4q8tf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vvhu1")
+text = "Learn"
+script = ExtResource("18_x3xnh")
+buttonbeep = NodePath("../../../Button Beep")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu Layer/Skill Panel" unique_id=975771823]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 493.0
+offset_right = 728.0
+offset_bottom = 564.0
+theme_override_constants/separation = 32
+
+[node name="Skateboard Tricks" type="Label" parent="Menu Layer/Skill Panel/HBoxContainer" unique_id=558985469]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("17_4q8tf")
+theme_override_font_sizes/font_size = 32
+text = "Skate Trix"
+
+[node name="Magicks" type="Label" parent="Menu Layer/Skill Panel/HBoxContainer" unique_id=1613341376]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("17_4q8tf")
+theme_override_font_sizes/font_size = 32
+text = "Magicks"
+
+[node name="Poses" type="Label" parent="Menu Layer/Skill Panel/HBoxContainer" unique_id=520122650]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("17_4q8tf")
+theme_override_font_sizes/font_size = 32
+text = "Poses"
+
+[node name="Seventh Sense" type="Label" parent="Menu Layer/Skill Panel/HBoxContainer" unique_id=779057403]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("17_4q8tf")
+theme_override_font_sizes/font_size = 32
+text = "Seventh Sense"
+
+[node name="Skate Trix Nodes" type="HBoxContainer" parent="Menu Layer/Skill Panel" unique_id=344067343]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 410.0
+offset_right = 157.0
+offset_bottom = 474.0
+
+[node name="Fire Ball Skill" type="Button" parent="Menu Layer/Skill Panel/Skate Trix Nodes" unique_id=550581873]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("19_rajel")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("20_vvhu1")
+
 [node name="Stats Tab" type="Panel" parent="Menu Layer" unique_id=1122226557]
 anchors_preset = -1
 anchor_left = 1.8541663
@@ -594,6 +742,10 @@ offset_right = 1086.0
 offset_bottom = 28.0
 text = "Press X to quit menu, Tab to switch Tabs"
 
+[node name="Button Beep" type="AudioStreamPlayer2D" parent="Menu Layer" unique_id=1023057233]
+stream = ExtResource("19_8r6kd")
+volume_db = -17.333
+
 [node name="Text Layer" type="CanvasLayer" parent="." unique_id=1938443995]
 
 [connection signal="hide_icon" from="NPC Test2" to="NPC Test2" method="_on_hide_icon"]
@@ -606,3 +758,6 @@ text = "Press X to quit menu, Tab to switch Tabs"
 [connection signal="openmenu" from="Character" to="Menu Layer/Panel Node" method="_openmenu"]
 [connection signal="closemenu" from="Menu Layer/Panel Node" to="Character" method="_closemenu"]
 [connection signal="button_down" from="Menu Layer/Inventory Panel/Inventory Container/Item 1" to="Menu Layer/Inventory Panel/Inventory Container/Item 1" method="_on_button_down"]
+[connection signal="focus_entered" from="Menu Layer/Skill Panel/Node Desc Panel/Learn" to="Menu Layer/Skill Panel/Node Desc Panel/Learn" method="_on_focus_entered"]
+[connection signal="button_down" from="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_button_down"]
+[connection signal="focus_entered" from="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_focus_entered"]
