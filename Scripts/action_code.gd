@@ -57,17 +57,20 @@ func _on_select_magic() -> void:
 		skillcont.add_child(scene)
 		actions.append(scene)
 	_showskills()
-	for i in range(len(actions)):
-		if i != 0 and i != len(actions):
-			actions[(i-1)].focus_neighbor_right = actions[i].get_path()
-			actions[(i-1)].focus_neighbor_left = actions[(i-2)].get_path()
-		elif i == 0 and i != len(actions):
-			actions[0].focus_neighbor_right = actions[i].get_path()
-		elif i == len(actions):
-			actions[(i-1)].focus_neighbor_left = actions[(i-2)].get_path()
-	actions[0].focus_neighbor_left = actions[0].get_path() #sets the first button in array to select itself when pressed left
-	actions[-1].focus_neighbor_right = actions[-1].get_path() #sets the last button in array to select itself when pressed right
-	actions[0].grab_focus()
+	if GlobalSignals.magics.is_empty():
+		pass
+	else:
+		for i in range(len(actions)):
+			if i != 0 and i != len(actions):
+				actions[(i-1)].focus_neighbor_right = actions[i].get_path()
+				actions[(i-1)].focus_neighbor_left = actions[(i-2)].get_path()
+			elif i == 0 and i != len(actions):
+				actions[0].focus_neighbor_right = actions[i].get_path()
+			elif i == len(actions):
+				actions[(i-1)].focus_neighbor_left = actions[(i-2)].get_path()
+			actions[0].focus_neighbor_left = actions[0].get_path() #sets the first button in array to select itself when pressed left
+			actions[-1].focus_neighbor_right = actions[-1].get_path() #sets the last button in array to select itself when pressed right
+			actions[0].grab_focus()
 
 func _on_select_pose() -> void:
 	button = "pose"

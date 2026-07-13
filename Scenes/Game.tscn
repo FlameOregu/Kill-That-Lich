@@ -282,6 +282,7 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Menu Layer" type="CanvasLayer" parent="." unique_id=940008656]
+visible = false
 
 [node name="Panel Node" type="Node" parent="Menu Layer" unique_id=1231221757 node_paths=PackedStringArray("skillpanel", "invpanel", "statspanel", "skillstab", "invtab", "statstab")]
 script = ExtResource("8_bf53h")
@@ -350,7 +351,6 @@ theme_override_font_sizes/font_size = 36
 text = "Aura:"
 
 [node name="Inventory Panel" type="Panel" parent="Menu Layer" unique_id=24645759]
-visible = false
 offset_left = 21.0
 offset_top = 30.0
 offset_right = 1126.0
@@ -531,9 +531,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Node Desc Panel" type="Panel" parent="Menu Layer/Skill Panel" unique_id=79817239]
 layout_mode = 0
 offset_left = 793.0
-offset_top = 82.0
+offset_top = 59.0
 offset_right = 1076.0
-offset_bottom = 478.0
+offset_bottom = 455.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8r6kd")
 
 [node name="Title Panel" type="Panel" parent="Menu Layer/Skill Panel/Node Desc Panel" unique_id=444357724]
@@ -757,7 +757,9 @@ volume_db = -17.333
 [connection signal="on_character_moving" from="Character" to="BattleArea" method="_on_character_moving"]
 [connection signal="openmenu" from="Character" to="Menu Layer/Panel Node" method="_openmenu"]
 [connection signal="closemenu" from="Menu Layer/Panel Node" to="Character" method="_closemenu"]
+[connection signal="skillshow" from="Menu Layer/Panel Node" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_panel_node_skillshow"]
 [connection signal="button_down" from="Menu Layer/Inventory Panel/Inventory Container/Item 1" to="Menu Layer/Inventory Panel/Inventory Container/Item 1" method="_on_button_down"]
+[connection signal="button_down" from="Menu Layer/Skill Panel/Node Desc Panel/Learn" to="Menu Layer/Skill Panel/Node Desc Panel/Learn" method="_on_button_down"]
 [connection signal="focus_entered" from="Menu Layer/Skill Panel/Node Desc Panel/Learn" to="Menu Layer/Skill Panel/Node Desc Panel/Learn" method="_on_focus_entered"]
 [connection signal="button_down" from="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_button_down"]
 [connection signal="focus_entered" from="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_focus_entered"]

@@ -5,10 +5,12 @@ extends Node
 @export var skillstab : Control
 @export var invtab : Control
 @export var statstab : Control
+signal skillshow
 var inmenu = false
 signal closemenu
 
 func _showskills():
+	skillshow.emit()
 	skillpanel.show()
 	statspanel.hide()
 	skillstab.size = Vector2(144,26)
