@@ -59,26 +59,20 @@ func _kickflip():
 	last_atk = "kickflip"
 
 func _input(event):
-	if $"..".fighting == true:
-		if Input.is_action_just_pressed("interact") == true: #startcombo
-			$"..".speed = 180
-			combo_active = true
-			skatecombo.clear()
-			
-		if combo_active == true:
-			_combostart()
+	if Input.is_action_just_pressed("interact") == true: #startcombo
+		$"..".speed = 180
+		combo_active = true
+		skatecombo.clear()
 		
-		if Input.is_action_just_released("interact") == true: #endcombo/attack
-			combo_active = false
-			arrow_string = ""
-			if skatecombo == ["down", "up"]: #ollie
-				_ollie()
-		
-			elif skatecombo == ["up", "down", "right", "left"]: #kickflip
-				_kickflip()
-			$"..".speed = $"..".basespeed
-	else:
-		if Input.is_action_just_pressed("interact"):
-			$"..".speed = 180
-		elif Input.is_action_just_released("interact"):
-			$"..".speed = $"..".basespeed
+	if combo_active == true:
+		_combostart()
+	
+	if Input.is_action_just_released("interact") == true: #endcombo/attack
+		combo_active = false
+		arrow_string = ""
+		if skatecombo == ["down", "up"]: #ollie
+			_ollie()
+	
+		elif skatecombo == ["up", "down", "right", "left"]: #kickflip
+			_kickflip()
+		$"..".speed = $"..".basespeed

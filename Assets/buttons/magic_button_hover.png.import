@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8jn34e2bbvxx"
-path="res://.godot/imported/fight14highlight.png-9fd49951a5c58410167f09006a8ce6e2.ctex"
+uid="uid://b125ro5cnqisa"
+path="res://.godot/imported/magic_button_hover.png-b858c8cb7991206f2510eeb5562ca910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fightbutton/fight14highlight.png"
-dest_files=["res://.godot/imported/fight14highlight.png-9fd49951a5c58410167f09006a8ce6e2.ctex"]
+source_file="res://Assets/buttons/magic_button_hover.png"
+dest_files=["res://.godot/imported/magic_button_hover.png-b858c8cb7991206f2510eeb5562ca910.ctex"]
 
 [params]
 

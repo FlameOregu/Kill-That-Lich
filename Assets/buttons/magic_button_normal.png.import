@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7g0l32av74b"
-path="res://.godot/imported/Untitled_Artwork_2.png-63e6a55d2ea28a66169e7084c8ea07a1.ctex"
+uid="uid://davugow0cqka"
+path="res://.godot/imported/magic_button_normal.png-12eedb84dc7f56e12765f0277694f730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Untitled_Artwork_2.png"
-dest_files=["res://.godot/imported/Untitled_Artwork_2.png-63e6a55d2ea28a66169e7084c8ea07a1.ctex"]
+source_file="res://Assets/buttons/magic_button_normal.png"
+dest_files=["res://.godot/imported/magic_button_normal.png-12eedb84dc7f56e12765f0277694f730.ctex"]
 
 [params]
 

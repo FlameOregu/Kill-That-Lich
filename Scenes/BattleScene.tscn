@@ -18,11 +18,35 @@
 [ext_resource type="Script" uid="uid://bno8h7l7p70u5" path="res://Scripts/fightbutton.gd" id="13_0avxp"]
 [ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scripts/yes.gd" id="13_i7srl"]
 [ext_resource type="Script" uid="uid://cgeiahtk8b72l" path="res://Scripts/enemy_hp_bar.gd" id="13_pwb48"]
+[ext_resource type="Texture2D" uid="uid://slvu2v8ddqfs" path="res://Assets/buttons/fight_button_normal.png" id="17_eqbi2"]
+[ext_resource type="FontFile" uid="uid://cdn423ddcht34" path="res://Assets/LowresPixel-Regular.otf" id="17_xy0dg"]
+[ext_resource type="Texture2D" uid="uid://ckeramfi6jxlj" path="res://Assets/buttons/fight_button_hover.png" id="18_xy0dg"]
 [ext_resource type="Script" uid="uid://bket61yxb8kml" path="res://Scripts/magic_button.gd" id="19_fm0w4"]
 [ext_resource type="Script" uid="uid://buqyqcccyonmt" path="res://Scripts/battlecharacter.gd" id="20_ksqd2"]
+[ext_resource type="Texture2D" uid="uid://davugow0cqka" path="res://Assets/buttons/magic_button_normal.png" id="20_oskno"]
+[ext_resource type="Texture2D" uid="uid://b125ro5cnqisa" path="res://Assets/buttons/magic_button_hover.png" id="21_nd4jk"]
+[ext_resource type="Texture2D" uid="uid://5wxftlvm7ib3" path="res://Assets/buttons/pose_button_normal.png" id="23_ar6iy"]
 [ext_resource type="Script" uid="uid://68i5u6q3lv65" path="res://Scripts/pose_button.gd" id="24_os4x4"]
+[ext_resource type="Texture2D" uid="uid://d3yhcvbst8lha" path="res://Assets/buttons/pose_button_hover.png" id="24_x3tt7"]
 [ext_resource type="Script" uid="uid://t6js6ipvwdte" path="res://Scripts/run_button.gd" id="25_os4x4"]
 [ext_resource type="Script" uid="uid://dbqc3nikk8v1c" path="res://Scripts/no_button.gd" id="26_qvetm"]
+[ext_resource type="Texture2D" uid="uid://cjjumfnmwdwg8" path="res://Assets/buttons/talk_button_normal.png" id="26_segcg"]
+[ext_resource type="Script" uid="uid://e6nwqb3dnliw" path="res://Scenes/ability_text.gd" id="33_nd4jk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71qfg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os4x4"]
+bg_color = Color(0.754089, 0.157821, 0.142145, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.737375, 0.750837, 0.730748, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwb48"]
 bg_color = Color(0.556662, 0.605576, 0.641736, 1)
@@ -43,20 +67,28 @@ size = Vector2(26, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwb48"]
 size = Vector2(41, 71)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71qfg"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ia2v"]
+texture = ExtResource("17_eqbi2")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os4x4"]
-bg_color = Color(0.754089, 0.157821, 0.142145, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.737375, 0.750837, 0.730748, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkpxd"]
+texture = ExtResource("18_xy0dg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5hyi2"]
+texture = ExtResource("20_oskno")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6jix8"]
+texture = ExtResource("21_nd4jk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kf0x2"]
+texture = ExtResource("23_ar6iy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nn4bo"]
+texture = ExtResource("24_x3tt7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrbtu"]
+texture = ExtResource("26_segcg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h22wu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43vwj"]
 bg_color = Color(0, 0, 0, 1)
@@ -106,6 +138,25 @@ position = Vector2(576, 324)
 
 [node name="Bar Layer" type="CanvasLayer" parent="." unique_id=522632507]
 layer = 2
+
+[node name="Enemy HP Bar" type="ProgressBar" parent="Bar Layer" unique_id=494061637 node_paths=PackedStringArray("Enemy")]
+offset_left = 181.0
+offset_top = 601.0
+offset_right = 1019.0
+offset_bottom = 638.0
+theme_override_styles/background = SubResource("StyleBoxFlat_71qfg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_os4x4")
+value = 100.0
+script = ExtResource("13_pwb48")
+Enemy = NodePath("../../Fight Layer/Enemy")
+
+[node name="Enemy HP Text" type="Label" parent="Bar Layer/Enemy HP Bar" unique_id=751043565]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 128.0
+offset_bottom = 29.0
+text = "Opponent's HP"
 
 [node name="Health Bar" type="TextureProgressBar" parent="Bar Layer" unique_id=1967801600 node_paths=PackedStringArray("battlecharacter")]
 offset_left = 1.0
@@ -211,7 +262,7 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pwb48")
 
 [node name="Player SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Character" unique_id=693535044]
-volume_db = 9.233
+volume_db = -0.517
 
 [node name="parryingtxt" type="Label" parent="Fight Layer/Character" unique_id=499580677]
 visible = false
@@ -240,16 +291,6 @@ position = Vector2(87, 263)
 [node name="Bullet SFX" type="AudioStreamPlayer2D" parent="Fight Layer/Enemy" unique_id=1915319545]
 volume_db = -7.583
 
-[node name="Enemy HP Bar" type="ProgressBar" parent="Fight Layer/Enemy" unique_id=494061637]
-offset_left = -149.0
-offset_top = 533.0
-offset_right = 347.0
-offset_bottom = 565.0
-theme_override_styles/background = SubResource("StyleBoxFlat_71qfg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_os4x4")
-value = 100.0
-script = ExtResource("13_pwb48")
-
 [node name="Combo Text" type="Label" parent="Fight Layer" unique_id=1760432686]
 offset_left = 833.0
 offset_top = 86.0
@@ -271,62 +312,75 @@ theme_override_fonts/font = ExtResource("3_ahap6")
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 
+[node name="Action Points" type="Label" parent="." unique_id=1098666613]
+layout_mode = 0
+offset_left = 838.0
+offset_top = 4.0
+offset_right = 1056.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("17_xy0dg")
+theme_override_font_sizes/font_size = 32
+text = "Action Points: "
+
 [node name="Fight Button" type="Button" parent="." unique_id=1507301972]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 80.0
-offset_right = 243.0
-offset_bottom = 288.0
+offset_left = 12.0
+offset_top = 67.0
+offset_right = 246.0
+offset_bottom = 275.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../Magic Button")
 focus_neighbor_bottom = NodePath("../Pose Button")
-text = "Fight"
+theme_override_styles/normal = SubResource("StyleBoxTexture_0ia2v")
+theme_override_styles/focus = SubResource("StyleBoxTexture_tkpxd")
 script = ExtResource("13_0avxp")
 
 [node name="Magic Button" type="Button" parent="." unique_id=1628183014]
 layout_mode = 0
-offset_left = 752.0
-offset_top = 49.0
-offset_right = 1030.0
-offset_bottom = 248.0
+offset_left = 745.0
+offset_top = 52.0
+offset_right = 1023.0
+offset_bottom = 251.0
 focus_neighbor_left = NodePath("../Fight Button")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Run Button")
-text = "Magic"
+theme_override_styles/normal = SubResource("StyleBoxTexture_5hyi2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_6jix8")
 script = ExtResource("19_fm0w4")
 
 [node name="Pose Button" type="Button" parent="." unique_id=1744157348]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 330.0
-offset_right = 350.0
-offset_bottom = 532.0
+offset_left = 15.0
+offset_top = 252.0
+offset_right = 295.0
+offset_bottom = 454.0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Fight Button")
 focus_neighbor_right = NodePath("../Run Button")
 focus_neighbor_bottom = NodePath(".")
-text = "Pose"
+theme_override_styles/normal = SubResource("StyleBoxTexture_kf0x2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_nn4bo")
 script = ExtResource("24_os4x4")
 
 [node name="Run Button" type="Button" parent="." unique_id=449516172]
 layout_mode = 0
-offset_left = 820.0
-offset_top = 411.0
-offset_right = 928.0
-offset_bottom = 498.0
+offset_left = 746.0
+offset_top = 307.0
+offset_right = 987.0
+offset_bottom = 475.0
 focus_neighbor_left = NodePath("../Pose Button")
 focus_neighbor_top = NodePath("../Magic Button")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
-text = "Run
-"
+theme_override_styles/normal = SubResource("StyleBoxTexture_qrbtu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_h22wu")
 script = ExtResource("25_os4x4")
 
 [node name="Button Beep" type="AudioStreamPlayer2D" parent="." unique_id=1492015297]
 position = Vector2(80, 514)
-volume_db = -17.971
+volume_db = -15.263
 
 [node name="Enemy Image" type="TextureRect" parent="." unique_id=1120566900]
 layout_mode = 0
@@ -339,10 +393,10 @@ texture = ExtResource("2_hip74")
 [node name="Action Panel" type="Panel" parent="." unique_id=1723607598]
 visible = false
 layout_mode = 0
-offset_left = 80.0
-offset_top = 514.0
-offset_right = 1037.0
-offset_bottom = 645.0
+offset_left = 116.0
+offset_top = 465.0
+offset_right = 1073.0
+offset_bottom = 596.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_43vwj")
 
 [node name="Action Node" type="Node" parent="Action Panel" unique_id=356791441 node_paths=PackedStringArray("panel", "text", "no", "yes", "skillcont", "skillpanel", "fightbutton", "posebutton", "runbutton", "magicbutton")]
@@ -393,7 +447,6 @@ flat = true
 script = ExtResource("26_qvetm")
 
 [node name="Text" type="Label" parent="Action Panel" unique_id=523920997]
-visible = false
 layout_mode = 0
 offset_left = 18.0
 offset_top = 11.0
@@ -419,6 +472,22 @@ offset_top = 10.0
 offset_right = 345.0
 offset_bottom = 60.0
 
+[node name="Ability Label" type="Label" parent="Action Panel" unique_id=778154158]
+layout_mode = 0
+offset_left = 683.0
+offset_top = -242.0
+offset_right = 1030.0
+offset_bottom = -176.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ahap6")
+theme_override_font_sizes/font_size = 42
+script = ExtResource("33_nd4jk")
+
+[node name="Popup Timer" type="Timer" parent="Action Panel/Ability Label" unique_id=849943970]
+wait_time = 2.0
+
 [node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=707150514]
 stream = SubResource("AudioStreamOggVorbis_fm0w4")
 
@@ -433,7 +502,7 @@ stream = SubResource("AudioStreamOggVorbis_fm0w4")
 [connection signal="endfight" from="Fight Layer/Enemy" to="Fight Layer" method="_on_endfight"]
 [connection signal="endfight" from="Fight Layer/Enemy" to="Fight Layer/Character" method="_on_endfight"]
 [connection signal="endfight" from="Fight Layer/Enemy" to="Fight Button" method="_ready"]
-[connection signal="health_changed" from="Fight Layer/Enemy" to="Fight Layer/Enemy/Enemy HP Bar" method="_on_health_changed"]
+[connection signal="health_changed" from="Fight Layer/Enemy" to="Bar Layer/Enemy HP Bar" method="_on_health_changed"]
 [connection signal="timeout" from="Fight Layer/Combo Text/Popup Timer" to="Fight Layer/Combo Text" method="_on_popup_timer_timeout"]
 [connection signal="_on_select_fight" from="Fight Button" to="Action Panel/Action Node" method="_on_select_fight"]
 [connection signal="_on_select_fight" from="Fight Button" to="Action Panel/Yes" method="_on_select_fight"]
@@ -464,3 +533,4 @@ stream = SubResource("AudioStreamOggVorbis_fm0w4")
 [connection signal="run" from="Action Panel/Yes" to="Fight Layer/Enemy" method="_endbattle"]
 [connection signal="button_down" from="Action Panel/No" to="Action Panel/No" method="_on_button_down"]
 [connection signal="cancel" from="Action Panel/No" to="Action Panel/Yes" method="_cancel"]
+[connection signal="timeout" from="Action Panel/Ability Label/Popup Timer" to="Action Panel/Ability Label" method="_on_popup_timer_timeout"]

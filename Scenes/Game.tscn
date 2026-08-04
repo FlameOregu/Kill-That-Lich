@@ -17,10 +17,10 @@
 [ext_resource type="Resource" uid="uid://cv3as0d0n3s0e" path="res://Dialogue/save.dialogue" id="9_alh3a"]
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="9_wxwew"]
 [ext_resource type="FontFile" uid="uid://cdn423ddcht34" path="res://Assets/LowresPixel-Regular.otf" id="17_4q8tf"]
-[ext_resource type="Script" uid="uid://c32ol7cw755cb" path="res://Scenes/learn_skill_button.gd" id="18_x3xnh"]
-[ext_resource type="AudioStream" uid="uid://b3s8bqdm5oqbf" path="res://Assets/SFX/beep.mp3" id="19_8r6kd"]
+[ext_resource type="Script" uid="uid://c32ol7cw755cb" path="res://Scripts/learn_skill_button.gd" id="18_x3xnh"]
+[ext_resource type="AudioStream" uid="uid://dbpe1jukvatih" path="res://Assets/SFX/beep.mp3" id="19_8r6kd"]
 [ext_resource type="Texture2D" uid="uid://w7785gg32alr" path="res://Assets/FIRE ball skill node.png" id="19_rajel"]
-[ext_resource type="Script" uid="uid://c4qhowi73r7oc" path="res://Scenes/fire_ball_skill_node.gd" id="20_vvhu1"]
+[ext_resource type="Script" uid="uid://c4qhowi73r7oc" path="res://Scripts/fire_ball_skill_node.gd" id="20_vvhu1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3so38"]
 texture = ExtResource("1_3so38")
@@ -619,13 +619,13 @@ theme_override_fonts/font = ExtResource("17_4q8tf")
 theme_override_font_sizes/font_size = 32
 text = "Poses"
 
-[node name="Seventh Sense" type="Label" parent="Menu Layer/Skill Panel/HBoxContainer" unique_id=779057403]
+[node name="Traits" type="Label" parent="Menu Layer/Skill Panel/HBoxContainer" unique_id=779057403]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("17_4q8tf")
 theme_override_font_sizes/font_size = 32
-text = "Seventh Sense"
+text = "Traits"
 
 [node name="Skate Trix Nodes" type="HBoxContainer" parent="Menu Layer/Skill Panel" unique_id=344067343]
 layout_mode = 0
@@ -744,7 +744,7 @@ text = "Press X to quit menu, Tab to switch Tabs"
 
 [node name="Button Beep" type="AudioStreamPlayer2D" parent="Menu Layer" unique_id=1023057233]
 stream = ExtResource("19_8r6kd")
-volume_db = -17.333
+volume_db = -16.791
 
 [node name="Text Layer" type="CanvasLayer" parent="." unique_id=1938443995]
 

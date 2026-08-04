@@ -9,7 +9,8 @@ var sanity = maxsanity
 var mana = maxmana
 var battle = false
 var char_pos
-var magics = []
+var base_action_points = 1
+var magics = ["res://Scenes/fireball.tscn"]
 var poses = ["res://Scenes/rest_pose.tscn"]
 var save_path = "user://klc_savefile.save"
 var skillpoints = 1
@@ -37,6 +38,7 @@ func _save():
 	file.store_var(var_to_str(poses))
 	file.store_var(var_to_str(magics))
 	file.store_var(var_to_str(skillpoints))
+	file.store_var(var_to_str(base_action_points))
 
 func load_data():
 	if FileAccess.file_exists(save_path):
@@ -50,3 +52,4 @@ func load_data():
 		poses = str_to_var(file.get_var(true))
 		magics = str_to_var(file.get_var(true))
 		skillpoints = str_to_var(file.get_var(true))
+		base_action_points = str_to_var(file.get_var(true))

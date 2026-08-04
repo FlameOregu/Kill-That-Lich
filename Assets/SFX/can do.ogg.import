@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bkmt7v61ph8rk"
+path="res://.godot/imported/can do.ogg-600b73b1d044859f2bf7fec8f8f0f7fc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/can do.ogg"
+dest_files=["res://.godot/imported/can do.ogg-600b73b1d044859f2bf7fec8f8f0f7fc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

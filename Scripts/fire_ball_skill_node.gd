@@ -28,6 +28,7 @@ func _on_focus_entered() -> void:
 		learnbutton.skilldir = skilldir
 		learnbutton.skillcost = cost
 		learnbutton.skilltype = skilltype
+	buttonbeep.stream = preload("res://Assets/SFX/beep.mp3")
 	buttonbeep.play()
 
 func _on_panel_node_skillshow() -> void:

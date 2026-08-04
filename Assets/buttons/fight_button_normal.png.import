@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buq55ke6hr82c"
-path="res://.godot/imported/uhh-pixilart.png-d9a1c323bf96a788d631afac23c27e9a.ctex"
+uid="uid://slvu2v8ddqfs"
+path="res://.godot/imported/fight_button_normal.png-547624b95bf076319112d43a65fb9820.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/uhh-pixilart.png"
-dest_files=["res://.godot/imported/uhh-pixilart.png-d9a1c323bf96a788d631afac23c27e9a.ctex"]
+source_file="res://Assets/buttons/fight_button_normal.png"
+dest_files=["res://.godot/imported/fight_button_normal.png-547624b95bf076319112d43a65fb9820.ctex"]
 
 [params]
 

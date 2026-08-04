@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cru2o8lfcv2p2"
-path="res://.godot/imported/progress-pixilart_1.png-f5dbbe4e6e8e0d1e2fc03a3fe0cba8a2.ctex"
+uid="uid://cjjumfnmwdwg8"
+path="res://.godot/imported/talk_button_normal.png-c1ef8d0b1783eda9b33373033c3d5fa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/progress-pixilart_1.png"
-dest_files=["res://.godot/imported/progress-pixilart_1.png-f5dbbe4e6e8e0d1e2fc03a3fe0cba8a2.ctex"]
+source_file="res://Assets/buttons/talk_button_normal.png"
+dest_files=["res://.godot/imported/talk_button_normal.png-c1ef8d0b1783eda9b33373033c3d5fa9.ctex"]
 
 [params]
 

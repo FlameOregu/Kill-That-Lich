@@ -1,17 +1,16 @@
 extends Node
+var ap_cost = 1
 var fireballdmg = 125
 var textbutton : Node
 var actionpanel : Node
 var skillpanel : Node
-var combotext : Node
+var abilitytext : Node
 var actionnode : Node
 
 func _ready():
-	combotext = $"../../../../../Fight Layer/Combo Text"
+	abilitytext = $"../../../../Ability Label"
 	actionnode = $"../../../../Action Node"
 
 func _fireball():
 	GlobalSignals.enemy._takedamage(fireballdmg)
-	actionnode._engage()
-	$"..".hide()
-	combotext._on_character_combo("Fireball!\n" + str(fireballdmg) + " Dmg")
+	abilitytext._on_ability("Fireball!\n" + str(fireballdmg) + " Dmg")

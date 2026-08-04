@@ -7,15 +7,17 @@ var maxhealth
 var maxmana
 var currentmana
 var currenthealth
+var base_action_points = GlobalSignals.base_action_points
+var action_points = base_action_points
 var invincible = false
 var infight : bool
-var fighting = false
 signal manachanged(currentmana, battlemaxmana)
 signal on_character_moving(is_moving:bool)
 signal healthChanged
 
 func _ready():
 	GlobalSignals.character = self
+	_on_ap_change(0)
 	maxhealth = GlobalSignals.maxsanity
 	maxmana = GlobalSignals.maxmana
 	currenthealth = GlobalSignals.sanity
@@ -55,19 +57,17 @@ func _gethurt():
 		$"Character Sprite".self_modulate.a = 255
 
 func _on_endfight() -> void:
+	action_points = base_action_points
+	_on_ap_change(0)
 	invincible = true
-	fighting = false
 	infight = false
 
-func _on_engage() -> void:#start of fight but not fighting
+func _on_engage() -> void:#start the fight phase
 	$Parrying.parrycd = false
 	$Parrying.parry = false
 	invincible = false
 	infight = true
 	global_position = Vector2(560, 440)
-
-func _on_fight() -> void:
-	fighting = true
 
 func _on_manachange(cost: int) -> void:
 	currentmana -= cost
@@ -76,6 +76,10 @@ func _on_manachange(cost: int) -> void:
 func _on_healthchange(damage : int):
 	currenthealth -= damage
 	healthChanged.emit()
+
+func _on_ap_change(cost : int):
+	action_points -= cost
+	$"../../Action Points".text = "Action Points: " + str(action_points)
 
 func _on_endbattle() -> void:
 	GlobalSignals.emit_signal("battlestats", currenthealth, maxhealth, currentmana, maxmana)
