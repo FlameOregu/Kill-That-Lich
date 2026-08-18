@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgressBar
 @export var battlecharacter : Player
 
 func _on_character_manachanged(currentmana: float, maxmana: float) -> void:

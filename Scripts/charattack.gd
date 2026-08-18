@@ -13,7 +13,7 @@ var key_to_arrow = {
 	"right": "→"
 	}
 signal enemyhit(damage: int)
-signal combo(combo: String)
+signal combo(combo: String) #sends combo text, and plays combo sound
 
 func _combostart():
 	if Input.is_action_just_pressed("left") == true:
@@ -40,8 +40,6 @@ func _ollie():
 	damage = 20 * max(1.0 -(atk_repeat * 0.2), 0.1 )
 	enemyhit.emit(damage)
 	combo.emit(str("Ollie!\n" + str(damage) + " Dmg"))
-	$"../Player SFX".stream = preload("res://Assets/SFX/combo 4.mp3")
-	$"../Player SFX".play()
 	last_atk = "ollie"
 
 func _kickflip():
@@ -54,8 +52,6 @@ func _kickflip():
 	damage = 40 * max(1.0 -(atk_repeat * 0.2), 0.1 )
 	enemyhit.emit(damage)
 	combo.emit(str("Kickflip!\n" + str(damage) + " Dmg"))
-	$"../Player SFX".stream = preload("res://Assets/SFX/combo 4.mp3")
-	$"../Player SFX".play()
 	last_atk = "kickflip"
 
 func _input(event):

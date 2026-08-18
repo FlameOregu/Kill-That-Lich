@@ -1,5 +1,6 @@
 extends Button
 signal rest
+signal cant
 var textbutton : Node
 var character : Node
 var actionpanel : Node
@@ -19,9 +20,9 @@ func _ready():
 func _on_button_down() -> void:
 	if character.action_points - $"Rest Pose".ap_cost >= 0:
 		character._on_ap_change(1)
-		$SFX.play()
 		rest.emit()
 	else:
+		cant.emit()
 		skillpanel.hide()
 		textbutton.show()
 		textbutton.text = "You do not have enough action points."

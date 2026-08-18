@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c7y2uf7ok6afi"]
 
-[ext_resource type="Script" uid="uid://btjb3y3r4tn0e" path="res://Scenes/death.gd" id="1_066rk"]
+[ext_resource type="Script" uid="uid://btjb3y3r4tn0e" path="res://Scripts/death.gd" id="1_066rk"]
 [ext_resource type="FontFile" uid="uid://hxremkk185h6" path="res://Assets/Orange Kid.otf" id="1_dkyka"]
 [ext_resource type="StyleBox" uid="uid://bdf7iqmyu1dq5" path="res://Scenes/startquitbutton.tres" id="2_066rk"]
 [ext_resource type="Script" uid="uid://d3ijslh0sfy3w" path="res://Scripts/continue_button.gd" id="3_xejl3"]
 [ext_resource type="Script" uid="uid://ije1a2y7rf6a" path="res://Scripts/quit_button.gd" id="4_65qoq"]
 [ext_resource type="FontFile" uid="uid://cqt8m8iyjqsd8" path="res://Assets/videotype.otf" id="5_tcnkp"]
-[ext_resource type="AudioStream" uid="uid://b3s8bqdm5oqbf" path="res://Assets/SFX/beep.mp3" id="7_xejl3"]
+[ext_resource type="AudioStream" uid="uid://dbpe1jukvatih" path="res://Assets/SFX/beep.mp3" id="7_xejl3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw0p4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

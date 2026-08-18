@@ -7,8 +7,8 @@ var skillpanel : Node
 var combotext : Node
 var yesbutton : Node
 var character : Node
-var sfx : Node
 signal fireball
+signal cant
 
 func _ready():
 	textbutton = $"../../../Text"
@@ -17,18 +17,17 @@ func _ready():
 	skillpanel = $"../.."
 	combotext = $"../../../../Fight Layer/Combo Text"
 	character = GlobalSignals.character
-	sfx = $SFX
 
 func _on_focus_entered() -> void:
 	textbutton.text = descript_text
 
 func _on_button_down() -> void:
 	if (GlobalSignals.character.currentmana - 50) >= 0 and (character.action_points - $Fireball.ap_cost) >= 0:
-		sfx.play()
 		character._on_ap_change(1)
 		character._on_manachange(50)
 		fireball.emit()
 	elif (character.action_points - $Fireball.ap_cost) < 0: #not enough Action points
+		cant.emit()
 		skillpanel.hide()
 		textbutton.show()
 		textbutton.text = "You do not have enough action points."
@@ -37,6 +36,7 @@ func _on_button_down() -> void:
 		textbutton.text = ""
 		actionnode._on_cancel("magic")
 	else: #not enough mana
+		cant.emit()
 		skillpanel.hide()
 		textbutton.show()
 		textbutton.text = "You do not have enough mana."

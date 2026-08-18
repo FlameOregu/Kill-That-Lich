@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dbpe1jukvatih" path="res://Assets/SFX/beep.mp3" id="19_8r6kd"]
 [ext_resource type="Texture2D" uid="uid://w7785gg32alr" path="res://Assets/FIRE ball skill node.png" id="19_rajel"]
 [ext_resource type="Script" uid="uid://c4qhowi73r7oc" path="res://Scripts/fire_ball_skill_node.gd" id="20_vvhu1"]
+[ext_resource type="Script" uid="uid://ci5byiim6t38o" path="res://Scripts/button_beep.gd" id="22_vvhu1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3so38"]
 texture = ExtResource("1_3so38")
@@ -744,7 +745,8 @@ text = "Press X to quit menu, Tab to switch Tabs"
 
 [node name="Button Beep" type="AudioStreamPlayer2D" parent="Menu Layer" unique_id=1023057233]
 stream = ExtResource("19_8r6kd")
-volume_db = -16.791
+volume_db = -15.708
+script = ExtResource("22_vvhu1")
 
 [node name="Text Layer" type="CanvasLayer" parent="." unique_id=1938443995]
 
@@ -760,6 +762,9 @@ volume_db = -16.791
 [connection signal="skillshow" from="Menu Layer/Panel Node" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_panel_node_skillshow"]
 [connection signal="button_down" from="Menu Layer/Inventory Panel/Inventory Container/Item 1" to="Menu Layer/Inventory Panel/Inventory Container/Item 1" method="_on_button_down"]
 [connection signal="button_down" from="Menu Layer/Skill Panel/Node Desc Panel/Learn" to="Menu Layer/Skill Panel/Node Desc Panel/Learn" method="_on_button_down"]
+[connection signal="cando" from="Menu Layer/Skill Panel/Node Desc Panel/Learn" to="Menu Layer/Button Beep" method="_cando"]
+[connection signal="cant" from="Menu Layer/Skill Panel/Node Desc Panel/Learn" to="Menu Layer/Button Beep" method="_cantdo"]
 [connection signal="focus_entered" from="Menu Layer/Skill Panel/Node Desc Panel/Learn" to="Menu Layer/Skill Panel/Node Desc Panel/Learn" method="_on_focus_entered"]
 [connection signal="button_down" from="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_button_down"]
 [connection signal="focus_entered" from="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" to="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" method="_on_focus_entered"]
+[connection signal="focus_entered" from="Menu Layer/Skill Panel/Skate Trix Nodes/Fire Ball Skill" to="Menu Layer/Button Beep" method="_beep"]

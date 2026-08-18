@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://5ej3iljixekl" path="res://Scripts/fireball_button.gd" id="2_ne4qj"]
 [ext_resource type="Texture2D" uid="uid://cgvoq8puc1i2b" path="res://Assets/FIRE ball.png" id="3_ne4qj"]
 [ext_resource type="AudioStream" uid="uid://cdtpf0axobe51" path="res://Assets/SFX/fireball_4.ogg" id="4_hcgvv"]
+[ext_resource type="Script" uid="uid://d07gocl6x38ab" path="res://Scripts/fireball_sfx.gd" id="5_cpagb"]
 
 [node name="Fireball Button" type="Button" unique_id=308330500]
 custom_minimum_size = Vector2(50, 50)
@@ -21,9 +22,11 @@ script = ExtResource("1_0mxqg")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1443170225]
 stream = ExtResource("4_hcgvv")
-volume_db = 12.459
+script = ExtResource("5_cpagb")
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="cant" from="." to="SFX" method="_cant"]
 [connection signal="fireball" from="." to="Fireball" method="_fireball"]
+[connection signal="fireball" from="." to="SFX" method="_fireball"]
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

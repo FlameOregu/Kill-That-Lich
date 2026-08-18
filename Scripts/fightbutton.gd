@@ -1,10 +1,6 @@
 extends Button
 signal _on_select_fight
 
-func _on_focus_entered():
-	$"../Button Beep".stream = preload("res://Assets/SFX/beep.mp3")
-	$"../Button Beep".play()
-
 func _ready():
 	self.grab_focus()
 

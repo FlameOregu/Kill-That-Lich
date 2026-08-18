@@ -14,6 +14,8 @@ var infight : bool
 signal manachanged(currentmana, battlemaxmana)
 signal on_character_moving(is_moving:bool)
 signal healthChanged
+signal parry #currently, just sends out parry sound signal
+signal hurt #currently, just sends out hurt sound signal
 
 func _ready():
 	GlobalSignals.character = self
@@ -38,8 +40,7 @@ func _physics_process(_delta):
 func _on_hurtbox_area_entered(area):
 	if $Parrying.parry == true:
 		$Parrying.parrycd = false
-		$"Player SFX".stream = preload("res://Assets/SFX/skateboard parry 3.mp3")
-		$"Player SFX".play()
+		parry.emit()
 	if area.name == "hitbox" and invincible == false:
 		_gethurt()
 
@@ -48,8 +49,7 @@ func _gethurt():
 	if currenthealth <= 0:
 		_deathscreen()
 	else:
-		$"Player SFX".stream = preload("res://Assets/SFX/hit 6.mp3")
-		$"Player SFX".play()
+		hurt.emit()
 		invincible = true
 		$"Character Sprite".self_modulate.a = 0.5
 		await get_tree().create_timer(0.55).timeout

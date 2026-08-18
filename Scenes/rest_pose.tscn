@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://biuncdt3te7na" path="res://Scripts/rest_pose_button.gd" id="2_0pkug"]
 [ext_resource type="Script" uid="uid://b50jid7atl0d7" path="res://Scripts/rest_pose.gd" id="3_0pkug"]
 [ext_resource type="AudioStream" uid="uid://bjdxook7f44sv" path="res://Assets/SFX/Rest_Sound_2.mp3" id="4_vg4h2"]
+[ext_resource type="Script" uid="uid://j588hya6c7xt" path="res://Scripts/rest_sfx.gd" id="5_awtbg"]
 
 [node name="Rest Pose Button" type="Button" unique_id=568923502]
 custom_minimum_size = Vector2(50, 50)
@@ -19,7 +20,10 @@ script = ExtResource("3_0pkug")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=2093055934]
 stream = ExtResource("4_vg4h2")
+script = ExtResource("5_awtbg")
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="cant" from="." to="SFX" method="_cant"]
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="rest" from="." to="Rest Pose" method="_rest"]
+[connection signal="rest" from="." to="SFX" method="_rest"]

@@ -7,10 +7,8 @@ var skilltype = "magic"
 var cost = 1
 var titlelabel : Label
 var desclabel : Label
-var buttonbeep : Node
 
 func _ready() -> void:
-	buttonbeep = $"../../../Button Beep"
 	titlelabel = $"../../Node Desc Panel/Title Panel/Title Text"
 	desclabel = $"../../Node Desc Panel/Description Panel/Description Text"
 	learnbutton = $"../../Node Desc Panel/Learn"
@@ -28,8 +26,6 @@ func _on_focus_entered() -> void:
 		learnbutton.skilldir = skilldir
 		learnbutton.skillcost = cost
 		learnbutton.skilltype = skilltype
-	buttonbeep.stream = preload("res://Assets/SFX/beep.mp3")
-	buttonbeep.play()
 
 func _on_panel_node_skillshow() -> void:
 	self.grab_focus()
