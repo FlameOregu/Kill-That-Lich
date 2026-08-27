@@ -14,6 +14,8 @@ func _dohide():
 				i.set_process_input(false)
 				i.set_process_unhandled_input(false)
 				i.set_process_unhandled_key_input(false)
+			if i is Timer:
+				i.stop()
 
 func _unhide():
 	show()

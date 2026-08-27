@@ -11,6 +11,8 @@ var base_action_points = GlobalSignals.base_action_points
 var action_points = base_action_points
 var invincible = false
 var infight : bool
+var damage_mult : bool
+var style_points
 signal manachanged(currentmana, battlemaxmana)
 signal on_character_moving(is_moving:bool)
 signal healthChanged

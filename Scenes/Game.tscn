@@ -265,10 +265,11 @@ collision_mask = 2
 position = Vector2(2.25, 0.749992)
 shape = SubResource("RectangleShape2D_7lihs")
 
-[node name="Save Point" parent="." unique_id=657882146 instance=ExtResource("6_7lihs")]
+[node name="Save Point" parent="." unique_id=657882146 node_paths=PackedStringArray("character") instance=ExtResource("6_7lihs")]
 position = Vector2(20, -89)
 scale = Vector2(0.352593, 0.319902)
 dialogue_resource = ExtResource("9_alh3a")
+character = NodePath("../Character")
 
 [node name="Character" parent="." unique_id=1618424144 instance=ExtResource("1_rdvmp")]
 position = Vector2(-9, -20)

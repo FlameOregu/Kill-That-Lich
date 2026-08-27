@@ -10,6 +10,10 @@ var mana = maxmana
 var battle = false
 var char_pos
 var base_action_points = 1
+var flair : int = 1
+var cool : int = 1
+var nrg : int = 1
+var aura : int = 1
 var magics = ["res://Scenes/fireball.tscn"]
 var poses = ["res://Scenes/rest_pose.tscn"]
 var save_path = "user://klc_savefile.save"
@@ -17,7 +21,6 @@ var skillpoints = 1
 var inventory = []
 var enemy : Node = null
 var character : Node = null
-
 func _ready():
 	self.connect("battlestats", Callable(self, "_setstats"))
 
@@ -39,6 +42,10 @@ func _save():
 	file.store_var(var_to_str(magics))
 	file.store_var(var_to_str(skillpoints))
 	file.store_var(var_to_str(base_action_points))
+	file.store_var(var_to_str(flair))
+	file.store_var(var_to_str(cool))
+	file.store_var(var_to_str(nrg))
+	file.store_var(var_to_str(aura))
 
 func load_data():
 	if FileAccess.file_exists(save_path):
@@ -53,3 +60,7 @@ func load_data():
 		magics = str_to_var(file.get_var(true))
 		skillpoints = str_to_var(file.get_var(true))
 		base_action_points = str_to_var(file.get_var(true))
+		flair = str_to_var(file.get_var(true))
+		cool = str_to_var(file.get_var(true))
+		nrg = str_to_var(file.get_var(true))
+		aura = str_to_var(file.get_var(true))

@@ -4,7 +4,7 @@ var trackbullet_scene : PackedScene = preload("res://Scenes/trackbullet.tscn")
 var dirbullet_scene : PackedScene = preload("res://Scenes/dirbullet.tscn")
 var wavebullet_scene : PackedScene = preload("res://Scenes/wavebullet.tscn")
 var shootheight : int
-var maxhp = 500
+var maxhp = 1500
 var currenthp = maxhp
 var attacknum = 1
 signal endfight #ends the attack

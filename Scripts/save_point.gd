@@ -4,10 +4,11 @@ signal show_icon
 signal hide_icon
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
+@export var character : CharacterBody2D
 
 func _ready():
-	$Area2D.connect("area_entered", Callable($"../Character","_on_interaction_area_entered"))
-	$Area2D.connect("area_exited", Callable($"../Character","_on_interaction_area_exited"))
+	$Area2D.connect("area_entered", Callable(character,"_on_interaction_area_entered"))
+	$Area2D.connect("area_exited", Callable(character,"_on_interaction_area_exited"))
 	_on_hide_icon()
 
 func _on_show_icon() -> void:
@@ -20,5 +21,5 @@ func _on_start_dialogue() -> void:
 	DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start, [self])
 
 func _save():
-	GlobalSignals.char_pos = $"../Character".position
+	GlobalSignals.char_pos = character.position
 	GlobalSignals._save()
