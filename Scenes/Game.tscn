@@ -284,7 +284,6 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Menu Layer" type="CanvasLayer" parent="." unique_id=940008656]
-visible = false
 
 [node name="Panel Node" type="Node" parent="Menu Layer" unique_id=1231221757 node_paths=PackedStringArray("skillpanel", "invpanel", "statspanel", "skillstab", "invtab", "statstab")]
 script = ExtResource("8_bf53h")
@@ -338,13 +337,13 @@ text = "Flair:"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_wxwew")
 theme_override_font_sizes/font_size = 36
-text = "Cool:"
+text = "NRG:"
 
-[node name="Stamina" type="Label" parent="Menu Layer/Stats Panel/stats panel again/Stat names container" unique_id=227246708]
+[node name="Magic" type="Label" parent="Menu Layer/Stats Panel/stats panel again/Stat names container" unique_id=227246708]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_wxwew")
 theme_override_font_sizes/font_size = 36
-text = "NRG:"
+text = "Buff:"
 
 [node name="Luck" type="Label" parent="Menu Layer/Stats Panel/stats panel again/Stat names container" unique_id=102600279]
 layout_mode = 2

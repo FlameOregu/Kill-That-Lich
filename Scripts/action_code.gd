@@ -11,7 +11,7 @@ signal engage
 @export var skillpanel : Node
 @export var fightbutton : Node
 @export var posebutton : Node
-@export var runbutton : Node
+@export var talkbutton : Node
 @export var magicbutton : Node
 
 func _input(event: InputEvent) -> void:
@@ -45,8 +45,8 @@ func _on_cancel(button) -> void:
 		magicbutton.grab_focus()
 	elif button == "pose":
 		posebutton.grab_focus()
-	elif button == "run":
-		runbutton.grab_focus()
+	elif button == "talk":
+		talkbutton.grab_focus()
 	button = ""
 	
 
@@ -91,13 +91,8 @@ func _on_select_pose() -> void:
 	actions[-1].focus_neighbor_right = actions[-1].get_path() #sets the last button in array to select itself when pressed right
 	actions[0].grab_focus()
 
-func _on_select_run() -> void:
-	button = "run"
-	panel.show()
-	text.text = "Are you sure you want to run?"
-	text.show()
-	yes.show()
-	no.show()
+func _on_select_talk() -> void:
+	pass
 
 func _showskills():
 	panel.show()

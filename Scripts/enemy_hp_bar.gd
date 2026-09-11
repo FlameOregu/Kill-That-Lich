@@ -6,4 +6,4 @@ func _ready():
 	value = Enemy.maxhp
 
 func _on_health_changed(currenthp: Variant, maxhp: Variant) -> void:
-	value = currenthp 
+	value = currenthp

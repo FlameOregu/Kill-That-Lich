@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjbdaq6fjux48"
-path="res://.godot/imported/mana_over.png-325648b2ed5c835b2ed87a035c8de534.ctex"
+uid="uid://cvd20qg3smf7y"
+path="res://.godot/imported/talk_hover.png-6e13582e699a875d22c14abfc4899f7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/mana_over.png"
-dest_files=["res://.godot/imported/mana_over.png-325648b2ed5c835b2ed87a035c8de534.ctex"]
+source_file="res://Assets/buttons/talk_hover.png"
+dest_files=["res://.godot/imported/talk_hover.png-6e13582e699a875d22c14abfc4899f7a.ctex"]
 
 [params]
 

@@ -32,6 +32,3 @@ func _on_endfight() -> void:
 
 func _on_engage() -> void:
 	_unhide()
-
-func _on_run() -> void:
-	queue_free()

@@ -9,9 +9,9 @@ var sanity = maxsanity
 var mana = maxmana
 var battle = false
 var char_pos
-var base_action_points = 1
+var base_action_points = 5 #default amount, to be set after every turn in fight.
 var flair : int = 1
-var cool : int = 1
+var buff : int = 1
 var nrg : int = 1
 var aura : int = 1
 var magics = ["res://Scenes/fireball.tscn"]
@@ -43,7 +43,7 @@ func _save():
 	file.store_var(var_to_str(skillpoints))
 	file.store_var(var_to_str(base_action_points))
 	file.store_var(var_to_str(flair))
-	file.store_var(var_to_str(cool))
+	file.store_var(var_to_str(buff))
 	file.store_var(var_to_str(nrg))
 	file.store_var(var_to_str(aura))
 
@@ -61,6 +61,6 @@ func load_data():
 		skillpoints = str_to_var(file.get_var(true))
 		base_action_points = str_to_var(file.get_var(true))
 		flair = str_to_var(file.get_var(true))
-		cool = str_to_var(file.get_var(true))
+		buff = str_to_var(file.get_var(true))
 		nrg = str_to_var(file.get_var(true))
 		aura = str_to_var(file.get_var(true))

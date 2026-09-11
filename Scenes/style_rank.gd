@@ -2,6 +2,7 @@ extends Label
 var style_rank : String = "F"
 var style_points : int = 0
 var styling : bool
+var battleflair : int
 @export var style_time : ProgressBar
 @export var style_timer : Timer
 var rank_thresholds = {
@@ -16,9 +17,16 @@ var rank_thresholds = {
 signal style #updates the attack node style for the damage mult
 signal style_pts #style points label
 
+func _ready():
+	battleflair = GlobalSignals.flair
+	battleflair = snapped(battleflair, 5)
+	if battleflair > GlobalSignals.flair:
+		battleflair - 5
+	print(battleflair)
+
 func _on_attack(damage) -> void:
 	styling = true
-	style_points += damage + (GlobalSignals.flair * 15) #later, change it so global signals sets a battlestat and changes it according to thresholds e.g at 5 it's 20 per instead of 15
+	style_points += damage + (GlobalSignals.flair * (15 + battleflair)) #later, change it so global signals sets a battlestat and changes it according to thresholds e.g at 5 it's 20 per instead of 15
 	if style_points >= rank_thresholds[style_rank]:
 		for rank in rank_thresholds:
 			if style_points >= rank_thresholds[rank]:

@@ -11,9 +11,10 @@ func _ready():
 	actionnode = $"../../../../Action Node"
 
 func _rest() -> void:
-	character._on_manachange(-50)
+	character.currentmana += 50
 	if character.currentmana > character.maxmana:
 		character.currentmana = character.maxmana
+	character._on_manachange(0)
 	character.currenthealth += 30
 	if character.currenthealth > character.maxhealth:
 		character.currenthealth = character.maxhealth

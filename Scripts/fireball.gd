@@ -1,6 +1,7 @@
 extends Node
 var ap_cost = 1
-var fireballdmg = 125
+var basedamage = 125
+var totaldmg : int
 var textbutton : Node
 var actionpanel : Node
 var skillpanel : Node
@@ -12,5 +13,6 @@ func _ready():
 	actionnode = $"../../../../Action Node"
 
 func _fireball():
-	GlobalSignals.enemy._takedamage(fireballdmg)
-	abilitytext._on_ability("Fireball!\n" + str(fireballdmg) + " Dmg")
+	totaldmg = basedamage * ((GlobalSignals.buff * 0.5) + 1)
+	GlobalSignals.enemy._takedamage(totaldmg)
+	abilitytext._on_ability("Fireball!\n" + str(totaldmg) + " Dmg")
