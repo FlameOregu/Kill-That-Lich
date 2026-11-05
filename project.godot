@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Kill That Lich"
 run/main_scene="uid://tvionu8sw16"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -307,7 +307,7 @@ menu={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Assets/dialogue.dialogue", "res://Dialogue/npc_test.dialogue", "res://Dialogue/npc_test1.dialogue", "res://Dialogue/save.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Assets/dialogue.dialogue", "res://Dialogue/npc_test.dialogue", "res://Dialogue/npc_test1.dialogue", "res://Dialogue/save.dialogue", "res://Dialogue/battle_test.dialogue")
 
 [layer_names]
 

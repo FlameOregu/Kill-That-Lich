@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://7llglxjjrg2x" path="res://Scripts/yes.gd" id="13_i7srl"]
 [ext_resource type="Script" uid="uid://cgeiahtk8b72l" path="res://Scripts/enemy_hp_bar.gd" id="13_pwb48"]
 [ext_resource type="Script" uid="uid://doh6dhr3w3k2v" path="res://Scripts/player_sfx.gd" id="15_ar6iy"]
+[ext_resource type="Resource" uid="uid://ccmydu1c57ims" path="res://Dialogue/battle_test.dialogue" id="16_kf0x2"]
 [ext_resource type="Texture2D" uid="uid://slvu2v8ddqfs" path="res://Assets/buttons/fight_button_normal.png" id="17_eqbi2"]
 [ext_resource type="FontFile" uid="uid://cdn423ddcht34" path="res://Assets/LowresPixel-Regular.otf" id="17_xy0dg"]
 [ext_resource type="Texture2D" uid="uid://ckeramfi6jxlj" path="res://Assets/buttons/fight_button_hover.png" id="18_xy0dg"]
@@ -144,8 +145,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
+offset_left = 3.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -281,6 +282,7 @@ text = "parrying!"
 position = Vector2(489, 57)
 script = ExtResource("2_iin7j")
 battlecharacter = NodePath("../Character")
+Dialogue = ExtResource("16_kf0x2")
 
 [node name="Enemy" type="TextureRect" parent="Fight Layer/Enemy" unique_id=938386207]
 offset_left = -13.0
@@ -356,9 +358,9 @@ horizontal_alignment = 1
 [node name="Mana Bar" type="TextureProgressBar" parent="." unique_id=1330616819 node_paths=PackedStringArray("battlecharacter", "manatext")]
 layout_mode = 0
 offset_left = -21.0
-offset_top = 63.0
+offset_top = 62.0
 offset_right = 179.0
-offset_bottom = 263.0
+offset_bottom = 262.0
 value = 100.0
 fill_mode = 3
 texture_under = ExtResource("8_5hyi2")
@@ -593,6 +595,7 @@ stream = SubResource("AudioStreamOggVorbis_fm0w4")
 [connection signal="button_down" from="Pose Button" to="Pose Button" method="_on_button_down"]
 [connection signal="focus_entered" from="Pose Button" to="Pose Button" method="_on_focus_entered"]
 [connection signal="focus_entered" from="Pose Button" to="Button Beep" method="_beep"]
+[connection signal="_on_select_talk" from="Talk Button" to="Action Panel/Action Node" method="_on_select_talk"]
 [connection signal="button_down" from="Talk Button" to="Talk Button" method="_on_button_down"]
 [connection signal="focus_entered" from="Talk Button" to="Talk Button" method="_on_focus_entered"]
 [connection signal="focus_entered" from="Talk Button" to="Button Beep" method="_beep"]

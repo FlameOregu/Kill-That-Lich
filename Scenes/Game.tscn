@@ -284,6 +284,7 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Menu Layer" type="CanvasLayer" parent="." unique_id=940008656]
+visible = false
 
 [node name="Panel Node" type="Node" parent="Menu Layer" unique_id=1231221757 node_paths=PackedStringArray("skillpanel", "invpanel", "statspanel", "skillstab", "invtab", "statstab")]
 script = ExtResource("8_bf53h")

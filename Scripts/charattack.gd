@@ -5,6 +5,7 @@ var last_atk : String
 var damage = 0.0
 var atk_repeat = 0
 var skatecombo : Array
+var character : Node2D
 var combo_active : bool
 var stylemult : float = 1
 var basedmg : int
@@ -26,6 +27,9 @@ var ranks = {
 signal enemyhit(damage: int)
 signal style
 signal combo(combo: String) #sends combo text, and plays combo sound
+
+func _ready():
+	character = GlobalSignals.character
 
 func _combostart():
 	if Input.is_action_just_pressed("left") == true:
@@ -72,7 +76,7 @@ func _kickflip():
 
 func _input(event):
 	if Input.is_action_just_pressed("interact") == true: #startcombo
-		$"..".speed = 180
+		character.speed = 180
 		combo_active = true
 		skatecombo.clear()
 		
@@ -87,7 +91,7 @@ func _input(event):
 	
 		elif skatecombo == ["up", "down", "right", "left"]: #kickflip
 			_kickflip()
-		$"..".speed = $"..".basespeed
+			character.speed = character.basespeed
 
 
 func _on_style(rank) -> void:

@@ -1,6 +1,7 @@
 extends Node
 signal player_position(location: Vector2)
 signal dirbullet_targ(location : Vector2)
+signal dialogue_terminal_finish
 signal battlestats(sanitynew, maxsanitynew, mananew, maxmananew)
 var continued : bool
 var maxsanity = 100
@@ -18,7 +19,7 @@ var magics = ["res://Scenes/fireball.tscn"]
 var poses = ["res://Scenes/rest_pose.tscn"]
 var save_path = "user://klc_savefile.save"
 var skillpoints = 1
-var inventory = []
+var inventory = ["crap skateboard"]
 var enemy : Node = null
 var character : Node = null
 func _ready():

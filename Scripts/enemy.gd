@@ -11,6 +11,7 @@ signal endfight #ends the attack
 signal endbattle
 signal health_changed(currenthp, maxhp)
 @export var battlecharacter: Player
+@export var Dialogue : DialogueResource
 
 func _ready():
 	GlobalSignals.enemy = self
