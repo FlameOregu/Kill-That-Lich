@@ -103,9 +103,9 @@ func _on_select_pose() -> void:
 
 func _on_select_talk() -> void:
 	if dialogue_finished == true: #If all dialogue seen, will do this
-		_show_text(2, "There is nothing more to say.")
+		DialogueManager.show_dialogue_balloon(load("res://Dialogue/no_more_dialogue.dialogue"), "start")
 	elif character.action_points > 0: #checks if enough action points, then shows the dialogue based on the dialogues completed
-		character.action_points -= 1
+		character._on_ap_change(1)
 		DialogueManager.show_dialogue_balloon(enemy.Dialogue, ("D" + str(dialogues_completed)))
 	else:
 		_show_text(1.5, "Not enough action points.")
@@ -126,15 +126,14 @@ func _engage(): #starts fight screen
 	engage.emit()
 
 func _dialogue_terminal_finish():
-	print("finished")
 	dialogue_finished = true
 	talkbutton.grab_focus()
 
-func _show_text(seconds : float, text):
-	text.text = text
+func _show_text(seconds : float, message : String):
+	text.text = message
 	panel.show()
 	text.show()
-	if seconds > 0:
-		await get_tree().create_timer(seconds).timeout
+	await get_tree().create_timer(seconds).timeout
 	panel.hide()
 	text.hide()
+	

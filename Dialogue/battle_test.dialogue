@@ -4,4 +4,4 @@ Solq: This is the second line of the dialogue.
 => END
 ~ D1
 Solq: This is the next part of the dialogue
-$> emit_signal(GlobalSignals.dialogue_terminal_finish)
+ $> GlobalSignals.dialogue_terminal_finish.emit()

@@ -19,7 +19,7 @@ signal healthChanged
 signal parry #currently, just sends out parry sound signal
 signal hurt #currently, just sends out hurt sound signal
 
-func _ready():
+func _enter_tree() -> void:
 	GlobalSignals.character = self
 	_on_ap_change(0)
 	maxhealth = GlobalSignals.maxsanity
