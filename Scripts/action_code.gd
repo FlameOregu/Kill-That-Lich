@@ -121,7 +121,7 @@ func _showskills():
 	skillcont.show()
 
 func _engage(): #starts fight screen
-	$"../../Fight Layer/Character".infight = true
+	GlobalSignals.character.infight = true
 	_on_cancel("fight")
 	engage.emit()
 

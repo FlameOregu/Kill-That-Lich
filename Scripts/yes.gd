@@ -11,7 +11,7 @@ func _on_select_fight():
 	button = "fight"
 	fightselect = true
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cancel") == true and visible == true:
 		_cancel()
 
@@ -21,7 +21,7 @@ func _cancel():
 	fightselect = false
 
 func _fight(): #goes to fight screen in fight mode
-	on_cancel.emit()
+	on_cancel.emit(button)
 	$"../Action Node"._engage()
 	fightselect = false
 

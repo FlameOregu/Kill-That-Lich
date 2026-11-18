@@ -88,10 +88,9 @@ func _input(event):
 		arrow_string = ""
 		if skatecombo == ["down", "up"]: #ollie
 			_ollie()
-	
 		elif skatecombo == ["up", "down", "right", "left"]: #kickflip
 			_kickflip()
-			character.speed = character.basespeed
+		character.speed = character.basespeed
 
 
 func _on_style(rank) -> void:

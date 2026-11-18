@@ -20,8 +20,8 @@ signal style_pts #style points label
 func _ready():
 	battleflair = GlobalSignals.flair
 	battleflair = snapped(battleflair, 5)
-	if battleflair > GlobalSignals.flair:
-		battleflair - 5
+	if battleflair > GlobalSignals.flair: #rounds down to closest 5 below itself
+		battleflair -= 5
 	print(battleflair)
 
 func _on_attack(damage) -> void:
@@ -38,7 +38,7 @@ func _on_attack(damage) -> void:
 	style_timer.start()
 	self.text = style_rank
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if styling == true:
 		style_time.value = style_timer.time_left
 
